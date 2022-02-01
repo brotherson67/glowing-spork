@@ -1,0 +1,33 @@
+import React from 'react';
+import { Nav, Bars, NavMenu, NavLink } from './NavbarEl';
+
+const  Navbar = ({ toggle }) => {
+
+  return (
+  <>
+  <Nav>
+      <NavLink to="/">
+          <h1>R-o-u-t-e-s</h1>
+      </NavLink>
+      <Bars onClick={toggle} />
+      <NavMenu>
+        <NavLink to="/ski">
+            Ski
+        </NavLink>
+        <NavLink to="/hike">
+            Hike
+        </NavLink>
+        <NavLink to="/mountain-bike">
+            Mountain bike
+        </NavLink>
+        <NavLink to="/trail-run">
+            Trail Run
+        </NavLink>
+      </NavMenu>
+  </Nav>
+  </>
+    );
+}
+
+
+export default Navbar;

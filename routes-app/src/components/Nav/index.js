@@ -21,11 +21,11 @@ const  Navbar = ({ toggle }) => {
             Trail Run
         </NavLink>
       </NavMenu>
-      <NavBtn>
+      {/* <NavBtn>
           <Button to='/login' primary='true'>
               Login
           </Button>
-      </NavBtn>
+      </NavBtn> */}
   </Nav>
   </>
     );

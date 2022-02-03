@@ -2,18 +2,17 @@ import styled from 'styled-components'
 import { FaGithub, FaMailBulk } from 'react-icons/fa'
 
 export const Footer = styled.footer`
-height: 100px;
+height: 40px;
 display: flex;
 justify-content: space-between;
 z-index: 10;
 position: absolute;
-left: 0;
-bottom: 0;
+width: 100%;
 `
 export const Social = styled.div`
 display: flex;
 justify-content: space-between;
-padding: 10%;
+padding: 2%;
 `
 export const GitHub = styled(FaGithub)`
 height: 75px;

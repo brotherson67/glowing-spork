@@ -6,13 +6,22 @@ function FooterBar() {
       <>
         <Footer>
          <Social>
+         {/* <span style={spanStyle}>Contact Us</span> */}
          <GitHub />
          <Email />
-         Contact Us
         </Social>
         </Footer>
       </>
     )
 }
+
+// const spanStyle = {
+//     padding: '10',
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     marginBottom: '0',
+//     marginRight: '30'
+// }
+
 
 export default FooterBar;

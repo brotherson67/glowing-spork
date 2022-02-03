@@ -1,20 +1,16 @@
 import React from 'react';
-import { Footer, Social, GitHub, LinkedIn, StackOverflow, FooterContact } from './FooterEl';
+import { Footer, Social, GitHub, FooterContact, Email } from './FooterEl';
 
 function FooterBar() {
   return (
       <>
-      <Footer>
-        <Social>
-        <GitHub />
-        <LinkedIn />
-        <StackOverflow />
+        <Footer>
+         <Social>
+         <GitHub />
+         <Email />
+         Contact Us
         </Social>
-        <FooterContact>
-            {/* Contact me */}
-        </FooterContact>
-      </Footer>
-      
+        </Footer>
       </>
     )
 }

@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Ski from './components/Ski';
 import Hike from './components/Hike';
 import Bike from './components/Bike';
+import Run from './components/Run';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,8 +26,8 @@ function App() {
             {/* <Route path="/" element={<Home/>} /> */}
             <Route path="/ski" element={<Ski />} />
             <Route path="/hike" element={<Hike />} />
-            <Route path="/bike" element={<Bike />} />
-            {/*  <Route path="/trail-running" element={<Trail-running/>} /> */}
+            <Route path="/mountain-bike" element={<Bike />} />
+            <Route path="/trail-run" element={<Run />} />
           </Routes>
         </Router>
         {/* <Footer></Footer>  */}

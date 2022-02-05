@@ -1,27 +1,18 @@
 import React from 'react';
-import { Footer, Social, GitHub, Email } from './FooterEl';
+// import coverImage from "../../assets/images/run.jpg";
 
-function FooterBar() {
-  return (
-      <>
-        <Footer>
-         <Social>
-         {/* <span style={spanStyle}>Contact Us</span> */}
-         <GitHub />
-         <Email />
-        </Social>
-        </Footer>
-      </>
-    )
+function Footer() {
+    return (
+        <div>
+            <section>
+                <h1>
+                    FOOTER
+                </h1>
+                
+            </section>
+           
+        </div>
+    );
 }
 
-// const spanStyle = {
-//     padding: '10',
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//     marginBottom: '0',
-//     marginRight: '30'
-// }
-
-
-export default FooterBar;
+export default Footer;

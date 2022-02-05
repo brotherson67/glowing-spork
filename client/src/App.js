@@ -7,7 +7,7 @@ import Bike from './components/Bike';
 import Run from './components/Run';
 import Footer from './components/footer';
 // import MountainBike from './components/mountain-bike';
-import Hero from './components/Hero';
+// import Hero from './components/Hero';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +24,7 @@ function App() {
         <Router>
           <Nav toggle={toggle} />
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
-          <Hero />
+          
           <Routes>
             {/* <Route path="/" element={<Home/>} /> */}
             <Route path="/ski" element={<Ski />} />
@@ -32,7 +32,7 @@ function App() {
             <Route path="/trail-run" element={<Run />} />
           </Routes>
         </Router>
-        <Footer></Footer> 
+        {/* <Footer></Footer>  */}
         
        
       

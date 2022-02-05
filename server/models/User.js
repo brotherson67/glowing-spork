@@ -31,6 +31,12 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'User'
       }
+    ],
+    activities: [
+      {
+        type: Schema.Types.ObjectId,  
+        ref: 'Activity'
+      }
     ]
   },
   {

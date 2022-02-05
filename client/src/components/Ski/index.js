@@ -1,14 +1,15 @@
 import React from 'react';
 import SkiBody from './SkiBody';
 import coverImage from "../../assets/images/IMG_1.jpg";
+import Hero from '../Hero';
 
 function Ski() {
     return (
         <div>
             <section>
-                <img src={coverImage} className="my-2" style={{ width: "100%" }} alt="cover" />
+                <Hero img={coverImage}/>
             </section>
-            <SkiBody></SkiBody>
+            <SkiBody/>
         </div>
     );
 }

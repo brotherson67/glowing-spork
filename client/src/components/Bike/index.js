@@ -1,14 +1,15 @@
 import React from 'react';
 import BikeBody from './BikeBody';
-import coverImage from "../../assets/images/hike.jpg";
+import coverImage from "../../assets/images/pexels-krivec-ales-554609.jpg";
+import Hero from '../Hero';
 
 function Bike() {
     return (
         <div>
             <section>
-                <img src={coverImage} className="my-2" style={{ width: "100%" }} alt="cover" />
+            <Hero img={coverImage}/>
             </section>
-            <BikeBody></BikeBody>
+            <BikeBody />
         </div>
     );
 }

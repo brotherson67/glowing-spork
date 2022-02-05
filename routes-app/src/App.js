@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Nav';
 import Ski from './components/Ski';
-import Hike from './components/Hike';
 import Bike from './components/Bike';
 import Run from './components/Run';
-import Footer from './components/Footer';
+import Footer from './components/footer';
+// import MountainBike from './components/mountain-bike';
+import Hero from './components/Hero';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,15 +24,19 @@ function App() {
         <Router>
           <Nav toggle={toggle} />
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
+          <Hero />
           <Routes>
             {/* <Route path="/" element={<Home/>} /> */}
             <Route path="/ski" element={<Ski />} />
-            <Route path="/hike" element={<Hike />} />
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
           </Routes>
         </Router>
         <Footer></Footer> 
+        
+       
+      
+      <Footer /> 
 
       </main>
     </div>

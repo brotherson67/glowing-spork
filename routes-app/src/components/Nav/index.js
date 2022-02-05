@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Bars, NavMenu, NavLink } from './NavbarEl';
+import { Nav, Bars, NavMenu, NavLink, NavBtn } from './NavbarEl';
 
 const  Navbar = ({ toggle }) => {
 
@@ -14,9 +14,6 @@ const  Navbar = ({ toggle }) => {
         <NavLink to="/ski">
             Ski
         </NavLink>
-        <NavLink to="/hike">
-            Hike
-        </NavLink>
         <NavLink to="/mountain-bike">
             Mountain bike
         </NavLink>
@@ -24,6 +21,11 @@ const  Navbar = ({ toggle }) => {
             Trail Run
         </NavLink>
       </NavMenu>
+      {/* <NavBtn>
+          <Button to='/login' primary='true'>
+              Login
+          </Button>
+      </NavBtn> */}
   </Nav>
   </>
     );

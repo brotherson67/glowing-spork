@@ -1,6 +1,6 @@
 import React from 'react';
 import RunBody from './RunBody';
-import coverImage from "../../assets/images/run.jpg";
+import coverImage from "../../assets/images/IMG_1939.JPEG";
 
 function Run() {
     return (

@@ -5,7 +5,10 @@ function Footer() {
     return (
         <div>
             <section>
-                {/* <img src={coverImage} className="my-2" style={{ width: "100%" }} alt="cover" /> */}
+                <h1>
+                    FOOTER
+                </h1>
+                
             </section>
            
         </div>

@@ -6,6 +6,7 @@ import Ski from './components/Ski';
 import Hike from './components/Hike';
 import Bike from './components/Bike';
 import Run from './components/Run';
+import Footer from './components/Footer';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,7 +31,7 @@ function App() {
             <Route path="/trail-run" element={<Run />} />
           </Routes>
         </Router>
-        {/* <Footer></Footer>  */}
+        <Footer></Footer> 
 
       </main>
     </div>

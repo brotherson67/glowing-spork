@@ -20,6 +20,9 @@ const  Navbar = ({ toggle }) => {
         <NavLink to="/trail-run">
             Trail Run
         </NavLink>
+        <NavLink to="/social">
+            Social Feed
+        </NavLink>
       </NavMenu>
       {/* <NavBtn>
           <Button to='/login' primary='true'>

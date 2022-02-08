@@ -6,7 +6,7 @@ import Ski from './components/Ski';
 import Bike from './components/Bike';
 import Run from './components/Run';
 import Footer from './components/footer';
-// import MountainBike from './components/mountain-bike';
+import SocialFeed from './components/SocialFeed';
 // import Hero from './components/Hero';
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
             <Route path="/ski" element={<Ski />} />
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
+            <Route path="/social" element={<SocialFeed />} />
           </Routes>
         </Router>
         {/* <Footer></Footer>  */}

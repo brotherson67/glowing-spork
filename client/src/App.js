@@ -7,8 +7,6 @@ function App() {
       <main>
         <Router>
           <Home />
-          
-          
         </Router>
       </main>
     </div>

@@ -23,6 +23,12 @@ const  Navbar = ({ toggle }) => {
         <NavLink to="/social">
             Social Feed
         </NavLink>
+        <NavLink to="/chat">
+            Chat
+        </NavLink>
+        <NavLink to="/cards">
+            Find Friends!
+        </NavLink>
       </NavMenu>
       {/* <NavBtn>
           <Button to='/login' primary='true'>

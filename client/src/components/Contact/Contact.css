@@ -1,0 +1,23 @@
+.contact {
+  padding: 10px;
+  background-color: #27405d80;
+  
+}
+
+#contact-form {
+    /* width: 100%; */
+    display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+}
+
+.contact-label{
+    display: flex;
+}
+
+.contact-input{
+    border-radius: 5px;
+}
+.contact-textarea{
+    border-radius: 5px;
+}

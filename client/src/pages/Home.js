@@ -8,7 +8,10 @@ import Bike from '../components/Bike';
 import Run from '../components/Run';
 import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
+import ChatScreen from "../components/Chat/ChatBody";
+import Chats from '../components/Chat';
 import Hero from '../components/Hero';
+import Contact from '../components/Contact';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,6 +31,9 @@ function Home() {
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
+            <Route path="/chat" element={<Chats />} />
+            <Route path="/chat/:person"  element={<ChatScreen />}/>
+            <Route path='/contact' element={<Contact />} />
           </Routes>
       </main>
       <Footer /> 

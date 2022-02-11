@@ -8,6 +8,7 @@ import {
     Heading,
 } from "./FooterStyles";
 
+
 function FooterBody() {
     return (
 

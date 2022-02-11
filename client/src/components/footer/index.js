@@ -1,27 +1,21 @@
 import React from 'react';
+import FooterBody from "./FooterBody";
 import { Footer, Social, GitHub, Email } from './FooterEl';
 
 function FooterBar() {
   return (
       <>
-        <Footer>
+        {/* <Footer> */}
+        <FooterBody>
          <Social>
-         {/* <span style={spanStyle}>Contact Us</span> */}
+         
          <GitHub />
          <Email />
         </Social>
-        </Footer>
+        </FooterBody>
+        {/* </Footer> */}
       </>
     )
 }
-
-// const spanStyle = {
-//     padding: '10',
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//     marginBottom: '0',
-//     marginRight: '30'
-// }
-
 
 export default FooterBar;

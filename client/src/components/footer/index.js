@@ -7,11 +7,8 @@ function FooterBar() {
       <>
         {/* <Footer> */}
         <FooterBody>
-         <Social>
-         
          <GitHub />
          <Email />
-        </Social>
         </FooterBody>
         {/* </Footer> */}
       </>

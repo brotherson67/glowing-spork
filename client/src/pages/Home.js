@@ -10,6 +10,8 @@ import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
 import Hero from '../components/Hero';
 import Chats from '../components/Chats';
+import Contact from './Contact';
+
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,13 +25,13 @@ function Home() {
           <Nav toggle={toggle} />
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
           <Routes>
-          
             <Route path="/" element={<Hero/>} />
             <Route path="/ski" element={<Ski />} />
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chats />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
       </main>
       <Footer /> 

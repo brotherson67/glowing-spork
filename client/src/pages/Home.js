@@ -9,7 +9,6 @@ import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
 import Hero from '../components/Hero';
 import Chats from '../components/Chats';
-import Cards from '../components/Cards';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +28,6 @@ function Home() {
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chats />} />
-            <Route path="/friends" element={<Cards />} />
           </Routes>
       </main>
       <Footer /> 

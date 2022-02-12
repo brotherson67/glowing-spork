@@ -11,7 +11,9 @@ import SocialFeed from '../components/SocialFeed';
 import ChatScreen from "../components/Chat/ChatBody";
 import Chats from '../components/Chat';
 import Hero from '../components/Hero';
-import Contact from '../components/Contact';
+import Chats from '../components/Chats';
+import Contact from './Contact';
+
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +27,6 @@ function Home() {
           <Nav toggle={toggle} />
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
           <Routes>
-          
             <Route path="/" element={<Hero/>} />
             <Route path="/ski" element={<Ski />} />
             <Route path="/mountain-bike" element={<Bike />} />

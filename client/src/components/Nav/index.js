@@ -15,6 +15,9 @@ const Navbar = ({ toggle }) => {
                     <NavLink to="/social">
                         Social Feed
                     </NavLink>
+                    <NavLink to="/friends">
+                        Find Friends!
+                    </NavLink>
                     <Dropdown>
                         <Dropdown.Toggle >Activities</Dropdown.Toggle>
                         <Dropdown.Menu>

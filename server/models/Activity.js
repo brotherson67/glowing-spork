@@ -8,7 +8,7 @@ const activitySchema = new Schema({
     type: String,
   },
   yearsExperience: {
-    type: Int,
+    type: Number,
   },
 });
 

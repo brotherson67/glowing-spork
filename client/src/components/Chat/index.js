@@ -2,6 +2,8 @@ import React from 'react';
 import "./Chat.css";
 import ChatBody from "./ChatBody"
 
+
+
 function Chats() {
     return (
         <div className="chats">
@@ -17,6 +19,7 @@ function Chats() {
                 timestamp="40 seconds ago"
                 profilePic="https://s03.s3c.es/imag/businessinsider/2013/10/12/the-30-smartest-celebrities-in-hollywood.jpg"
             />
+            
 
         </div>
     )

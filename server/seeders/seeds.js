@@ -1,10 +1,10 @@
-const faker = require('faker');
+const faker = require("faker");
 
-const db = require('../config/connection');
-const { Thought, User } = require('../models');
+const db = require("../config/connection");
+const { Post, User } = require("../models");
 
-db.once('open', async () => {
-  await Thought.deleteMany({});
+db.once("open", async () => {
+  await Post.deleteMany({});
   await User.deleteMany({});
 
   // create user data
@@ -28,29 +28,31 @@ db.once('open', async () => {
     let friendId = userId;
 
     while (friendId === userId) {
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+      const randomUserIndex = Math.floor(
+        Math.random() * createdUsers.ops.length
+      );
       friendId = createdUsers.ops[randomUserIndex];
     }
 
     await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   }
 
-  // create thoughts
-  let createdThoughts = [];
+  // create Posts
+  let createdPosts = [];
   for (let i = 0; i < 100; i += 1) {
-    const thoughtText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const postText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdThought = await Thought.create({ thoughtText, username });
+    const createdPost = await Post.create({ postText, username });
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { thoughts: createdThought._id } }
+      { $push: { posts: createdPost._id } }
     );
 
-    createdThoughts.push(createdThought);
+    createdPosts.push(createdPost);
   }
 
   // create reactions
@@ -60,16 +62,16 @@ db.once('open', async () => {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomThoughtIndex = Math.floor(Math.random() * createdThoughts.length);
-    const { _id: thoughtId } = createdThoughts[randomThoughtIndex];
+    const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
+    const { _id: postId } = createdPosts[randomPostIndex];
 
-    await Thought.updateOne(
-      { _id: thoughtId },
+    await Post.updateOne(
+      { _id: postId },
       { $push: { reactions: { reactionBody, username } } },
       { runValidators: true }
     );
   }
 
-  console.log('all done!');
+  console.log("all done!");
   process.exit(0);
 });

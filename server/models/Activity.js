@@ -4,11 +4,11 @@ const activitySchema = new Schema({
   activity: {
     type: String,
   },
-  gearRequired: {
+  preferedDifficulty: {
     type: String,
   },
-  difficultyLevel: {
-    type: String,
+  yearsExperience: {
+    type: Int,
   },
 });
 

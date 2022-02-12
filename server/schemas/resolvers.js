@@ -1,3 +1,4 @@
+const { AuthenticationError } = require("apollo-server-errors");
 const { User, Post } = require("../models");
 
 //in resolvers you write the code for what the method is actually doing
@@ -22,11 +23,26 @@ const resolvers = {
 
       return user;
     },
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
+      if (!user) {
+        throw new AuthenticationError("You got it wrong dude");
+      }
+
+      const correctPW = await user.isCorrectPassword(password);
+      if (!correctPW) {
+        throw new AuthenticationError("You got it wrong dude");
+      }
+    },
     createPost: async (parent, args) => {
       const post = await Post.create(args);
 
       return post;
     },
+    // login
+    //addReaction
+    // addFriend
+    // addActivity
   },
 };
 module.exports = resolvers;

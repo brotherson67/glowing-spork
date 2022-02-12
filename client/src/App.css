@@ -37,20 +37,3 @@ li {
   margin-bottom:7%;
 }
 
-#contact-section {
-  display: flex;
-  padding: 6%;
-  flex-wrap: wrap;
-}
-
-#contact-info {
- width: 45%;
- padding: 5%;
-}
-
-#contact-div {
-  flex: 1;
-  justify-content: left;
-  margin-top: auto;
-  width: 60%;
-}

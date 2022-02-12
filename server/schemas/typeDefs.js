@@ -13,14 +13,9 @@ const typeDefs = gql`
        
     }
     type Query {
-<<<<<<< HEAD
-        thoughts(username: String): [Thought]
-      }
-=======
         thoughts: [Thought]
         
     }
->>>>>>> 8c50a949adc6172aeae947bb18292a5ca6916435
   
 `;
 

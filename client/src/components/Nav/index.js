@@ -18,6 +18,9 @@ const Navbar = ({ toggle }) => {
                     <NavLink to="/friends">
                         Find Friends!
                     </NavLink>
+                    <NavLink to="/contact">
+                        Contact
+                    </NavLink>
                     <Dropdown>
                         <Dropdown.Toggle >Activities</Dropdown.Toggle>
                         <Dropdown.Menu>

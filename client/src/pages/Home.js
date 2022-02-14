@@ -11,6 +11,8 @@ import SocialFeed from '../components/SocialFeed';
 import Hero from '../components/Hero';
 import Chats from '../components/Chats';
 import Contact from './Contact';
+import Profile from './Profile';
+import OnePost from '../components/OnePost';
 
 
 function Home() {
@@ -32,6 +34,8 @@ function Home() {
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chats />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path=":username" element={<Profile />} />
+            <Route path=":thoughts" element={<OnePost />} />
           </Routes>
       </main>
       <Footer /> 

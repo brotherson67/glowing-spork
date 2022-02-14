@@ -12,9 +12,23 @@ const typeDefs = gql`
         username: String
        
     }
-    type Query {
+     
+    type User {
+        _id: ID
+        username: String
+        email: String
+        friendCount: Int 
         thoughts: [Thought]
-        
+        friends: [User]
+        activities: String
+    }
+
+    type Query {
+        me: User
+        users: [User]
+        user(username: String!): User
+        thoughts(username: String): [Thought]
+        thought(_id: ID!): Thought
     }
   
 `;

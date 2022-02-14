@@ -23,7 +23,6 @@ function FooterBody() {
                         <Heading>Social & github   <Instagram id="icon" /> <GitHub id="icon"/> </Heading>
                         <FooterLink href="https://www.instagram.com/routes_roots/" >
                             <i className="fab fa-instagram">
-                              
                                 <span style={{ marginLeft: "10px" }}>
                                     Instagram
                                 </span>
@@ -32,12 +31,8 @@ function FooterBody() {
                     </Column>
                     <Column>
                         <Heading>Contact Us <Email /> </Heading>
-                        
                         <FooterLink href="/contact">Send us a message</FooterLink>
-                        
-
                     </Column>
-                    
                 </Row>
             </Container>
         </Box>

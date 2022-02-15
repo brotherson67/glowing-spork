@@ -2,8 +2,8 @@ const { User, Thought } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
-//in resolvers you write the code for what the method is actually doing 
-//query must match typedef definition 
+//in resolvers you write the code for what the method is actually doing
+//query must match typedef definition
 const resolvers = {
     Query: {
       me: async (parent, args, context) => {

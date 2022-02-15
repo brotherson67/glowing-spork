@@ -8,6 +8,8 @@ import Bike from '../components/Bike';
 import Run from '../components/Run';
 import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
+// import ChatScreen from "../components/Chat/ChatBody";
+import Chat from '../components/Chat';
 import Hero from '../components/Hero';
 import Chats from '../components/Chats';
 import Contact from './Contact';

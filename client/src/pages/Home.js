@@ -11,7 +11,7 @@ import SocialFeed from '../components/SocialFeed';
 // import ChatScreen from "../components/Chat/ChatBody";
 import Chat from '../components/Chat';
 import Hero from '../components/Hero';
-import Chats from '../components/Chats';
+import Chats from '../components/Chat';
 import Contact from './Contact';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';

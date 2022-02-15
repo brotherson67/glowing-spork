@@ -1,6 +1,6 @@
 import FooterLink from "../components/footer";
 import React, { useState } from "react";
-import { validateEmail } from "../utils/eamilAuth";
+import { validateEmail } from "../utils/emailAuth";
 import {FaGithub, FaLinkedinIn, FaMailBulk, FaInstagram } from 'react-icons/fa';
 import "../App.css";
 import { List, ListItem } from "@mui/material";

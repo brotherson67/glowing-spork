@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS } from '../utils/queries';
 import PostList from '../components/Posts';
-import StravaActivities from './strava';
+import StravaActivities from './Strava';
 
 
 const ContentFeed = () => {

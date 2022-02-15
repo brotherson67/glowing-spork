@@ -1,5 +1,6 @@
 // import polyline from '@mapbox/polyline';
 
+
 function getActivities(res) {
     // commented out path to get user profile info from an array
 // https://www.strava.com/api/v3/athlete?access_token=7bc114015e81808697585c211d65f269c319a3cc

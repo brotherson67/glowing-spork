@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS } from '../utils/queries';
 import PostList from '../components/Posts';
-import StravaActivities from './Strava';
+import StravaActivities from './strava';
 
 
 const ContentFeed = () => {
@@ -25,7 +25,7 @@ const ContentFeed = () => {
       )}
             </div>
             </section>
-            <StravaActivities />
+            
             
         </div>
     );

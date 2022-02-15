@@ -34,7 +34,7 @@ function Home() {
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chat />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
           </Routes>

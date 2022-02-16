@@ -1,50 +1,63 @@
 import React, { useState, useEffect } from "react";
-// import TinderCard from 'react-tinder-card';
-// // import database from '../../firebase';
+import TinderCard from 'react-tinder-card';
+// import database from '../../firebase';
 // import './cards.css';
 import ReactDOM from "react";
 
 
 
-// function TinderCards() {
-//     const [people, setPeople] = useState([]);
-//     useEffect(() => {
+function TinderCards() {
+    const [people, setPeople] = useState([
+        {
+            name: "Scooby",
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
+        {
+            name: 'shaggy',
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
+        {
+            name: 'dianne',
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
+    ]);
+    // useEffect(() => {
 
-//         const unsubscribe = database
-//         .collection('people')
-//         .onSnapshot(snapshot => (
-//             setPeople(snapshot.docs.map(doc => doc.data()))
-//         ));
+    //     const unsubscribe = database
+    //     .collection('people')
+    //     .onSnapshot(snapshot => (
+    //         setPeople(snapshot.docs.map(doc => doc.data()))
+    //     ));
 
-//         return () => {
-//             unsubscribe();
-//         }
-//     }, []);
+    //     return () => {
+    //         unsubscribe();
+    //     }
+    // }, []);
 
-//     return (
-//         <div>
+    return (
+        <div>
            
-//             <div className="tinderCards__cardContainer">
-//                 {people.map(person => (
-//                     <TinderCard
-//                         className="swipe"
-//                         key={person.name}
-//                         preventSwipe={['up', 'down']}
-//                     >
-//                         <div
-//                             style={{ backgroundImage: `url(${person.url})` }}
-//                             className="card">
-//                             <h3>{person.name}</h3>
-//                         </div>
-//                     </TinderCard>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// }
-// export default TinderCards;
+            <div className="tinderCards__cardContainer">
+                {people.map(person => (
+                    <TinderCard
+                        className="swipe"
+                        key={person.name}
+                        preventSwipe={['up', 'down']}
+                    >
+                        <div
+                            style={{ backgroundImage: `url(${person.url})` }}
+                            className="card">
+                            <h3>{person.name}</h3>
+                        </div>
+                    </TinderCard>
+                ))}
+            </div>
+        </div>
+    );
+}
+export default TinderCards;
 
-//strava stuff
+// strava stuff
 
 // class Act extends React.Component {
 //     state = { activity: [], isLoading: true, error: null };

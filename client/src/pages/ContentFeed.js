@@ -17,11 +17,19 @@ const ContentFeed = () => {
       <section>
         {/* <Hero img={coverImage}/> */}
         <div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList thoughts={thoughts} title="Find your next adventure!" />
-          )}
+          <section>
+            {/* <Hero img={coverImage}/> */}
+            <div>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <PostList
+                  thoughts={thoughts}
+                  title="Find your next adventure!"
+                />
+              )}
+            </div>
+          </section>
         </div>
       </section>
       <StravaActivities />

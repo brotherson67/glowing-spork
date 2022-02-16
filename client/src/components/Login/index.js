@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import Signup from './Signup';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -70,8 +71,12 @@ const Login = (props) => {
             </form>
 
             {error && <div>Login failed</div>}
+            
           </div>
+          
         </div>
+        <div className="card"><Signup /></div>
+        
       </div>
     </main>
   );

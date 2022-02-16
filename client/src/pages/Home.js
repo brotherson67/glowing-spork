@@ -14,7 +14,8 @@ import Hero from '../components/Hero';
 import Contact from './Contact';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
-
+import Login from '../components/Login';
+import NoMatch from './NoMatch';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,14 +30,17 @@ function Home() {
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
           <Routes>
             <Route path="/" element={<Hero/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/ski" element={<Ski />} />
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chat />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
+
+            <Route component={NoMatch} />
           </Routes>
       </main>
       <Footer /> 

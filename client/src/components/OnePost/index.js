@@ -1,13 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import FistBumps from '../FistBumps';
-import FistBumpsForm from '../FistBumps/FistBumpsForm/FistBumpsForm';
+
 
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHT } from '../../utils/queries';
+
+import FistBumps from '../FistBumps';
+import FistBumpsForm from '../FistBumps/FistBumpsForm/FistBumpsForm';
 
 const OnePost = (props) => {
   const { id: thoughtId } = useParams();
@@ -40,7 +42,9 @@ const OnePost = (props) => {
         <FistBumps reactions={thought.reactions} />
       )}
 
-      {Auth.loggedIn() && <FistBumpsForm thoughtId={thought._id} />}
+      {/* {Auth.loggedIn() &&  */}
+      <FistBumpsForm thoughtId={thought._id} />
+      {/* // } */}
     </div>
   );
 };

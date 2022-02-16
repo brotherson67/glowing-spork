@@ -17,6 +17,7 @@ import OnePost from '../components/OnePost';
 import Login from '../components/Login';
 import Contact from '../components/Contact';
 import NoMatch from './NoMatch';
+import ReactionList from "../components/FistBumps"
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,6 +44,7 @@ function Home() {
             <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
+            <Route path="thought/:id" element={<ReactionList />} />
 
             <Route component={NoMatch} />
           </Routes>

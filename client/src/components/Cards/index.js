@@ -14,18 +14,18 @@ function TinderCards({ onTinderCardChange }) {
     console.log(JSON.stringify(error, null, 2))
     console.log(data);
     const [people, setPeople] = useState([
-        // {
-        //     name: "Scooby",
-        //     url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
-        // },
-        // {
-        //     name: 'shaggy',
-        //     url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
-        // },
-        // {
-        //     name: 'dianne',
-        //     url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
-        // },
+        {
+            name: "Scooby",
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
+        {
+            name: 'shaggy',
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
+        {
+            name: 'dianne',
+            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+        },
     ]);
     const { data: userData } = useQuery(QUERY_USER_IMG);
     const users = data?.users || [];

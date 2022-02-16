@@ -2,7 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import FistBumps from '../FistBumps';
-// import ReactionForm from '../components/ReactionForm';
+import FistBumpsForm from '../FistBumps/FistBumpsForm/FistBumpsForm';
+
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -39,7 +40,7 @@ const OnePost = (props) => {
         <FistBumps reactions={thought.reactions} />
       )}
 
-      {/* {Auth.loggedIn() && <ReactionForm thoughtId={thought._id} />} */}
+      {Auth.loggedIn() && <FistBumpsForm thoughtId={thought._id} />}
     </div>
   );
 };

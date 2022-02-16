@@ -11,19 +11,20 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const Profile = (props) => {
-  const { username: userParam } = useParams();
+const Profile = () => {
 
   const [addFriend] = useMutation(ADD_FRIEND);
+
+  const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+    variables: { username: userParam }
   });
 
   const user = data?.me || data?.user || {};
 
   // Navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
+    return <Navigate href="/profile" />;
   }
 
   if (loading) {

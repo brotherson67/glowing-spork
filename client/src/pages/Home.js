@@ -15,7 +15,7 @@ import Contact from './Contact';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
 import Login from '../components/Login';
-
+import NoMatch from './NoMatch';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +39,8 @@ function Home() {
             <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
+
+            <Route component={NoMatch} />
           </Routes>
       </main>
       <Footer /> 

@@ -1,0 +1,10 @@
+.color-the-text {
+    color: grey;
+    padding: 20px;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.color-the-text:hover{
+    background-color: rgba(161, 161, 161, 0.226);
+}

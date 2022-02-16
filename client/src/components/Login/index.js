@@ -45,7 +45,7 @@ const Login = (props) => {
       
     <main id="form-box" className="flex-row justify-center mb-4">
       <div id= "outer-flex" className="outer">
-        <div className="card">
+        <div className="card" id="login-card">
           <h4 className="header">Login</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
@@ -77,7 +77,7 @@ const Login = (props) => {
           </div>
           
         </div>
-        <div id= "signup-card" className="card"><Signup /></div>
+        <div><Signup /></div>
         
       </div>
     </main>

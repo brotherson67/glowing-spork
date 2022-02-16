@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import "./posts.css"
 const PostList = ({ thoughts, title }) => {
   if (!thoughts.length) {
     return <h3>No Thoughts Yet</h3>;
@@ -11,12 +11,12 @@ const PostList = ({ thoughts, title }) => {
       <h3>{title}</h3>
       {thoughts &&
         thoughts.map(thought => (
-          <div key={thought._id} className="card mb-3">
+          <div key={thought._id} className="card mb-3 ">
             <p className="card-header">
               <Link
                 to={`/profile/${thought.username}`}
                 style={{ fontWeight: 700 }}
-                className="text-light"
+                className="text-dark"
               >
                 {thought.username}
               </Link>{''}

@@ -16,7 +16,7 @@ function TinderCards({ onTinderCardChange }) {
     const [people, setPeople] = useState([
         {
             name: "Scooby",
-            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+            url: "https://static.wikia.nocookie.net/scoobydoo/images/5/53/Scooby-Doo.png/revision/latest?cb=20211222210718",
         },
         {
             name: 'shaggy',

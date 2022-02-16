@@ -13,6 +13,7 @@ import Chat from '../components/Chat';
 import Hero from '../components/Hero';
 import Cards from '../components/Cards';
 import Profile from './Profile';
+import MyProfile from './myProfile';
 import OnePost from '../components/OnePost';
 import Login from '../components/Login';
 import Contact from '../components/Contact';
@@ -41,7 +42,7 @@ function Home() {
             <Route path="/chatscreen" element={<ChatScreen />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/friends" element={<Cards />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<MyProfile />} />
             <Route exact path="/profile/:username" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />

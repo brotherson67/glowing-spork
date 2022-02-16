@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Link } from 'react-bootstrap';
-import { FaGithub, FaLinkedinIn, FaMailBulk, FaInstagram } from 'react-icons/fa';
+import {Github,  Instagram, Mailbox  } from 'react-bootstrap-icons';
 import "./Contact.css";
 // import "../../App.css";
 import { validateEmail } from '../../utils/helpers';
@@ -44,36 +44,51 @@ function ContactForm() {
       <div id="contact-section">
         <div id='contact-info'>
           <ul>
-            <li id="listLink"> <FaMailBulk /> routes@gmail.com</li>
+          <li className="listLink"> <Mailbox /> routes9999@gmail.com</li>
+          <a href="">
+              <i className="fab ">
+                <span style={{ marginLeft: "5px" }}>
+                  Email Us
+                </span>
+              </i>
+            </a>
+            <li className="listLink"> <Github /> plaindemon@gmail.com</li>
 
             <a href="https://github.com/Plaindemon">
               <i className="fab ">
-                <span style={{ marginLeft: "10px" }}>
+                <span style={{ marginLeft: "5px" }}>
                   Plaindemon- Ben
                 </span>
               </i>
             </a>
+
+            <li className="listLink"> <Github /></li>
             <a href="https://github.com/bridgetvon">
               <i className="fab fa-github">
-                <span style={{ marginLeft: "10px" }}>
+                <span style={{ marginLeft: "5px" }}>
                   Bridgetvon- Bridget
                 </span>
               </i>
             </a>
+
+            <li className="listLink"> <Github /></li>
             <a href="https://github.com/brotherson67">
               <i className="fab fa-github">
-                <span style={{ marginLeft: "10px" }}>
+                <span style={{ marginLeft: "5px" }}>
                   Brotherson67- Mitch
                 </span>
               </i>
             </a>
-            <a href="https://github.com/colawrr">
+
+            <li className="listLink"> <Instagram />
+            <a href="https://www.instagram.com/routes_roots/">
               <i className="fab fa-github">
-                <span style={{ marginLeft: "10px" }}>
-                  Colawrr- Connor
+                <span style={{ marginLeft: "5px" }}>
+                  Instagram- Routes
                 </span>
               </i>
             </a>
+            </li>
 
           </ul>
         </div>

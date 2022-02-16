@@ -15,6 +15,7 @@ import Cards from '../components/Cards';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
 import Login from '../components/Login';
+import Contact from '../components/Contact';
 import NoMatch from './NoMatch';
 
 function Home() {
@@ -36,6 +37,7 @@ function Home() {
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/friends" element={<Cards />} />
             <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />

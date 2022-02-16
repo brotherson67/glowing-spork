@@ -22,6 +22,7 @@ const typeDefs = gql`
         thoughts: [Thought]
         friends: [User]
         activities: String
+        image: String
     }
 
     type Reaction {

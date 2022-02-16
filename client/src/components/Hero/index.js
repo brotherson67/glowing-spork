@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeroContainer, HeroBg, VideoBg, HeroText, HeroContent } from './HeroEl';
 import Video from '../../videos/video1.mp4';
-import Login from '../Login';
+
 
 
 
@@ -20,7 +20,7 @@ const HeroSection = (props) => {
               <HeroText>Build roots with friends on your favorite kind of routes.</HeroText>
           </HeroContent>
       </HeroContainer>
-      <Login />
+      
       </>
 
   )

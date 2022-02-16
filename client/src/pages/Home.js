@@ -14,6 +14,7 @@ import Hero from '../components/Hero';
 import Contact from './Contact';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
+import Login from '../components/Login';
 
 
 function Home() {
@@ -29,6 +30,7 @@ function Home() {
           {isOpen ? < Sidebar toggle={toggle} /> : ''}
           <Routes>
             <Route path="/" element={<Hero/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/ski" element={<Ski />} />
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />

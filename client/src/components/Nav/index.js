@@ -2,6 +2,7 @@ import React from 'react';
 import { Nav, Bars, NavMenu, NavLink, NavBtn } from './NavbarEl';
 import { Dropdown } from 'react-bootstrap';
 
+
 const Navbar = ({ toggle }) => {
 
     return (
@@ -10,6 +11,7 @@ const Navbar = ({ toggle }) => {
                 <NavLink to="/">
                     <h1>R-o-u-t-e-s</h1>
                 </NavLink>
+                <NavLink to="/login">Login</NavLink>
                 <Bars onClick={toggle} />
                 <NavMenu>
                     <NavLink to="/social">

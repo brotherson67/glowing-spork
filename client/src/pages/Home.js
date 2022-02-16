@@ -11,7 +11,7 @@ import SocialFeed from '../components/SocialFeed';
 // import ChatScreen from "../components/Chat/ChatBody";
 import Chat from '../components/Chat';
 import Hero from '../components/Hero';
-import Contact from './Contact';
+import Cards from '../components/Cards';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
 import Login from '../components/Login';
@@ -36,6 +36,7 @@ function Home() {
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/friends" element={<Cards />} />
             <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />

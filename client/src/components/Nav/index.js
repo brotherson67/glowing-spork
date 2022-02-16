@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Bars, NavMenu, NavLink, NavBtn } from './NavbarEl';
 import { Dropdown } from 'react-bootstrap';
-
+import "./nav.css";
 
 const Navbar = ({ toggle }) => {
 
@@ -9,7 +9,10 @@ const Navbar = ({ toggle }) => {
         <>
             <Nav>
                 <NavLink to="/">
-                    <h1>R-o-u-t-e-s</h1>
+                    <div className="navbar-div">
+                    <h2>R-o-u-t-e-s</h2>
+                    </div>
+                    
                 </NavLink>
                 <NavLink to="/login">Login</NavLink>
                 <Bars onClick={toggle} />

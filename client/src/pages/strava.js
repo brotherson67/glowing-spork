@@ -6,8 +6,6 @@ import "../utils/strava";
 // import polyline from '@mapbox/polyline'
 
 function StravaActivities() {
-
-
   // const navigate = useNavigate();
   const client_id = '77814';
   const params = useParams();
@@ -30,8 +28,7 @@ function StravaActivities() {
   console.log(code)
 
   function handleClick() {
-    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/profile&response_type=code&scope=activity:read_all
-        `
+    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/profile&response_type=code&scope=activity:read_all`
   }
   const authLink = "https://www.strava.com/oauth/token?";
   
@@ -139,6 +136,7 @@ console.log(getAccessToken)
 
     </div>
   );
+}
 }
 
 export default StravaActivities;

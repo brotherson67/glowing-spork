@@ -26,6 +26,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "@react-google-maps/api": "^2.7.0",
+    "decode-google-map-polyline": "^1.0.1",
     "dotenv": "^16.0.0",
     "faker": "^6.6.6",
     "jwt-decode": "^3.1.2",

@@ -92,21 +92,23 @@ function StravaActivities() {
       })
       .then(data => {
         console.log(data);
-        setActivityData(data);
+       
         // dataStrava = data;
         // var htmlContent = "";
         // for (let i = 0; i > 5; i++) {
         // document.getElementById('activity').innerHTML = data[0];
-        // document.getElementById('activity-name').textContent = 'Activity Name: ' + data[0].name;
+        document.getElementById('activity-name').textContent = 'Activity Name: ' + data[0].name;
 
-        // document.getElementById('activity-distance').innerHTML = 'Distance: ' + data[0].distance;
+        document.getElementById('activity-distance').innerHTML = 'Distance: ' + data[0].distance;
 
-        // document.getElementById('averageSpeed').innerHTML = 'Average Speed: ' + data[0].average_speed;
+        document.getElementById('averageSpeed').innerHTML = 'Average Speed: ' + data[0].average_speed;
 
-        // document.getElementById('totalTime').innerHTML = 'Total Time: ' + data[0].elapsed_time;
+        document.getElementById('totalTime').innerHTML = 'Total Time: ' + data[0].elapsed_time;
 
-        // document.getElementById('elevationGain').innerHTML = 'Total Elevation Gain: ' + data[0].total_elevation_gain;
+        document.getElementById('elevationGain').innerHTML = 'Total Elevation Gain: ' + data[0].total_elevation_gain;
+        return data;
       })
+     
   }
 
  
@@ -141,9 +143,19 @@ function StravaActivities() {
   }
   return (
     <div className="app-activities">
+      <div className="app-activities">
       <h1>Strava Activities</h1>
+      <button>Strava Login</button>
+      <div className="activity" id="activity"></div>
+      <div className="activity" id="activity-name"></div>
+      <div id="activity-distance"></div>
+      <div id="averageSpeed"></div>
+      <div id="totalTime"></div>
+      <div id="elevationGain"></div>
+      <div id="activity-map"></div>
+    </div>
       <button onClick={handleClick}>Strava Login</button>
-    <BikeBody />
+    
     </div>
       
     

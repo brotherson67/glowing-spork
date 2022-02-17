@@ -9,8 +9,8 @@ import Run from '../components/Run';
 import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
 import ChatScreen from "../components/Chat/ChatScreen";
-// import Chats from '../components/Chat/Chats';
-import Chat from '../components/Chat';
+import Chats from '../components/Chat/ChatBody';
+// import Chat from '../components/Chat';
 import Hero from '../components/Hero';
 import Cards from '../components/Cards';
 import Profile from './Profile';
@@ -39,7 +39,7 @@ function Home() {
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat" element={<Chats />} />
             <Route path="/chatscreen" element={<ChatScreen />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/friends" element={<Cards />} />

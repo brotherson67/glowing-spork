@@ -1,8 +1,8 @@
 import React from 'react';
-import "./Chats.css";
-import Chat from '../Chat/Chat';
+import "./chat.css";
+import Chat from './index';
 
-function Chats() {
+function Chats({ name, message, profilePic, timestamp }) {
   return (
     <div className='chats'>
         <Chat 

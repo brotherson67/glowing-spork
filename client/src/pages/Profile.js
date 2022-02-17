@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 import { Navigate, useParams } from 'react-router-dom';
 
 import ThoughtForm from '../components/ThoughtForm';
@@ -67,6 +68,7 @@ const Profile = (props) => {
                         Add Friend
                     </button>
                 )}
+                <div className="mb-3">{!userParam && <ThoughtForm />}</div>
             </div>
 
             <div className="flex-row justify-space-between mb-3">
@@ -85,7 +87,7 @@ const Profile = (props) => {
                     />
                 </div>
             </div>
-            <div className="mb-3">{!userParam && <ThoughtForm />}</div>
+            
         </div>
     );
 };

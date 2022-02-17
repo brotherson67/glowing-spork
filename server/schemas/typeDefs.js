@@ -15,6 +15,7 @@ const typeDefs = gql`
         friends: [User]
         activities: String
         image: String
+        
     }
 
     type Thought{
@@ -38,9 +39,18 @@ const typeDefs = gql`
     type Query {
         me: User
         users: [User]
+        messages: [Message]
         user(username: String!): User
         thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
+    }
+    type Message {
+      id: ID!
+      message: String!
+      sendUsername: String!
+      receiveUsername: String!
+      timestamp: Float!
+      users: [User]
     }
 
     type Mutation {
@@ -49,8 +59,21 @@ const typeDefs = gql`
       addThought(thoughtText: String!): Thought
       addReaction(thoughtId: ID!, reactionBody: String!): Thought
       addFriend(friendId: ID!): User
+      
+      userTyping(username: String! receiveUsername: String!): Boolean!
+      sendMessage(sendUsername: String! receiveUsername: String! message: String! timestamp: Float!): Message!
+      updateMessage(id: ID! message: String!): Message!
+      deleteMessage(id: String!): Boolean!
+      
     }
 
+    type Subscription {
+      newMessage(receiveUsername: String!): Message
+      newUser: User
+      oldUser: String
+      userTyping (receiveUsername: String!): String
+    }
+    
     type Auth {
       token: ID!
       user: User
@@ -59,3 +82,4 @@ const typeDefs = gql`
 
 // export the typeDefs
 module.exports = typeDefs;
+

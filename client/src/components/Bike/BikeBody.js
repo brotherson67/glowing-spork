@@ -1,21 +1,23 @@
 import React from 'react';
-import "../../pages/activity.css"
+import StravaActivities from '../../pages/stravaTestCode';
+
+
+
 
 function BikeBody() {
   return (
     <div className="container">
-    <div className="Body-box">
-      <div className="Body-boxOuter">
-        <div className="Body-boxInner">div 1 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
-      </div>
-      <div className="Body-boxOuter">
-        <div className="Body-boxInner">div 1 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
-      </div>
-      <div className="Body-boxOuter">
-        <div className="Body-boxInner">div 2 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
-      </div>
+        <div>
+          <h1>
+            <StravaActivities />
+          </h1>
+          <h2>Activity name: </h2>
+        
+        </div>
+        <div>div 2 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
+
     </div>
-  </div>
+  
     
     
   );

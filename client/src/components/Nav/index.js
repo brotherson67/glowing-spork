@@ -32,8 +32,8 @@ const Navbar = ({ toggle }) => {
                                 <NavLink to="/friends">
                                     Find Friends!
                                 </NavLink>
-                                <NavLink to="/profile">
-                                    Profile
+                                <NavLink to="/strava">
+                                    Strava
                                 </NavLink>
                                 <NavLink to="/chat">
                                     Chat

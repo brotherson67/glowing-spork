@@ -21,6 +21,8 @@ import Contact from '../components/Contact';
 import NoMatch from './NoMatch';
 import ReactionList from "../components/FistBumps";
 import Strava from '../components/Strava';
+import MapBox from '../pages/Map';
+
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,13 +46,12 @@ function Home() {
             <Route path="/chatscreen" element={<ChatScreen />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/friends" element={<Cards />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             <Route exact path="/profile/:username" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
             <Route path="thought/:id" element={<ReactionList />} />
             <Route path="/strava" element={<Strava />} />
-
             <Route component={NoMatch} />
           </Routes>
       </main>

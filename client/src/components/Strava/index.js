@@ -49,7 +49,7 @@ function StravaActivities() {
 
 
   function handleClick() {
-    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/profile&response_type=code&scope=activity:read_all`
+    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/strava&response_type=code&scope=activity:read_all`
   }
   const authLink = "https://www.strava.com/oauth/token?";
   

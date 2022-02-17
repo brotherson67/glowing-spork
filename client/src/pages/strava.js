@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
+import BikeBody from '../components/Bike/BikeBody';
 // import axios from "axios";
 // import './app.css';
 import "../utils/strava";
 // import polyline from '@mapbox/polyline'
 
 function StravaActivities() {
+  
   // const navigate = useNavigate();
   const client_id = '77814';
   const params = useParams();
@@ -51,6 +53,7 @@ function StravaActivities() {
   
   // if (code) {
   function getAccessToken(code) {
+
     return fetch(authLink, {
       method: 'post',
       headers: {
@@ -76,6 +79,7 @@ function StravaActivities() {
   // add other function call to get user id
   // convertAuthToAccess();
   function getActivities(res) {
+    
     console.log(res);
   //   // commented out path to get user profile info from an array
   //   // https://www.strava.com/api/v3/athlete?access_token=7bc114015e81808697585c211d65f269c319a3cc
@@ -89,6 +93,7 @@ function StravaActivities() {
       .then(data => {
         console.log(data);
         setActivityData(data);
+        // dataStrava = data;
         // var htmlContent = "";
         // for (let i = 0; i > 5; i++) {
         // document.getElementById('activity').innerHTML = data[0];
@@ -104,7 +109,7 @@ function StravaActivities() {
       })
   }
 
-    getActivities();
+ 
 
   //refresh token
   //https://www.strava.com/oauth/token?client_id=77814&client_secret=ba4cf64706994d406df016b09df6d62ee55edaef&refresh_token=e3c3bce7513bb09b9c19bfd2450855830fb0d313&grant_type=refresh_token
@@ -138,17 +143,12 @@ function StravaActivities() {
     <div className="app-activities">
       <h1>Strava Activities</h1>
       <button onClick={handleClick}>Strava Login</button>
-      <div className="activity" id="activity"></div>
-      <div className="activity" id="activity-name"></div>
-      <div id="activity-distance"></div>
-      <div id="averageSpeed"></div>
-      <div id="totalTime"></div>
-      <div id="elevationGain"></div>
-
-      <div id="activity-map"></div>
-
+    <BikeBody />
     </div>
+      
+    
   );
+
 
 }
 

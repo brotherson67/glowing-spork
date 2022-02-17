@@ -14,6 +14,7 @@ import Hero from '../components/Hero';
 import Contact from './Contact';
 import Profile from './Profile';
 import OnePost from '../components/OnePost';
+import MapBox from '../pages/Map';
 
 
 function Home() {
@@ -37,6 +38,7 @@ function Home() {
             <Route path="/profile" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
+            <Route path="/map" element={<MapBox />} />
           </Routes>
       </main>
       <Footer /> 

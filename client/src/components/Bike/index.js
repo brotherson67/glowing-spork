@@ -5,7 +5,7 @@ import Hero from '../Hero';
 import '../../utils/strava.js';
 
 
-function Bike() {
+function Bike(data) {
     return (
         <div>
             <section>

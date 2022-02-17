@@ -1,9 +1,18 @@
 import React from 'react';
+import StravaActivities from '../../pages/strava';
 
-function BikeBody() {
+
+
+
+function BikeBody( ...props ) {
+  console.log(StravaActivities);
   return (
     <div className="container">
-        <div>div 1 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
+        <div>
+          <h2>Activity name: {props.StavaActivities}</h2>
+          <h2>distance: {props.distance}</h2>
+          <h2>Elevation Gain:{props.total_elevation_gain}</h2>
+        </div>
         <div>div 2 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
 
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import BikeBody from '../components/Bike/BikeBody';
+import MapBox from '../pages/Map';
 // import axios from "axios";
 // import './app.css';
 import "../utils/strava";
@@ -145,7 +146,6 @@ function StravaActivities() {
     <div className="app-activities">
       <div className="app-activities">
       <h1>Strava Activities</h1>
-      <button>Strava Login</button>
       <div className="activity" id="activity"></div>
       <div className="activity" id="activity-name"></div>
       <div id="activity-distance"></div>
@@ -154,6 +154,7 @@ function StravaActivities() {
       <div id="elevationGain"></div>
       <div id="activity-map"></div>
     </div>
+    <MapBox />
       <button onClick={handleClick}>Strava Login</button>
     
     </div>

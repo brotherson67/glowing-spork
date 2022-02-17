@@ -30,7 +30,7 @@ function ChatScreen() {
             {messages.map((message) => (
                 message.name ? (
                     <div className="chatScreen__message">
-                        <Person className="chatScreen__image" alt={message.name} src={message.image} />
+                        <Person className="chatScreen__img" alt={message.name} src={message.image} />
                         <p className="chatScreen__text">{message.message}</p>
                     </div>
                 ) : (

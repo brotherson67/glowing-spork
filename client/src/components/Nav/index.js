@@ -35,6 +35,9 @@ const Navbar = ({ toggle }) => {
                                 <NavLink to="/profile">
                                     Profile
                                 </NavLink>
+                                <NavLink to="/chat">
+                                    Chat
+                                </NavLink>
                             </>
                         ) : (
 

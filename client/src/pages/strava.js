@@ -45,7 +45,7 @@ function StravaActivities() {
 
 
   function handleClick() {
-    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/profile&response_type=code&scope=activity:read_all`
+    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/mountain-bike&response_type=code&scope=activity:read_all`
   }
   const authLink = "https://www.strava.com/oauth/token?";
   
@@ -88,7 +88,7 @@ function StravaActivities() {
       })
       .then(data => {
         console.log(data);
-        setActivityData(data);
+        // setActivityData(data);
         // var htmlContent = "";
         // for (let i = 0; i > 5; i++) {
         // document.getElementById('activity').innerHTML = data[0];

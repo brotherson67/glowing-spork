@@ -1,0 +1,15 @@
+.app-activities{
+    display: flex;
+    padding: 15px;
+}
+
+.activity-box{
+    /* flex-direction: column; */
+    padding: 20px;
+    flex: 1;
+    background-color: aliceblue;
+}
+
+.activity-name{
+    
+}

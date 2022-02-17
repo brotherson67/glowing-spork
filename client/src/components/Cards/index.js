@@ -5,6 +5,7 @@ import TinderCard from 'react-tinder-card';
 import ReactDOM from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME_BASIC, QUERY_USER_IMG } from '../../utils/queries';
+import './cards.css';
 
 
 
@@ -52,7 +53,7 @@ function TinderCards({ onTinderCardChange }) {
                     >
                         <div
                             style={{ backgroundImage: `url(${person.url})` }}
-                            className="card">
+                            className="tinder-card">
                             <h3>{person.name}</h3>
                         </div>
                     </TinderCard>

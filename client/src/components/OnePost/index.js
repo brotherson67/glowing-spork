@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHT } from '../../utils/queries';
 
 import FistBumps from '../FistBumps';
-import FistBumpsForm from '../FistBumps/FistBumpsForm/FistBumpsForm';
+import FistBumpsForm from '../FistBumps/FistBumpsForm';
 
 const OnePost = props => {
   const { id: thoughtId } = useParams();

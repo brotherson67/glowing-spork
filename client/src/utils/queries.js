@@ -42,6 +42,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      image
       friendCount
       friends {
         _id
@@ -63,6 +64,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      image
       friendCount
       thoughts {
         _id
@@ -97,4 +99,13 @@ export const QUERY_ME_BASIC = gql`
       }
     }
   }
+`;
+
+export const QUERY_USER_IMG = gql`
+query User($username: String!) {
+  user(username: $username) {
+    image
+    username
+  }
+}
 `;

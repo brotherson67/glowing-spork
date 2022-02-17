@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import "./login/signup.css";
 
 import Auth from '../../utils/auth';
 import Signup from './Signup';
 
 const Login = (props) => {
+  
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
+  // console.log(JSON.stringify({error}, null, 2));
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -27,8 +30,9 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log(data)
       Auth.login(data.login.token);
+      
     } catch (e) {
       console.error(e);
     }
@@ -41,10 +45,11 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Login</h4>
+      
+    <main id="form-box" className="flex-row justify-center mb-4">
+      <div id= "outer-flex" className="outer">
+        <div className="card" id="login-card">
+          <h4 className="header">Login</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
@@ -65,7 +70,7 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              <button id="login-btn" className="btn d-block w-50" type="submit">
                 Submit
               </button>
             </form>
@@ -75,7 +80,7 @@ const Login = (props) => {
           </div>
           
         </div>
-        <div className="card"><Signup /></div>
+        <div><Signup /></div>
         
       </div>
     </main>

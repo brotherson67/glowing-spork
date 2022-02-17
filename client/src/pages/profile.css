@@ -1,0 +1,13 @@
+.thought-box{
+    display: flex;
+    padding: 20px;
+    background-color:aliceblue;
+    border-top: 1px solid lightgrey;
+}
+
+.thought-div{
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%;
+    padding: 20px;
+}

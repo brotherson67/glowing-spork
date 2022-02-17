@@ -5,38 +5,42 @@ const { signToken } = require('../utils/auth');
 //in resolvers you write the code for what the method is actually doing
 //query must match typedef definition
 const resolvers = {
-    Query: {
-      me: async (parent, args, context) => {
-       if(context.user) {
-        const userData = await User.findOne({})
+  Query: {
+    // parent: hold the reference to the resolver that executed the nested resolver function
+    // args: object of all of the values passed into a query or mutation request as parameters. we destructure the username parameter out to be used.
+    thoughts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Thought.find(params).sort({ createdAt: -1 });
+    },
+    // place this inside of the `Query` nested object right after `thoughts` 
+    thought: async (parent, { _id }) => {
+      return Thought.findOne({ _id });
+    },
+    // get all users
+    users: async () => {
+      return User.find()
         .select('-__v -password')
-        .populate('thoughts')
-        .populate('friends');
-
-        return userData;
-       }
-       throw new AuthenticationError("You're not logged in!");
-      },
-      users: async () => {
-        return User.find()
+        .populate('friends')
+        .populate('thoughts');
+    },
+    // get a user by username
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('friends')
+        .populate('thoughts');
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('thoughts')
           .populate('friends');
-      },
-      user: async (parent, { username }) => {
-        return User.findOne({ username })
-          .select('-__v -password')
-          .populate('friends')
-          .populate('thoughts');
-      },
-        // parent as a placeholder parameter
-      thoughts: async (parent, { username }) => {
-        //   ternary operator to check if username exists
-        const params = username ? { username } : {};
-        return Thought.find().sort({ createdAt: -1 });
-    },
-     thought: async (parent, { _id }) => {
-      return Thought.findOne({_id});
+
+        return userData;
+      }
+
+      throw new AuthenticationError('Not logged in');
     }
   },
   Mutation: {
@@ -44,12 +48,12 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
-      return {token, user};
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
-      if(!user) {
+      if (!user) {
         throw new AuthenticationError('Wrong credentials!')
       }
 
@@ -59,15 +63,15 @@ const resolvers = {
         throw new AuthenticationError('Wrong credentials!');
       }
       const token = signToken(user);
-      return {token, user};
+      return { token, user };
     },
     addThought: async (parent, args, context) => {
       if (context.user) {
-        const thought = await Thought.create({...args, username: context.user.username });
+        const thought = await Thought.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { thoughts: thought._id} },
+          { $push: { thoughts: thought._id } },
           { new: true }
         );
 
@@ -82,25 +86,25 @@ const resolvers = {
           { $push: { reactions: { reactionBody, username: context.user.username } } },
           { new: true, runValidators: true }
         );
-    
+
         return updatedThought;
       }
-    
+
       throw new AuthenticationError('You need to be logged in!');
     },
-    addFriends: async (parent, { friendId }, context) => {
+    addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { friends: friendId } },
           { new: true }
         ).populate('friends');
-    
+
         return updatedUser;
       }
-    
+
       throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
-  module.exports = resolvers;
+module.exports = resolvers;

@@ -11,7 +11,8 @@ function StravaActivities() {
   const client_id = '77814';
   const params = useParams();
   const [loading, setLoading] = useState(true);
-  const [activityData, setActivityData] = useState([]);
+  const [activityData, setActivityData] = useState();
+  console.log(activityData)
   console.log(window.location.search)
   const client_secret = 'ba4cf64706994d406df016b09df6d62ee55edaef';
   const url = new URLSearchParams(window.location.search)
@@ -88,7 +89,9 @@ function StravaActivities() {
       })
       .then(data => {
         console.log(data);
-        // setActivityData(data);
+        setActivityData(data);
+        console.log(data);
+        console.log(setActivityData);
         // var htmlContent = "";
         // for (let i = 0; i > 5; i++) {
         // document.getElementById('activity').innerHTML = data[0];

@@ -8,17 +8,13 @@ import Bike from '../components/Bike';
 import Run from '../components/Run';
 import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
-<<<<<<< HEAD
 import ChatScreen from "../components/Chat/ChatScreen";
-import Chats from '../components/Chat/Chats';
-=======
-import ChatScreen from "../components/Chat/ChatBody";
->>>>>>> parent of 1b59490 ( fixxed the chats to load preloaded data when clicked :)
+// import Chats from '../components/Chat/Chats';
 import Chat from '../components/Chat';
 import Hero from '../components/Hero';
 import Cards from '../components/Cards';
 import Profile from './Profile';
-import MyProfile from './myProfile';
+// import MyProfile from './myProfile';
 import OnePost from '../components/OnePost';
 import Login from '../components/Login';
 import Contact from '../components/Contact';

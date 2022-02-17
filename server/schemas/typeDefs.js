@@ -15,7 +15,7 @@ const typeDefs = gql`
         friends: [User]
         activities: String
         image: String
-        messages: [Message]
+        
     }
 
     type Thought{
@@ -34,22 +34,23 @@ const typeDefs = gql`
       username: String
     }
 
-    type Chat {
-      id: ID!
-      message: String!
-      sendUsername: String!
-      receiveUsername: String!
-      createdAt: Float!
-      users: [User]
-    }
+    
 
     type Query {
         me: User
         users: [User]
-        chats: [Chat]
+        messages: [Message]
         user(username: String!): User
         thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
+    }
+    type Message {
+      id: ID!
+      message: String!
+      sendUsername: String!
+      receiveUsername: String!
+      timestamp: Float!
+      users: [User]
     }
 
     type Mutation {
@@ -58,11 +59,19 @@ const typeDefs = gql`
       addThought(thoughtText: String!): Thought
       addReaction(thoughtId: ID!, reactionBody: String!): Thought
       addFriend(friendId: ID!): User
-      sendMessage(from: String!, message: String!): Chat
+      
+      userTyping(username: String! receiveUsername: String!): Boolean!
+      sendMessage(sendUsername: String! receiveUsername: String! message: String! timestamp: Float!): Message!
+      updateMessage(id: ID! message: String!): Message!
+      deleteMessage(id: String!): Boolean!
       
     }
+
     type Subscription {
-      messageSent: Chat
+      newMessage(receiveUsername: String!): Message
+      newUser: User
+      oldUser: String
+      userTyping (receiveUsername: String!): String
     }
     
     type Auth {
@@ -74,9 +83,3 @@ const typeDefs = gql`
 // export the typeDefs
 module.exports = typeDefs;
 
-// type Subscription {
-//   newMessage(receiveUsername: String!): Message
-//   newUser: User
-//   oldUser: String
-//   userTyping (receiveUsername: String!): String
-// }

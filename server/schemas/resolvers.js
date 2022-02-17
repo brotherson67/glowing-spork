@@ -1,6 +1,7 @@
 const { User, Thought, Message } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { PubSub, withFilter } = require("graphql-yoga")
 
 const chats = []
 const CHAT_CHANNEL = 'CHAT_CHANNEL'
@@ -8,6 +9,8 @@ const CHAT_CHANNEL = 'CHAT_CHANNEL'
 //query must match typedef definition
 const resolvers = {
   Query: {
+    users: () => User.find(),
+    messages: () => Message.find(),
     // parent: hold the reference to the resolver that executed the nested resolver function
     // args: object of all of the values passed into a query or mutation request as parameters. we destructure the username parameter out to be used.
     thoughts: async (parent, { username }) => {
@@ -51,9 +54,12 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    chats (root, args, context) {
-      return chats
-    }
+    messages: async ({ username }) => {
+      return Message.find({ sendUsername: username })
+    },
+    users: async ({ sendUsername }) => {
+      return User.find({ username: sendUsername })
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -117,21 +123,65 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    sendMessage (root, { from, message }, { pubsub }) {
-      const chat = { id: chats.length + 1, from, message }
-      
-      chats.push(chat)
-      pubsub.publish('CHAT_CHANNEL', { messageSent: chat })
-      
-      return chat
-    }
+    sendMessage: async (_,{ sendUsername, receiveUsername, message, timestamp }) => {
+      const userText = new Message({
+        sendUsername,
+        receiveUsername,
+        message,
+        timestamp,
+      })
+      await userText.save()
+      pubsub.publish("newMessage", {
+        newMessage: userText,
+        receiveUsername,
+      })
+      return userText
+    },
+    updateMessage: async (_, { id, message }) => {
+      const userText = await Message.findOneAndUpdate(
+        { _id: id },
+        { message },
+        { new: true }
+      )
+      return userText
+    },
+    deleteMessage: async (_, { id }) => {
+      await Message.findOneAndDelete({ _id: id })
+      return true
+    },
   },
   Subscription: {
-    messageSent: {
-      subscribe: (root, args, { pubsub }) => {
-        return pubsub.asyncIterator(CHAT_CHANNEL)
-      }
-    }
-  }
+    newMessage: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("newMessage"),
+        (payload, variables) => {
+          return (
+            payload.receiveUsername === variables.receiveUsername
+          )
+        }
+      ),
+    },
+    newUser: {
+      subscribe: (_, { }, { pubsub }) => {
+        return pubsub.asyncIterator("newUser")
+      },
+    },
+    oldUser: {
+      subscribe: (_, { }, { pubsub }) => {
+        return pubsub.asyncIterator("oldUser")
+      },
+    },
+    userTyping: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator("userTyping"),
+        (payload, variables) => {
+          return (
+            payload.receiveUsername === variables.receiveUsername
+          )
+        }
+      ),
+    },
+  },
+
 };
 module.exports = resolvers;

@@ -15,8 +15,6 @@ function BikeBody() {
         <div className="Body-boxInner">div 2 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
       </div>
     </div>
-
-
   </div>
     
     

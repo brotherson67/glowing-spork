@@ -16,8 +16,8 @@ const Navbar = ({ toggle }) => {
                     <div className="navbar-div">
                         <h2>R-o-u-t-e-s</h2>
                     </div>
-
                 </NavLink>
+                <Bars onClick={toggle} />
                 <nav className="text-center">
                     <NavMenu>
                         {Auth.loggedIn() ? (

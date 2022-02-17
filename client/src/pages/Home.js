@@ -18,7 +18,8 @@ import OnePost from '../components/OnePost';
 import Login from '../components/Login';
 import Contact from '../components/Contact';
 import NoMatch from './NoMatch';
-import ReactionList from "../components/FistBumps"
+import ReactionList from "../components/FistBumps";
+import Strava from '../components/Strava';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -47,6 +48,7 @@ function Home() {
             <Route path=":username" element={<Profile />} />
             <Route path=":thoughts" element={<OnePost />} />
             <Route path="thought/:id" element={<ReactionList />} />
+            <Route path="/strava" element={<Strava />} />
 
             <Route component={NoMatch} />
           </Routes>

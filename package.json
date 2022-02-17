@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
+    "@react-google-maps/api": "^2.7.0",
     "bootstrap-icons": "^1.8.1",
+    "decode-google-map-polyline": "^1.0.1",
     "faker": "^6.6.6",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",

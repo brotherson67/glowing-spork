@@ -1,7 +1,9 @@
-const { User, Thought } = require('../models');
+const { User, Thought, Message } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+const chats = []
+const CHAT_CHANNEL = 'CHAT_CHANNEL'
 //in resolvers you write the code for what the method is actually doing
 //query must match typedef definition
 const resolvers = {
@@ -23,6 +25,13 @@ const resolvers = {
         .populate('friends')
         .populate('thoughts');
     },
+    // get all messages
+    // users: async () => {
+    //   return User.find()
+    //     .select('-__v -password')
+    //     .populate('friends')
+    //     .populate('thoughts');
+    // },
     // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
@@ -41,6 +50,9 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    chats (root, args, context) {
+      return chats
     }
   },
   Mutation: {
@@ -104,6 +116,21 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+    sendMessage (root, { from, message }, { pubsub }) {
+      const chat = { id: chats.length + 1, from, message }
+      
+      chats.push(chat)
+      pubsub.publish('CHAT_CHANNEL', { messageSent: chat })
+      
+      return chat
+    }
+  },
+  Subscription: {
+    messageSent: {
+      subscribe: (root, args, { pubsub }) => {
+        return pubsub.asyncIterator(CHAT_CHANNEL)
+      }
     }
   }
 };

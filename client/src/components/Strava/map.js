@@ -29,8 +29,6 @@ function MapBox() {
 
       console.log(polylineDecode);
 
-    
-      
       const options = {
         strokeColor: '#B3E8FC',
         strokeOpacity: 0.8,

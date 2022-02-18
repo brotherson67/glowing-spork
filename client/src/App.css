@@ -37,4 +37,26 @@ li {
   margin-bottom:7%;
 }
 
+#profile-header,
+.friend-h3 {
+  color: #253c78;
+  font-weight: bolder;
+}
 
+#add-btn{
+  float: right;
+  padding: 20px;
+  background-color: #253c78;
+  color: #fff;
+  margin-right: 20px;
+}
+
+#friends{
+  color: #253c78;
+  font-weight: bolder;
+  border: 1px solid #253c78;
+}
+
+.friend-h3{
+
+}

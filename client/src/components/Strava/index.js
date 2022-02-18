@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MapBox from './map';
-import '../../../src/App.css';
+// import '../../../src/App.css';
 import './strava.css';
 function StravaActivities() {
 
@@ -121,24 +121,41 @@ function StravaActivities() {
 
         // const authLink = "https://www.strava.com/oauth/token";
     }
+    // return (
+    //     <div className="app-activities">
+    //         <div className="app-activities">
+    //             <button id="strava-btn" onClick={handleClick}>Strava Login</button>
+    //             <h1>Strava Activities</h1>
+    //             <MapBox />
+    //             <div id="mainActivityCard">
+    //                 <div className="activity" id="activity-name"></div>
+    //                 <div id="strava-activity" className="strava-activity"></div>
+    //                 <div id="activity-distance" className="activity-distance"></div>
+    //                 <div id="averageSpeed" className="averageSpeed"></div>
+    //                 <div id="totalTime" className="totalTime"></div>
+    //                 <div id="elevationGain" className="elevationGain"></div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // );
+
     return (
+      <div className="app-activities">
         <div className="app-activities">
-            <h1>Strava Activities</h1>
-            <div className='btn-div'>
-            <button id="strava-btn" onClick={handleClick}>Login with strava</button>
+          <div className="activity-box" id="activity">
+          <h1 className="activity-title">Strava Stats</h1>
+            <div className="activity-name" id="activity-name"></div>
+            <div className="activity-distance" id="activity-distance"></div>
+            <div className="averageSpeed" id="averageSpeed"></div>
+            <div className="totalTime" id="totalTime"></div>
+            <div className="elevationGain" id="elevationGain"></div>
+            <div className="activity-map" id="activity-map">
             </div>
-            <div className="app-activities">
-                <MapBox />
-                <div id="mainActivityCard">
-                    <div className="activity" id="activity-name"></div>
-                    <div id="strava-activity" className="strava-activity"></div>
-                    <div id="activity-distance" className="activity-distance"></div>
-                    <div id="averageSpeed" className="averageSpeed"></div>
-                    <div id="totalTime" className="totalTime"></div>
-                    <div id="elevationGain" className="elevationGain"></div>
-                </div>
-            </div>
+            <MapBox />
+        <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
+        </div>
+      </div>
     );
 }
 

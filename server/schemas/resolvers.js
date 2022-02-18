@@ -61,10 +61,11 @@ const resolvers = {
     users: async ({ sendUsername }) => {
       return User.find({ username: sendUsername });
     },
-    checkout: async (parent, args, context) => {
-      const order = new Order({ products: args.products });
-      const { products } = await order.populate("products").execPopulate();
-    },
+    // checkout: async (parent, args, context) => {
+    //   const order = new Order({ products: args.products });
+    //   const { products } = await order.populate("products").execPopulate();
+    // },
+    // will need to add models for the donations to go to
   },
   Mutation: {
     addUser: async (parent, args) => {

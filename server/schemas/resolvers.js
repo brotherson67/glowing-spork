@@ -1,10 +1,11 @@
-const { User, Thought, Message } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
-const { PubSub, withFilter } = require("graphql-yoga")
+const { User, Thought, Message } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
+const { PubSub, withFilter } = require("graphql-yoga");
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
-const chats = []
-const CHAT_CHANNEL = 'CHAT_CHANNEL'
+const chats = [];
+const CHAT_CHANNEL = "CHAT_CHANNEL";
 //in resolvers you write the code for what the method is actually doing
 //query must match typedef definition
 const resolvers = {
@@ -17,16 +18,16 @@ const resolvers = {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
     },
-    // place this inside of the `Query` nested object right after `thoughts` 
+    // place this inside of the `Query` nested object right after `thoughts`
     thought: async (parent, { _id }) => {
       return Thought.findOne({ _id });
     },
     // get all users
     users: async () => {
       return User.find()
-        .select('-__v -password')
-        .populate('friends')
-        .populate('thoughts');
+        .select("-__v -password")
+        .populate("friends")
+        .populate("thoughts");
     },
     // get all messages
     // users: async () => {
@@ -38,27 +39,31 @@ const resolvers = {
     // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
-        .select('-__v -password')
-        .populate('friends')
-        .populate('thoughts');
+        .select("-__v -password")
+        .populate("friends")
+        .populate("thoughts");
     },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
-          .select('-__v -password')
-          .populate('thoughts')
-          .populate('friends');
+          .select("-__v -password")
+          .populate("thoughts")
+          .populate("friends");
 
         return userData;
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
     messages: async ({ username }) => {
-      return Message.find({ sendUsername: username })
+      return Message.find({ sendUsername: username });
     },
     users: async ({ sendUsername }) => {
-      return User.find({ username: sendUsername })
+      return User.find({ username: sendUsername });
+    },
+    checkout: async (parent, args, context) => {
+      const order = new Order({ products: args.products });
+      const { products } = await order.populate("products").execPopulate();
     },
   },
   Mutation: {
@@ -72,20 +77,23 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Wrong credentials!')
+        throw new AuthenticationError("Wrong credentials!");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Wrong credentials!');
+        throw new AuthenticationError("Wrong credentials!");
       }
       const token = signToken(user);
       return { token, user };
     },
     addThought: async (parent, args, context) => {
       if (context.user) {
-        const thought = await Thought.create({ ...args, username: context.user.username });
+        const thought = await Thought.create({
+          ...args,
+          username: context.user.username,
+        });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -95,20 +103,24 @@ const resolvers = {
 
         return thought;
       }
-      throw new AuthenticationError('You need to login!')
+      throw new AuthenticationError("You need to login!");
     },
     addReaction: async (parent, { thoughtId, reactionBody }, context) => {
       if (context.user) {
         const updatedThought = await Thought.findOneAndUpdate(
           { _id: thoughtId },
-          { $push: { reactions: { reactionBody, username: context.user.username } } },
+          {
+            $push: {
+              reactions: { reactionBody, username: context.user.username },
+            },
+          },
           { new: true, runValidators: true }
         );
 
         return updatedThought;
       }
 
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
@@ -116,38 +128,43 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { friends: friendId } },
           { new: true }
-        ).populate('friends');
+        ).populate("friends");
 
         return updatedUser;
       }
 
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
-    sendMessage: async ({ sendUsername, receiveUsername, message, timestamp }) => {
+    sendMessage: async ({
+      sendUsername,
+      receiveUsername,
+      message,
+      timestamp,
+    }) => {
       const userText = new Message({
         sendUsername,
         receiveUsername,
         message,
         timestamp,
-      })
-      await userText.save()
+      });
+      await userText.save();
       pubsub.publish("newMessage", {
         newMessage: userText,
         receiveUsername,
-      })
-      return userText
+      });
+      return userText;
     },
     updateMessage: async (_, { id, message }) => {
       const userText = await Message.findOneAndUpdate(
         { _id: id },
         { message },
         { new: true }
-      )
-      return userText
+      );
+      return userText;
     },
     deleteMessage: async (_, { id }) => {
-      await Message.findOneAndDelete({ _id: id })
-      return true
+      await Message.findOneAndDelete({ _id: id });
+      return true;
     },
   },
   // Subscription: {
@@ -182,6 +199,5 @@ const resolvers = {
   //     ),
   //   },
   // },
-
 };
 module.exports = resolvers;

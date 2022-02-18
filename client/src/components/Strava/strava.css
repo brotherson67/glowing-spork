@@ -1,18 +1,18 @@
-.app-activities{
+/* .app-activities{
     display: flex;
     padding: 15px;
 }
 
 .activity-box{
     /* flex-direction: column; */
-    padding: 20px;
+    /* padding: 20px;
     flex: 1;
     background-color: aliceblue;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-}
+} */
 
-.activity-title{
+/* .activity-title{
     padding: 5px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
@@ -44,4 +44,4 @@
 }
 .button-stravaLogin{
     padding: 5px;
-}
+} */ 

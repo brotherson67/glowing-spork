@@ -111,9 +111,6 @@ function StravaActivities() {
                         cardDiv.appendChild(card3);
                         cardDiv.appendChild(card4);
                         cardDiv.appendChild(card5);
-
-        
-                        
                     }
                     return data;
                 })

@@ -109,3 +109,21 @@ query User($username: String!) {
   }
 }
 `;
+
+
+// export const QUERY_ALL_USER_MESSAGES = gql`
+//     query {
+//       users {
+//         id
+//         name
+//         username
+//         messages {
+//           message
+//         }
+//       }
+//     }
+// `
+
+// export const RECEIVE_MESSAGE = gql`
+
+// `

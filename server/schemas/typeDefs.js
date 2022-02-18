@@ -44,6 +44,7 @@ const typeDefs = gql`
         thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
     }
+
     type Message {
       id: ID!
       message: String!
@@ -61,7 +62,9 @@ const typeDefs = gql`
       addFriend(friendId: ID!): User
       
       userTyping(username: String! receiveUsername: String!): Boolean!
+
       sendMessage(sendUsername: String! receiveUsername: String! message: String! timestamp: Float!): Message!
+      
       updateMessage(id: ID! message: String!): Message!
       deleteMessage(id: String!): Boolean!
       

@@ -3,6 +3,7 @@ import SkiBody from './SkiBody';
 import coverImage from "../../assets/images/IMG_1.jpg";
 import Hero from '../Hero';
 import StravaActivities from '../Strava';
+import Park from '../../pages/ParkActivity/Park'
 
 function Ski() {
     return (
@@ -12,6 +13,9 @@ function Ski() {
             </section>
             <SkiBody/>
             <StravaActivities />
+            <div>
+                <Park />
+            </div>
         </div>
     );
 }

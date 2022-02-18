@@ -2,6 +2,7 @@ import React from 'react';
 import SkiBody from './SkiBody';
 import coverImage from "../../assets/images/IMG_1.jpg";
 import Hero from '../Hero';
+import StravaActivities from '../Strava';
 
 function Ski() {
     return (
@@ -10,6 +11,7 @@ function Ski() {
                 <Hero img={coverImage}/>
             </section>
             <SkiBody/>
+            <StravaActivities />
         </div>
     );
 }

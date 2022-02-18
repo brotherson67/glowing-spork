@@ -32,7 +32,7 @@ const ContentFeed = () => {
           </section>
         </div>
       </section>
-      <StravaActivities />
+      {/* <StravaActivities /> */}
     </div>
   );
 };

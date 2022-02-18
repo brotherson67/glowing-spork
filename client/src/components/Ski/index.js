@@ -14,9 +14,10 @@ function Ski() {
                 <Hero img={coverImage}/>
                 <p className="panel-heading">
                         Activities & Places Related to your search
+                        <CitySearch />
                     </p>
             </section>
-            <CitySearch />
+            
             <SkiBody/>
             {/* <Park /> */}
             <StravaActivities />

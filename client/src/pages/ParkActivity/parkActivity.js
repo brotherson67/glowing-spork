@@ -72,31 +72,7 @@ function parkDirectionsInfo() {
 
 }
 
-function parkWeatherInfo() {
-    fetch("https://developer.nps.gov/api/v1/parks?stateCode=" + inputSearchName.value + "&api_key=" + apiKeyNps + "&fields=description,fullName,url,activities,latitude,longitude,directionsInfo,addresses,weatherInfo,name,directionsUrl,operatingHours", requestOptions)
-    .then(response => response.json())
-    .then(result => { 
-    //    console.log(result.data[0]);
-        weatherInfo = result.data;
-        var ulEl = document.createElement("ul");
-        // do all the html creation to display the parks weatherInfo
-        for(var i = 0; i < result.data.length; i++) {
-            
-            var liEl = document.createElement("li");
-            var aEl = document.createElement('a');
-            aEl.setAttribute('href',result.data[i].url);
-            aEl.innerText = result.data[i].weatherInfo;
-            liEl.appendChild(aEl);
-            ulEl.appendChild(liEl);
-        }
-        inputContainerEl.innerText = '';
-        inputContainerEl.appendChild( ulEl);
-    })
-    .catch(error => console.log('error', error));
 
-
-
-}
 
 
 var formData = function() {
@@ -114,11 +90,7 @@ searchCityBtn.addEventListener('click', function(){
 directionsInfoBtn.addEventListener('click', function(){
     parkDirectionsInfo();
 })
-weatherInfoBtn.addEventListener('click', function(){
-    // console.log(parkWeatherInfo());
-    
-})
-parkWeatherInfo(weatherInfoBtn);
+
 
 
 

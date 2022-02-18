@@ -25,7 +25,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.1",
     "mongoose": "^5.9.9",
-    "react-chat-engine": "^1.11.22"
+    "react-chat-engine": "^1.11.22",
+    "stripe": "^8.203.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

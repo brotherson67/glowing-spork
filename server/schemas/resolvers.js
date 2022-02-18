@@ -123,7 +123,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    sendMessage: async (_,{ sendUsername, receiveUsername, message, timestamp }) => {
+    sendMessage: async ({ sendUsername, receiveUsername, message, timestamp }) => {
       const userText = new Message({
         sendUsername,
         receiveUsername,
@@ -150,38 +150,38 @@ const resolvers = {
       return true
     },
   },
-  Subscription: {
-    newMessage: {
-      subscribe: withFilter(
-        () => pubsub.asyncIterator("newMessage"),
-        (payload, variables) => {
-          return (
-            payload.receiveUsername === variables.receiveUsername
-          )
-        }
-      ),
-    },
-    newUser: {
-      subscribe: (_, { }, { pubsub }) => {
-        return pubsub.asyncIterator("newUser")
-      },
-    },
-    oldUser: {
-      subscribe: (_, { }, { pubsub }) => {
-        return pubsub.asyncIterator("oldUser")
-      },
-    },
-    userTyping: {
-      subscribe: withFilter(
-        () => pubsub.asyncIterator("userTyping"),
-        (payload, variables) => {
-          return (
-            payload.receiveUsername === variables.receiveUsername
-          )
-        }
-      ),
-    },
-  },
+  // Subscription: {
+  //   newMessage: {
+  //     subscribe: withFilter(
+  //       () => pubsub.asyncIterator("newMessage"),
+  //       (payload, variables) => {
+  //         return (
+  //           payload.receiveUsername === variables.receiveUsername
+  //         )
+  //       }
+  //     ),
+  //   },
+  //   newUser: {
+  //     subscribe: (_, { }, { pubsub }) => {
+  //       return pubsub.asyncIterator("newUser")
+  //     },
+  //   },
+  //   oldUser: {
+  //     subscribe: (_, { }, { pubsub }) => {
+  //       return pubsub.asyncIterator("oldUser")
+  //     },
+  //   },
+  //   userTyping: {
+  //     subscribe: withFilter(
+  //       () => pubsub.asyncIterator("userTyping"),
+  //       (payload, variables) => {
+  //         return (
+  //           payload.receiveUsername === variables.receiveUsername
+  //         )
+  //       }
+  //     ),
+  //   },
+  // },
 
 };
 module.exports = resolvers;

@@ -49,8 +49,8 @@ function Home() {
             <Route path="/profile" element={<Profile />} />
             <Route exact path="/profile/:username" element={<Profile />} />
             <Route path=":username" element={<Profile />} />
-            <Route path=":thoughts" element={<OnePost />} />
-            <Route path="thought/:id" element={<ReactionList />} />
+            <Route path="thought/:id" element={<OnePost />} />
+            {/* <Route path="thought/:id" element={<ReactionList />} /> */}
             <Route path="/strava" element={<Strava />} />
             <Route component={NoMatch} />
           </Routes>

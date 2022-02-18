@@ -3,21 +3,22 @@ import React from 'react';
 import {parkWeatherInfo } from "../../pages/ParkActivity/parkActivity.js";
 // import "../../pages/ParkActivity/parks.css"
 import Park from "../../pages/ParkActivity/Park"
-// import NearbyPlaces from "../../pages/ParkActivity/ParkButtons/NearbyPlaces"
-// import DirectionsLandMarks from "../../pages/ParkActivity/ParkButtons/DirectionsLandMarks"
+import NearbyPlaces from "../../pages/ParkActivity/ParkButtons/NearbyPlaces"
+import DirectionsLandMarks from "../../pages/ParkActivity/ParkButtons/DirectionsLandMarks"
 import WeatherInfo from "../../pages/ParkActivity/ParkButtons/WeatherInfo"
 
 function SkiBody() {
   return (
+    <div>
     <div className="container">
     <div className="Body-box">
-      <Park />
+      {/* <Park /> */}
        <div className="Body-boxOuter">
-        {/* <NearbyPlaces /> */}
+        <NearbyPlaces />
         <div className="Body-boxInner"><a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a></div>
       </div>
       <div className="Body-boxOuter">
-        {/* <DirectionsLandMarks /> */}
+        <DirectionsLandMarks />
          <div className="Body-boxInner"><a id="directions-btn" className="button btn">Directions & Landmarks</a></div>
       </div>
       <div className="Body-boxOuter">
@@ -26,12 +27,13 @@ function SkiBody() {
         <a id="weather-info-btn" className="button btn">Weather Info</a>
         </div>
       </div>
-      <div id="input-container" className="panel-block"></div>
+     
     </div>
-
-
-  // </div>
     
+
+  </div>
+  
+  </div>
   );
 }
 

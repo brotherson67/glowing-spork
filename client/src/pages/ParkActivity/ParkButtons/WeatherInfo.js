@@ -24,11 +24,11 @@ function WeatherInfo(){
                 var liEl = document.createElement("li");
                 var aEl = document.createElement('a');
                 aEl.setAttribute('href', weatherInfo[i].url);
-                aEl.innerText =  weatherInfo[i].weatherInfo;
+                aEl.dangerouslySetInnerHTML =  weatherInfo[i].weatherInfo;
                 liEl.appendChild(aEl);
                 ulEl.appendChild(liEl);
             }
-            inputContainerEl.innerText = '';
+            inputContainerEl.dangerouslySetInnerHTML = '';
             inputContainerEl.appendChild( ulEl);
         })
         .catch(error => console.log('error', error));

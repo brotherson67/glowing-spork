@@ -28,7 +28,7 @@ function parkInfo() {
         // console.log(parks)
         var ulEl = document.createElement("ul");
         // do all the html stuff to display the parks
-        for(var i = 0; i < parks.length; i++) {
+        for(var i = 0; i < parks.length && parks.length > 5; i++) {
             
             var liEl = document.createElement("li");
             var aEl = document.createElement('a');

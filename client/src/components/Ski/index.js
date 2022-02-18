@@ -11,18 +11,22 @@ function Ski() {
     return (
         <div>
             <section>
-                <Hero img={coverImage}/>
+                <Hero img={coverImage} />
                 <p className="panel-heading">
-                        Activities & Places Related to your search
-                        <CitySearch />
-                    </p>
+                    Activities & Places Related to your search
+                    <CitySearch />
+                </p>
             </section>
-            
-            <SkiBody/>
-            {/* <Park /> */}
-            <StravaActivities />
+
+            <SkiBody />
+
             <div>
-               
+                <div>
+                    <div id="input-container" className="panel-block"></div>
+                    {/* <Park /> */}
+                    <StravaActivities />
+                </div>
+
             </div>
         </div>
     );

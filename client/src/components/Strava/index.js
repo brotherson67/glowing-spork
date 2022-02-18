@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
+import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MapBox from './map';
 import '../../../src/App.css';
-
+import './strava.css';
 function StravaActivities() {
 
     // const navigate = useNavigate();
@@ -130,11 +132,11 @@ function StravaActivities() {
                 <MapBox />
                 <div id="mainActivityCard">
                     <div className="activity" id="activity-name"></div>
-                    <div id="strava-activity"></div>
-                    <div id="activity-distance"></div>
-                    <div id="averageSpeed"></div>
-                    <div id="totalTime"></div>
-                    <div id="elevationGain"></div>
+                    <div id="strava-activity" className="strava-activity"></div>
+                    <div id="activity-distance" className="activity-distance"></div>
+                    <div id="averageSpeed" className="averageSpeed"></div>
+                    <div id="totalTime" className="totalTime"></div>
+                    <div id="elevationGain" className="elevationGain"></div>
                 </div>
             </div>
         </div>

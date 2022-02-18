@@ -5,7 +5,9 @@ import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '400px',
-  height: '400px'
+  height: '400px',
+  marginRight: '300px',
+  padding: '40px'
 };
 
 const center = {
@@ -42,9 +44,12 @@ function MapBox() {
       };
 
   return (
+      <>
     <LoadScript
       googleMapsApiKey="AIzaSyBgSA1rGfdoursQd0XYwmsg6mEk-qohIPc"
     >
+
+    <div className='mapbox-container'>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -59,7 +64,9 @@ function MapBox() {
         />
         </>
       </GoogleMap>
+      </div>
     </LoadScript>
+    </>
   )
 }
 

@@ -58,10 +58,9 @@ function parkDirectionsInfo() {
             
             var liEl = document.createElement("li");
             var aEl = document.createElement('a');
-
+            
             aEl.setAttribute('href',directionsInfo[i].directionsUrl);
             aEl.innerText = directionsInfo[i].directionsInfo;
-            
             liEl.appendChild(aEl);
             ulEl.appendChild(liEl);
         }

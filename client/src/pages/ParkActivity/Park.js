@@ -1,10 +1,4 @@
 import React from 'react';
-import "./parkActivity";
-import "./parks.css"
-// import CitySearch from "./CitySearch";
-import NearbyPlaces from "./ParkButtons/NearbyPlaces"
-// import DirectionsLandMarks from "./ParkButtons/DirectionsLandMarks"
-// import WeatherInfo from "./ParkButtons/WeatherInfo"
 
 const Park = () => {
     return (
@@ -15,13 +9,21 @@ const Park = () => {
                     <p className="panel-heading">
                         Activities & Places Related to your search
                     </p>
-                    {/* <CitySearch /> */}
-                    {/* <p className="panel-tabs"> */}
-                       <NearbyPlaces />
+                    <div className="panel-block">
+                        {/* <!-- <p className="control has-icons-left"> --> */}
+                        <div className="control">
+                            {/* <input id="input-state" className="input" type="text" placeholder="Search using state acronym"></input> */}
+                                {/* <button id="search-city-btn" className="button is-primary has-background-info btn">Search</button> */}
+                                {/* <p className="btn">Click links added to each result for more info from the National Parks Website</p> */}
+                        </div>
+
+                    </div>
+                    <p className="panel-tabs">
+                        <a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a>
                         {/* <!-- <a>Favorites</a> --> */}
-                        {/* <DirectionsLandMarks /> */}
-                        {/* <WeatherInfo /> */}
-                    {/* </p> */}
+                        <a id="directions-btn" className="button btn">Directions & Landmarks</a>
+                        <a id="weather-info-btn" className="button btn">Weather Info</a>
+                    </p>
 
                     <div id="input-container" className="panel-block">
 

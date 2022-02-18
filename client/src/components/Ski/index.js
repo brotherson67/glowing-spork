@@ -12,11 +12,13 @@ function Ski() {
         <div>
             <section>
                 <Hero img={coverImage}/>
-                
+                <p className="panel-heading">
+                        Activities & Places Related to your search
+                    </p>
             </section>
             <CitySearch />
             <SkiBody/>
-            <Park />
+            {/* <Park /> */}
             <StravaActivities />
             <div>
                

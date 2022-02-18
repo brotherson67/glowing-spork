@@ -1,4 +1,5 @@
 import React from 'react';
+import "../parks.css"
 
 function WeatherInfo(){
     return(

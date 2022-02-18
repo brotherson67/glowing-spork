@@ -123,9 +123,11 @@ function StravaActivities() {
     }
     return (
         <div className="app-activities">
+            <h1>Strava Activities</h1>
+            <div className='btn-div'>
+            <button id="strava-btn" onClick={handleClick}>Login with strava</button>
+            </div>
             <div className="app-activities">
-                <button id="strava-btn" onClick={handleClick}>Strava Login</button>
-                <h1>Strava Activities</h1>
                 <MapBox />
                 <div id="mainActivityCard">
                     <div className="activity" id="activity-name"></div>

@@ -37,29 +37,4 @@ li {
   margin-bottom:7%;
 }
 
-#strava-btn{
-  margin: 30px;
-  float: right;
-}
 
-.mapbox-container{
-  display: flex;
-  padding: 30px;
-}
-/* 
-#strava-login{
-  margin: 10px;
-  padding: 10px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  color: #fff;
-} */
-
-#activity-name,
-#strava-activity,
-#activity-distance,
-#averageSpeed,
-#totalTime,
-#elevationGain {
-  display: flex;
-  margin: 10px;
-}

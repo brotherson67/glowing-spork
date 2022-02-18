@@ -80,3 +80,47 @@ export const REMOVE_FRIEND = gql`
     }
   }
 `;
+
+
+// export const SEND_MESSAGE = gql`
+//   mutation sendMessage(
+//     $sendUsername: String!
+//     $receiveUsername: String!
+//     $message: String!
+//     $timestamp: Float!
+//   ) {
+//     sendMessage(
+//       sendUsername: $sendUsername
+//       receiveUsername: $receiveUsername
+//       message: $message
+//       timestamp: $timestamp
+//     ) {
+//       ...messageFields
+//     }
+//   }
+//   fragment messageFields on Message {
+//     sendUsername
+//     receiveUsername
+//     message
+//     timestamp
+//   }
+
+// `
+
+
+
+// export const REAL_TIME = gql`
+//   subscription($receiverUsername: String!) {
+//     newMessage(receiverUsername: $receiverUsername) {
+//       message
+//       senderMail
+//       receiverUsername
+//       id
+//       timestamp
+//       users {
+//         name
+//         username
+//       }
+//     }
+//   }
+// `

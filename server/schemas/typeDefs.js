@@ -34,7 +34,15 @@ const typeDefs = gql`
       username: String
     }
 
-    
+    type Message {
+      id: ID!
+      users: [User]
+      message: String!
+      sendUsername: String!
+      receiveUsername: String!
+      timestamp: Float!
+      
+    }
 
     type Query {
         me: User
@@ -44,14 +52,8 @@ const typeDefs = gql`
         thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
     }
-    type Message {
-      id: ID!
-      message: String!
-      sendUsername: String!
-      receiveUsername: String!
-      timestamp: Float!
-      users: [User]
-    }
+
+    
 
     type Mutation {
       login(email: String!, password: String!): Auth
@@ -61,7 +63,9 @@ const typeDefs = gql`
       addFriend(friendId: ID!): User
       
       userTyping(username: String! receiveUsername: String!): Boolean!
+
       sendMessage(sendUsername: String! receiveUsername: String! message: String! timestamp: Float!): Message!
+
       updateMessage(id: ID! message: String!): Message!
       deleteMessage(id: String!): Boolean!
       

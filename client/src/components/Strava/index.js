@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
+// import { index } from '../../../../server/models/Reaction';
 import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
@@ -88,31 +89,34 @@ function StravaActivities() {
                     return res.json();
                 })
                 .then(data => {
+                    setActivityData(data);
                     console.log(data);
 
                     // dataStrava = data;
                     // var htmlContent = "";
-                    for (let i = 0; i < 5; i++) {
-                        var cardDiv = document.getElementById('mainActivityCard');
+                    // for (let i = 0; i < 5; i++) {
+                    //     console.log(data[i].map.summary_polyline);
+                    //     var cardDiv = document.getElementById('mainActivityCard');
 
-                        var card = document.createElement('div');
-                        card.innerHTML = 'Activity Name: ' + data[i].name;;
-                        var card2 = document.createElement('div');
-                        card2.innerHTML = 'Distance: ' + data[i].distance;
-                        var card3 = document.createElement('div');
-                        card3.innerHTML = 'Average Speed: ' + data[i].average_speed;
-                        var card4 = document.createElement('div');
-                        card4.innerHTML = 'Total Time: ' + data[i].elapsed_time;
-                        var card5 = document.createElement('div');
-                        card5.innerHTML = 'Total Elevation Gain: ' + data[i].total_elevation_gain;
+                    //     var card = document.createElement('div');
+                    //     card.innerHTML = 'Activity Name: ' + data[i].name;;
+                    //     var card2 = document.createElement('div');
+                    //     card2.innerHTML = 'Distance: ' + data[i].distance;
+                    //     var card3 = document.createElement('div');
+                    //     card3.innerHTML = 'Average Speed: ' + data[i].average_speed;
+                    //     var card4 = document.createElement('div');
+                    //     card4.innerHTML = 'Total Time: ' + data[i].elapsed_time;
+                    //     var card5 = document.createElement('div');
+                    //     card5.innerHTML = 'Total Elevation Gain: ' + data[i].total_elevation_gain;
                         
-                        cardDiv.appendChild(card);
-                        cardDiv.appendChild(card2);
-                        cardDiv.appendChild(card3);
-                        cardDiv.appendChild(card4);
-                        cardDiv.appendChild(card5);
-                    }
-                    return data;
+                    //     cardDiv.appendChild(card);
+                    //     cardDiv.appendChild(card2);
+                    //     cardDiv.appendChild(card3);
+                    //     cardDiv.appendChild(card4);
+                    //     cardDiv.appendChild(card5);
+
+                    // }
+                    // return data;
                 })
 
         }
@@ -144,14 +148,32 @@ function StravaActivities() {
         <div className="app-activities">
           <div className="activity-box" id="activity">
           <h1 className="activity-title">Strava Stats</h1>
-            <div className="activity-name" id="activity-name"></div>
+          {activityData.map((data, index) => {
+                return (
+                    <>
+                    <div className="activity-name" id="activity-name">{data.name}</div>
+                    <div className="activity-distance" id="activity-distance">{data.distance}</div>
+                    <div className="averageSpeed" id="averageSpeed">{data.average_speed}</div>
+                    <div className="totalTime" id="totalTime">{data.elapsed_time}</div>
+                    <div className="elevationGain" id="elevationGain">{data.total_elevation_gain}</div>
+                    <div className="activity-map" id="activity-map">
+                    </div>
+                    <MapBox polyline={data.map.summary_polyline}/>
+                    </>
+                )
+
+
+
+
+          })}
+            {/* <div className="activity-name" id="activity-name"></div>
             <div className="activity-distance" id="activity-distance"></div>
             <div className="averageSpeed" id="averageSpeed"></div>
             <div className="totalTime" id="totalTime"></div>
             <div className="elevationGain" id="elevationGain"></div>
             <div className="activity-map" id="activity-map">
             </div>
-            <MapBox />
+            <MapBox /> */}
         <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
         </div>

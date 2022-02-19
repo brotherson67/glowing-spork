@@ -1,10 +1,15 @@
 import react from 'react';
-
-function DirectionsLandMarks(){
-    return(
+import "../parkActivity"
+function DirectionsLandMarks() {
+    return (
         <div>
-            <a id="directions-btn" className="button btn">Directions & Landmarks</a>
-            <div id="input-container" className="panel-block"></div>
+            <div>
+                <a id="directions-btn" className="button btn">Directions & Landmarks</a>
+
+            </div>
+            <div>
+                <div className="panel-block input-container"></div>
+            </div>
         </div>
     )
 }

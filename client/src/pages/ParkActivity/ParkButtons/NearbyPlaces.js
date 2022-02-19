@@ -4,8 +4,8 @@ import "../parkActivity"
 function NearbyPlaces() {
     return (
         <div>
-            <a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a>
-            <div id="input-container" className="panel-block"></div>
+            <a id="nearby-places-btn" className="is-active button btn">Nearby</a>
+            <div className="panel-block input-container"></div>
         </div>
     );
 }

@@ -4,8 +4,8 @@ const Park = () => {
     return (
         <div>
             {/* <!-- Start of the places list/form --> */}
-            <div id="activity-box" className="box">
-                <nav className="panel white-space">
+            <div id="activity-box" className="box" style={{ display: 'flex', alignContent: 'center' }}>
+                <nav className="panel white-space" style={{ display: 'flex', alignContent: 'center' }}>
                     <p className="panel-heading">
                         Activities & Places Related to your search
                     </p>
@@ -13,16 +13,24 @@ const Park = () => {
                         {/* <!-- <p className="control has-icons-left"> --> */}
                         <div className="control">
                             {/* <input id="input-state" className="input" type="text" placeholder="Search using state acronym"></input> */}
-                                {/* <button id="search-city-btn" className="button is-primary has-background-info btn">Search</button> */}
-                                {/* <p className="btn">Click links added to each result for more info from the National Parks Website</p> */}
+                            {/* <button id="search-city-btn" className="button is-primary has-background-info btn">Search</button> */}
+                            {/* <p className="btn">Click links added to each result for more info from the National Parks Website</p> */}
                         </div>
 
                     </div>
                     <p className="panel-tabs">
-                        <a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a>
+                        {/* <button className="is-active button btn">
+                            <a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a>
+                        </button> */}
+
                         {/* <!-- <a>Favorites</a> --> */}
-                        <a id="directions-btn" className="button btn">Directions & Landmarks</a>
-                        <a id="weather-info-btn" className="button btn">Weather Info</a>
+                        {/* <button>
+                            <a id="directions-btn" className="button btn">Directions & Landmarks</a>
+                        </button> */}
+                        {/* <button>
+                            <a id="weather-info-btn" className="button btn">Weather Info</a>
+                        </button> */}
+
                     </p>
 
                     <div id="input-container" className="panel-block">

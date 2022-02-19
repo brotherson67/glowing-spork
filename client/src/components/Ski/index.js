@@ -20,14 +20,14 @@ function Ski() {
 
             <SkiBody />
 
-            <div>
+            {/* <div>
                 <div>
                     <div id="input-container" className="panel-block"></div>
                     {/* <Park /> */}
-                    <StravaActivities />
-                </div>
+                    {/* <StravaActivities /> */}
+                {/* </div> */}
 
-            </div>
+            {/* </div> */} 
         </div>
     );
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 // import "../../pages/activity.css"
-import {parkWeatherInfo } from "../../pages/ParkActivity/parkActivity.js";
+import { parkWeatherInfo } from "../../pages/ParkActivity/parkActivity.js";
 // import "../../pages/ParkActivity/parks.css"
 import Park from "../../pages/ParkActivity/Park"
+// import SearchInputPanel from '../../pages/ParkActivity/ParkButtons/SearchInputPanel'
 import NearbyPlaces from "../../pages/ParkActivity/ParkButtons/NearbyPlaces"
 import DirectionsLandMarks from "../../pages/ParkActivity/ParkButtons/DirectionsLandMarks"
 import WeatherInfo from "../../pages/ParkActivity/ParkButtons/WeatherInfo"
@@ -10,30 +11,35 @@ import WeatherInfo from "../../pages/ParkActivity/ParkButtons/WeatherInfo"
 function SkiBody() {
   return (
     <div>
-    <div className="container">
-    <div className="Body-box">
-      {/* <Park /> */}
-       <div className="Body-boxOuter">
-        <NearbyPlaces />
-        <div className="Body-boxInner"><a id="nearby-places-btn" className="is-active button btn">Nearby Places, Images & Description</a></div>
-      </div>
-      <div className="Body-boxOuter">
-        <DirectionsLandMarks />
-         <div className="Body-boxInner"><a id="directions-btn" className="button btn">Directions & Landmarks</a></div>
-      </div>
-      <div className="Body-boxOuter">
-        <WeatherInfo />
-        <div className="Body-boxInner">
-        <a id="weather-info-btn" className="button btn">Weather Info</a>
-        </div>
-      </div>
-     
-    </div>
-    
+      <div className="container">
+        <div className="Body-box">
+          {/* <Park /> */}
+          {/* <SearchInputPanel /> */}
+          <div className="Body-boxOuter">
 
-  </div>
-  
-  </div>
+            <div className="Body-boxInner">
+              <NearbyPlaces />
+            </div>
+          </div>
+          <div className="Body-boxOuter">
+
+            <div className="Body-boxInner">
+              <DirectionsLandMarks />
+            </div>
+          </div>
+          <div className="Body-boxOuter">
+
+            <div className="Body-boxInner">
+              <WeatherInfo />
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
   );
 }
 

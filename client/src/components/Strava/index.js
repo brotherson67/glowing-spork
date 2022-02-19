@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
+// import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 // import BikeBody from '../components/Bike/BikeBody';
 import MapBox from './map';

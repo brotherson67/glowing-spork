@@ -3,6 +3,8 @@ import TinderCard from 'react-tinder-card';
 import ReactDOM from "react";
 import { Navigate, useParams } from 'react-router-dom';
 
+
+
 // import ThoughtForm from '../components/ThoughtForm';
 // import PostList from '../components/Posts';
 import FriendList from '../FriendList';
@@ -15,7 +17,7 @@ import { QUERY_USER, QUERY_ME, QUERY_USER_IMG } from '../../utils/queries';
 import { ADD_FRIEND } from '../../utils/mutations';
 import './cards.css';
 import Auth from '../../utils/auth';
-
+const { Faker } = require('@faker-js/faker');
 
 function TinderCards(props, { onTinderCardChange }) {
     const { username: userParam, image: imageParam } = useParams();
@@ -67,6 +69,7 @@ const handleClick = async () => {
                     />
                 </div>
             <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
+            {/* <img src={Faker.image.avatar()} alt={'avatar'}/> */}
                     <TinderCard
                         className="swipe"
                         key={users.username}

@@ -13,7 +13,7 @@
 .card-container {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 20vh;
 }
 
 .swipe {
@@ -23,5 +23,11 @@
 .card > h3 {
     position: absolute;
     bottom: 10px;
-    color: blue;
+    color: black;
+}
+
+.tinder-card-header{
+    color: #29335c;
+    margin-bottom: 80vh;
+    display: block;
 }

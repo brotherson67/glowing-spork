@@ -4,7 +4,7 @@ const { User, Thought, Donation, Message } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { PubSub, withFilter } = require("graphql-yoga");
-const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
+// const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
 
 const chats = [];
 const CHAT_CHANNEL = "CHAT_CHANNEL";

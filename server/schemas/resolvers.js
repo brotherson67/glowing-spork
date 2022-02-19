@@ -4,7 +4,7 @@ const { User, Thought, Donation, Message } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { PubSub, withFilter } = require("graphql-yoga");
-// const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const chats = [];
 const CHAT_CHANNEL = "CHAT_CHANNEL";
@@ -63,32 +63,28 @@ const resolvers = {
     users: async ({ sendUsername }) => {
       return User.find({ username: sendUsername });
     },
-    // donate: async (parent, args) => {
-    //   const order = new Order({ donation: args.products });
-    //   const { products } = await order.populate("products").execPopulate();
-    //   const line_items = [];
+    donate: async (parent, args) => {
+      const line_items = [];
 
-    //   for (let i = 0; i < products.length; i++) {
-    //     // generate product id
-    //     const product = await stripe.products.create({
-    //       name: products[i].name,
-    //       description: products[i].description,
-    //     });
+      // generate product id
+      const product = await stripe.products.create({
+        name: products.name,
+        description: products.description,
+      });
 
-    //     // generate price id using the product id
-    //     const price = await stripe.prices.create({
-    //       product: product.id,
-    //       unit_amount: products[i].price * 100,
-    //       currency: "usd",
-    //     });
+      // generate price id using the product id
+      const price = await stripe.prices.create({
+        product: product.id,
+        unit_amount: products.price * 100,
+        currency: "usd",
+      });
 
-    //     // add price id to the line items array
-    //     line_items.push({
-    //       price: price.id,
-    //       quantity: 1,
-    //     });
-    //   }
-    // },
+      // add price id to the line items array
+      line_items.push({
+        price: price.id,
+        quantity: 1,
+      });
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {

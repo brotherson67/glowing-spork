@@ -1,28 +1,26 @@
 .chat {
     display: flex;
     align-items: center;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
     padding: 40px;
     height: 150px;
     border-bottom: 1px solid lightgrey;
-    background-color: aliceblue;
 }
 a{
     text-decoration: none;
     color: inherit;
 }
 
-/* .chat__details {
-    /* flex: 1; */
-/* } */ 
+.chat__details {
+    flex: 1;
+}
 .chat__details > p {
     color: gray;
     /* background-color: lightgrey; */
 }
 
-.chat__img{
-    margin-right: 20px;
-    color: gray;
+.chat__image{
+    margin-right: 30px;
     
 }
 

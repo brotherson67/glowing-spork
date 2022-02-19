@@ -64,6 +64,11 @@ const Navbar = ({ toggle }) => {
                                         Trail Run
                                     </NavLink>
                                 </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <NavLink to="/strava">
+                                        Strava Data
+                                    </NavLink>
+                                </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </NavMenu>

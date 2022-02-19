@@ -6,7 +6,7 @@ import '../../utils/strava.js';
 import StravaActivities from '../Strava';
 
 
-function Bike(data) {
+function Bike() {
     return (
         <div>
             <section>

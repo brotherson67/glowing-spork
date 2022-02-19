@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import stripe from "stripe";
+// import stripe from "stripe";
 import "./Donations.css";
 
-const amountToDonate = document.getElementById("donationAmount");
+// const amountToDonate = document.getElementById("donationAmount");
 
 export default function DonationModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);

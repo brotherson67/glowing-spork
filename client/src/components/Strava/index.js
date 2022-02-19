@@ -161,19 +161,8 @@ function StravaActivities() {
                     <MapBox polyline={data.map.summary_polyline}/>
                     </>
                 )
-
-
-
-
           })}
-            {/* <div className="activity-name" id="activity-name"></div>
-            <div className="activity-distance" id="activity-distance"></div>
-            <div className="averageSpeed" id="averageSpeed"></div>
-            <div className="totalTime" id="totalTime"></div>
-            <div className="elevationGain" id="elevationGain"></div>
-            <div className="activity-map" id="activity-map">
-            </div>
-            <MapBox /> */}
+           
         <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
         </div>

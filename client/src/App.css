@@ -37,29 +37,26 @@ li {
   margin-bottom:7%;
 }
 
-#strava-btn{
-  margin: 30px;
+#profile-header,
+.friend-h3 {
+  color: #253c78;
+  font-weight: bolder;
+}
+
+#add-btn{
   float: right;
-}
-
-.mapbox-container{
-  display: flex;
-  padding: 30px;
-}
-/* 
-#strava-login{
-  margin: 10px;
-  padding: 10px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 20px;
+  background-color: #253c78;
   color: #fff;
-} */
+  margin-right: 20px;
+}
 
-#activity-name,
-#strava-activity,
-#activity-distance,
-#averageSpeed,
-#totalTime,
-#elevationGain {
-  display: flex;
-  margin: 10px;
+#friends{
+  color: #253c78;
+  font-weight: bolder;
+  border: 1px solid #253c78;
+}
+
+.friend-h3{
+
 }

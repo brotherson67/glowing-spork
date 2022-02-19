@@ -142,19 +142,16 @@ function StravaActivities() {
     return (
       <div className="app-activities">
         <div className="app-activities">
-  
           <div className="activity-box" id="activity">
-          <h1 className="activity-title">Strava Activities</h1>
+          <h1 className="activity-title">Strava Stats</h1>
             <div className="activity-name" id="activity-name"></div>
             <div className="activity-distance" id="activity-distance"></div>
             <div className="averageSpeed" id="averageSpeed"></div>
             <div className="totalTime" id="totalTime"></div>
             <div className="elevationGain" id="elevationGain"></div>
             <div className="activity-map" id="activity-map">
-            <MapBox />
             </div>
-  
-  
+            <MapBox />
         <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
         </div>

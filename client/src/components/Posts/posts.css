@@ -8,3 +8,21 @@
 .color-the-text:hover{
     background-color: rgba(161, 161, 161, 0.226);
 }
+
+.card-header{
+    color: #253c78;
+    font-weight: bolder;
+}
+
+.card-body {
+    color: #253c78;
+    font-weight: bolder;
+}
+
+#fist-bump-card{
+
+}
+
+a {
+    color: #253c78;
+}

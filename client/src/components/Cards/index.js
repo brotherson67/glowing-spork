@@ -44,7 +44,8 @@ function TinderCards({ onTinderCardChange }) {
     return (
         <div>
            
-            <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
+            <div className="card-container" onClick={onTinderCardChange}>
+                <h1 className="tinder-card-header"></h1>
                 {people.map(person => (
                     <TinderCard
                         className="swipe"

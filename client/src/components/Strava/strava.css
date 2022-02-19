@@ -1,6 +1,6 @@
-/* .app-activities { */
+.app-activities {
   /* display: flex; */
-  /* padding: 15px;
+  padding: 15px;
 }
 .mainActivityCard {
   display: flex;
@@ -10,7 +10,7 @@
   background-color: aliceblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-} */
+}
 /* .map-component {
   /* padding: 20px; */
   /* flex: 1; */
@@ -22,14 +22,29 @@
 /* .map-divInner {
   
 } */
-/* .activity-title {
+.activity-title {
   padding: 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .activity-name .card {
   padding: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);}
+.app-activities{
+    display: flex;
+    padding: 15px;
+}
+.activity-box{
+flex-direction: column; 
+padding: 20px;
+flex: 1;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+} 
+
+.activity-title{
+padding: 5px;
+border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .activity-distance {
@@ -61,4 +76,4 @@
 }
 .button-stravaLogin{
 padding: 5px; 
-}   */
+ }  

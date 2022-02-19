@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 // import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 // import { index } from '../../../../server/models/Reaction';
-// import MapBox from './map';
+import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
 function StravaActivities() {
@@ -107,7 +107,7 @@ function StravaActivities() {
         <div className="app-activities">
           <div className="activity-box" id="activity">
           <h1 className="activity-title">Strava Stats</h1>
-          {activityData.map((data, index) => {
+          {activityData.map((data) => {
                 return (
                     <>
                     <div className="activity-name" id="activity-name">{data.name}</div>
@@ -115,9 +115,9 @@ function StravaActivities() {
                     <div className="averageSpeed" id="averageSpeed">{data.average_speed}</div>
                     <div className="totalTime" id="totalTime">{data.elapsed_time}</div>
                     <div className="elevationGain" id="elevationGain">{data.total_elevation_gain}</div>
-                    <div className="activity-map" id="activity-map">
-                    </div>
-                    {/* <MapBox polyline={data.map.summary_polyline}/> */}
+                    <MapBox polyline={data.map.summary_polyline}/>
+                    
+                    
                     </>
                 )
 

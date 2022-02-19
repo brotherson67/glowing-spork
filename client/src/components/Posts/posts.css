@@ -22,4 +22,19 @@
 
 .text-dark{
     padding: 20px;
+    color: #253c78;
+    font-weight: bolder;
+}
+
+.card-body {
+    color: #253c78;
+    font-weight: bolder;
+}
+
+/* #fist-bump-card{
+
+} */
+
+a {
+    color: #253c78;
 }

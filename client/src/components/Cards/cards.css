@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 20vh;
 }
 
 .swipe {
@@ -31,9 +31,11 @@
 .card > h3 {
     /* position: absolute; */
     bottom: 10px;
-    color: blue;
+    color: black;
 }
 
-.box{
-    padding: 50px;
+.tinder-card-header{
+    color: #29335c;
+    margin-bottom: 80vh;
+    display: block;
 }

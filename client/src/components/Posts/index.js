@@ -26,13 +26,13 @@ const PostList = ({ thoughts, title }) => {
               >
                 {thought.username}
               </Link>{''}
-              recent routes {thought.createdAt}
+                's recent routes {thought.createdAt}
             </p>
 
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>
                 <p>{thought.thoughtText}</p>
-                <p className="mb-0">
+                <p className="mb-0" id="fist-bump-card">
                   Fist bumps: {thought.reactionCount} || Click to{' '}
                   {thought.reactionCount ? 'join' : 'comment on'} this activity!
                 </p>

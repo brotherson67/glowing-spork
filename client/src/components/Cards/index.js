@@ -21,15 +21,17 @@ import Auth from '../../utils/auth';
 const { Faker } = require('@faker-js/faker');
 
 function TinderCards(props, { onTinderCardChange }) {
-    
+    const { username: userParam, image: imageParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
 
-    const { loading, data} = useQuery(QUERY_ME, QUERY_USER, QUERY_USER_IMG);
+    const { loading, data} = useQuery(userParam ? QUERY_ME : QUERY_USER,
+        {variables: { username: userParam }},
+        );
     // const {loading, data, error} = useQuery(QUERY_USER_IMG);
     console.log(loading)
    
     const [user, setUsers] = useState([data?.me || data?.user || {}]);
-    const { username: userParam, image: imageParam } = useParams();
+    
     // console.log(JSON.stringify(error, null, 2))
     // console.log(data?.me);
     
@@ -58,17 +60,25 @@ const handleClick = async () => {
     }
 };
     return (
+        <div className="container">
+
         <div className="box">
             <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+          Viewing potential friends
         </h2>
+        <div>{user.username}</div>
+        <FriendList
+            username={user.username}
+            friendCount={user.friendCount}
+            friends={user.friends}
+          />
                     <button onClick={handleClick}>
                         Add Friend
                     </button>
                 {/* )} */}
-           <div className="box">
+           {/* <div className="box">
                     <FindFriends />
-                </div>
+                </div> */}
             <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
             
             {user.map((data, index) => {
@@ -89,16 +99,13 @@ const handleClick = async () => {
             
             )}
             <div className="col-12 col-lg-3 mb-3">
-          <FriendList
-            username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
-          />
+          
         </div>
                    
                         
                 
             </div>
+        </div>
         </div>
     );
 }

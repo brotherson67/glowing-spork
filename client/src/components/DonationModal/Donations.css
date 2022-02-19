@@ -1,12 +1,8 @@
-Modal {
-  align-items: center;
-}
-
-h2 {
-  color: red;
-}
-
 #donationModal {
   margin: auto;
   text-align: center;
+}
+
+input {
+  width: 30vw;
 }

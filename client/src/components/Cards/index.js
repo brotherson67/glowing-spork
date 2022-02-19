@@ -1,58 +1,71 @@
 import React, { useState, useEffect } from "react";
 import TinderCard from 'react-tinder-card';
+import ReactDOM from "react";
+import { Navigate, useParams } from 'react-router-dom';
+
+// import ThoughtForm from '../components/ThoughtForm';
+// import PostList from '../components/Posts';
+// import FriendList from '../components/FriendList';
 // import database from '../../firebase';
 // import './cards.css';
-import ReactDOM from "react";
-import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME_BASIC, QUERY_USER_IMG } from '../../utils/queries';
+
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_USER, QUERY_ME, QUERY_USER_IMG } from '../../utils/queries';
+
+import { ADD_FRIEND } from '../../utils/mutations';
 import './cards.css';
+import Auth from '../../utils/auth';
 
 
+function TinderCards(props, { onTinderCardChange }) {
+    const { username: userParam } = useParams();
+    const [addFriend] = useMutation(ADD_FRIEND);
 
-function TinderCards({ onTinderCardChange }) {
-    const {loading, data, error} = useQuery(QUERY_USER_IMG);
+    const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    });
+    // const {loading, data, error} = useQuery(QUERY_USER_IMG);
     console.log(loading)
     console.log(JSON.stringify(error, null, 2))
     console.log(data);
-    const [people, setPeople] = useState([
+    const { data: userData } = useQuery(QUERY_USER_IMG);
+    const [users, setUsers] = useState([
         {
+            // user: ,
             name: "Scooby",
-            url: "https://static.wikia.nocookie.net/scoobydoo/images/5/53/Scooby-Doo.png/revision/latest?cb=20211222210718",
+            image: "https://static.wikia.nocookie.net/scoobydoo/images/5/53/Scooby-Doo.png/revision/latest?cb=20211222210718",
         },
         {
             name: 'shaggy',
-            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+            image: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
         },
         {
             name: 'dianne',
-            url: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
+            image: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
         },
     ]);
-    const { data: userData } = useQuery(QUERY_USER_IMG);
-    const users = data?.users || [];
-    console.log(people.users)
+    
+    // const users = data?.users || [];
+    // console.log(users)
     console.log(users)
-    console.log(data)
-    console.log(loading)
-    console.log(data)
     // const user = query.username;
     // console.log(user)
-    // useEffect(() => {
+    useEffect(() => {
         
-    // }, []);
+    }, []);
 
     return (
-        <div>
+        <div className="box">
            
             <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
-                {people.map(person => (
+                {users.map(person => (
                     <TinderCard
                         className="swipe"
                         key={person.name}
                         preventSwipe={['up', 'down']}
                     >
                         <div
-                            style={{ backgroundImage: `url(${person.url})` }}
+                            style={{ backgroundImage: `url(${person.image})` }}
                             className="tinder-card">
                             <h3>{person.name}</h3>
                         </div>

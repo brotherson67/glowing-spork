@@ -18,34 +18,21 @@ import Auth from '../../utils/auth';
 
 
 function TinderCards(props, { onTinderCardChange }) {
-    const { username: userParam } = useParams();
+    const { username: userParam, image: imageParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
 
     const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam }
+        variables: { username: userParam, image: imageParam}
     });
     // const {loading, data, error} = useQuery(QUERY_USER_IMG);
     console.log(loading)
     console.log(JSON.stringify(error, null, 2))
     console.log(data);
-    const { data: userData } = useQuery(QUERY_USER_IMG);
-    const [users, setUsers] = useState([
-        {
-            // user: ,
-            name: "Scooby",
-            image: "https://static.wikia.nocookie.net/scoobydoo/images/5/53/Scooby-Doo.png/revision/latest?cb=20211222210718",
-        },
-        {
-            name: 'shaggy',
-            image: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
-        },
-        {
-            name: 'dianne',
-            image: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/5/53/Scooby-Doo.png/revision/latest?cb=20171217004943",
-        },
-    ]);
+    const [users, setUsers] = useState([{
+        username: props
+    }]);
     
-    // const users = data?.users || [];
+    
     // console.log(users)
     console.log(users)
     // const user = query.username;

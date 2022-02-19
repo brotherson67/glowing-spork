@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 
 // import ThoughtForm from '../components/ThoughtForm';
 // import PostList from '../components/Posts';
-// import FriendList from '../components/FriendList';
+import FriendList from '../FriendList';
 // import database from '../../firebase';
 // import './cards.css';
 
@@ -21,16 +21,14 @@ function TinderCards(props, { onTinderCardChange }) {
     const { username: userParam, image: imageParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
 
-    const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    const { loading, data} = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam, image: imageParam}
     });
     // const {loading, data, error} = useQuery(QUERY_USER_IMG);
     console.log(loading)
-    console.log(JSON.stringify(error, null, 2))
-    console.log(data);
-    const [users, setUsers] = useState([{
-        username: props
-    }]);
+    // console.log(JSON.stringify(error, null, 2))
+    // console.log(data?.me);
+    const [users, setUsers] = useState([]);
     
     
     // console.log(users)
@@ -38,26 +36,49 @@ function TinderCards(props, { onTinderCardChange }) {
     // const user = query.username;
     // console.log(user)
     useEffect(() => {
-        
-    }, []);
-
+        if(!loading && data){
+            setUsers(data);
+        }
+    }, [loading, data]);
+//     if (loading) return 'Loading...'               //your component's return should always be after all hook calls//
+// if (error) return `Error! ${error.message}`
+// }
+const handleClick = async () => {
+    try {
+        await addFriend({
+            variables: { id: users._id },
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
     return (
         <div className="box">
-           
+            {userParam && (
+                    <button className="btn ml-auto" onClick={handleClick}>
+                        Add Friend
+                    </button>
+                )}
+           <div className="col-12 col-lg-3 mb-3">
+                    <FriendList
+                        username={users.username}
+                        friendCount={users.friendCount}
+                        friends={users.friends}
+                    />
+                </div>
             <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
-                {users.map(person => (
                     <TinderCard
                         className="swipe"
-                        key={person.name}
+                        key={users.username}
                         preventSwipe={['up', 'down']}
                     >
                         <div
-                            style={{ backgroundImage: `url(${person.image})` }}
+                            style={{ backgroundImage: `url(${users.image})` }}
                             className="tinder-card">
-                            <h3>{person.name}</h3>
+                            <h3>{users.username}</h3>
                         </div>
                     </TinderCard>
-                ))}
+                
             </div>
         </div>
     );

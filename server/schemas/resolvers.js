@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const { User, Thought, Donation, Message } = require("../models");
+const { User, Thought, Checkout, Message } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { PubSub, withFilter } = require("graphql-yoga");
@@ -8,37 +8,24 @@ const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
 
 const chats = [];
 const CHAT_CHANNEL = "CHAT_CHANNEL";
-//in resolvers you write the code for what the method is actually doing
-//query must match typedef definition
+
 const resolvers = {
   Query: {
     users: () => User.find(),
     messages: () => Message.find(),
-    // parent: hold the reference to the resolver that executed the nested resolver function
-    // args: object of all of the values passed into a query or mutation request as parameters. we destructure the username parameter out to be used.
     thoughts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
     },
-    // place this inside of the `Query` nested object right after `thoughts`
     thought: async (parent, { _id }) => {
       return Thought.findOne({ _id });
     },
-    // get all users
     users: async () => {
       return User.find()
         .select("-__v -password")
         .populate("friends")
         .populate("thoughts");
     },
-    // get all messages
-    // users: async () => {
-    //   return User.find()
-    //     .select('-__v -password')
-    //     .populate('friends')
-    //     .populate('thoughts');
-    // },
-    // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-__v -password")
@@ -63,31 +50,30 @@ const resolvers = {
     users: async ({ sendUsername }) => {
       return User.find({ username: sendUsername });
     },
+    donations: async () => {},
     donate: async (parent, args) => {
-      // create variable that represents the donation
-      // const donation = new Donation({ donationAmount: args.donationAmount });
+      const checkout = new Checkout({ donations: args.donations });
+      const { donations } = await checkout.populate("donations").execPopulate();
 
       const line_items = [];
 
-      // generate product id
-      const product = await stripe.products.create({
-        name: "Donation",
-        description: "A very generous donation!",
-      });
+      for (let i = 0; i < donations.length; i++) {
+        const product = await stripe.products.create({
+          name: donations[i].name,
+          description: donations[i].description,
+        });
 
-      // generate price id using the product id
-      const price = await stripe.prices.create({
-        product: product.id,
-        unit_amount: donation.donationAmount * 100,
-        currency: "usd",
-      });
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: donations[i].donationAmount * 100,
+          currency: "usd",
+        });
 
-      // add price id to the line items array
-      line_items.push({
-        price: price.id,
-        quantity: 1,
-      });
-
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
@@ -201,37 +187,5 @@ const resolvers = {
       return true;
     },
   },
-  // Subscription: {
-  //   newMessage: {
-  //     subscribe: withFilter(
-  //       () => pubsub.asyncIterator("newMessage"),
-  //       (payload, variables) => {
-  //         return (
-  //           payload.receiveUsername === variables.receiveUsername
-  //         )
-  //       }
-  //     ),
-  //   },
-  //   newUser: {
-  //     subscribe: (_, { }, { pubsub }) => {
-  //       return pubsub.asyncIterator("newUser")
-  //     },
-  //   },
-  //   oldUser: {
-  //     subscribe: (_, { }, { pubsub }) => {
-  //       return pubsub.asyncIterator("oldUser")
-  //     },
-  //   },
-  //   userTyping: {
-  //     subscribe: withFilter(
-  //       () => pubsub.asyncIterator("userTyping"),
-  //       (payload, variables) => {
-  //         return (
-  //           payload.receiveUsername === variables.receiveUsername
-  //         )
-  //       }
-  //     ),
-  //   },
-  // },
 };
 module.exports = resolvers;

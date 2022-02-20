@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const donationSchema = new Schema({
+  name: {
+    type: String,
+  },
   donationDate: {
     type: Date,
     default: Date.now,

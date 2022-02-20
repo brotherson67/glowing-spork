@@ -9,6 +9,9 @@ const donationSchema = new Schema({
     type: Number,
     default: 0,
   },
+  donationDescription: {
+    type: String,
+  },
 });
 
 const Donation = model("Donation", donationSchema);

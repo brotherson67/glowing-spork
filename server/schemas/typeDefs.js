@@ -25,7 +25,7 @@ const typeDefs = gql`
     reactions: [Reaction]
   }
 
-  type Donation {
+  type Checkout {
     session: ID
   }
 
@@ -52,7 +52,7 @@ const typeDefs = gql`
     user(username: String!): User
     thoughts(username: String): [Thought]
     thought(_id: ID!): Thought
-    donate(products: [ID]!): Donation
+    donate: Checkout
   }
 
   type Mutation {

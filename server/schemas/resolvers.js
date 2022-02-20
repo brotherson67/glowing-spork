@@ -4,7 +4,7 @@ const { User, Thought, Donation, Message } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { PubSub, withFilter } = require("graphql-yoga");
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
 
 const chats = [];
 const CHAT_CHANNEL = "CHAT_CHANNEL";
@@ -64,18 +64,21 @@ const resolvers = {
       return User.find({ username: sendUsername });
     },
     donate: async (parent, args) => {
+      // create variable that represents the donation
+      // const donation = new Donation({ donationAmount: args.donationAmount });
+
       const line_items = [];
 
       // generate product id
       const product = await stripe.products.create({
-        name: products.name,
-        description: products.description,
+        name: "Donation",
+        description: "A very generous donation!",
       });
 
       // generate price id using the product id
       const price = await stripe.prices.create({
         product: product.id,
-        unit_amount: products.price * 100,
+        unit_amount: donation.donationAmount * 100,
         currency: "usd",
       });
 
@@ -84,6 +87,17 @@ const resolvers = {
         price: price.id,
         quantity: 1,
       });
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        success_url:
+          "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: "https://example.com/cancel",
+      });
+
+      return { session: session.id };
     },
   },
   Mutation: {

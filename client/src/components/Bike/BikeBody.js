@@ -1,20 +1,39 @@
 import React from 'react';
-import StravaActivities from '../../pages/stravaTestCode';
+import NationalParks from '../../pages/ParkActivity/NationalParks';
 
 
 
 
 function BikeBody() {
   return (
-    <div className="container">
-        <div>
-          <h1>
-            <StravaActivities />
-          </h1>
-          <h2>Activity name: </h2>
-        
+    <div>
+      <div className="container">
+        <div className="Body-box">
+          {/* <Park /> */}
+          {/* <SearchInputPanel /> */}
+          {/* <div className="Body-boxOuter">
+
+            <div className="Body-boxInner">
+              <NearbyPlaces />
+            </div>
+          </div>
+          <div className="Body-boxOuter">
+
+            <div className="Body-boxInner">
+              <DirectionsLandMarks />
+            </div>
+          </div>
+          <div className="Body-boxOuter">
+
+            <div className="Body-boxInner">
+              <WeatherInfo />
+            </div>
+          </div> */}
+          <NationalParks />
         </div>
-        <div>div 2 lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet</div>
+
+
+      </div>
 
     </div>
   

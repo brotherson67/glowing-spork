@@ -30,7 +30,8 @@ function TinderCards(props, { onTinderCardChange }) {
     // const {loading, data, error} = useQuery(QUERY_USER_IMG);
     console.log(loading)
    
-    const [user, setUsers] = useState([data?.me || data?.user || {}]);
+    const [user, setUser] = useState([data?.me  || {}]);
+    const [users, getUsers] = useState([data?.user])
     
     // console.log(JSON.stringify(error, null, 2))
     // console.log(data?.me);

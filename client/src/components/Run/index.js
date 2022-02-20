@@ -2,10 +2,8 @@ import React from 'react';
 import RunBody from './RunBody';
 import coverImage from "../../assets/images/IMG_1939.JPEG";
 import Hero from '../Hero';
-import StravaActivities from '../Strava';
-import Park from '../../pages/ParkActivity/Park';
-import CitySearch from '../../pages/ParkActivity/CitySearch'
-
+import NationalParks from '../../pages/ParkActivity/NationalParks';
+// import CitySearch from "../../pages/ParkActivity/CitySearch"
 
 function Run() {
     return (
@@ -14,7 +12,7 @@ function Run() {
                 <Hero img={coverImage} />
                 <p className="panel-heading">
                     Activities & Places Related to your search
-                    <CitySearch />
+                    {/* <CitySearch /> */}
                 </p>
             </section>
 

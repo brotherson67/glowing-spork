@@ -2,9 +2,9 @@ import React from 'react';
 import SkiBody from './SkiBody';
 import coverImage from "../../assets/images/IMG_1.jpg";
 import Hero from '../Hero';
-import StravaActivities from '../Strava';
-import Park from '../../pages/ParkActivity/Park';
-import CitySearch from '../../pages/ParkActivity/CitySearch'
+
+
+// import CitySearch from '../../pages/ParkActivity/CitySearch'
 
 
 function Ski() {
@@ -14,7 +14,7 @@ function Ski() {
                 <Hero img={coverImage} />
                 <p className="panel-heading">
                     Activities & Places Related to your search
-                    <CitySearch />
+                    {/* <CitySearch /> */}
                 </p>
             </section>
 

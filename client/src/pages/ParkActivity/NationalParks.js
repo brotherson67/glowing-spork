@@ -3,14 +3,11 @@ import React, { useState, useEffect } from 'react';
 
 // var to connect to input in search 
 import Body from './Body'
-
+import "./parks.css"
 
 
 function NationalParks(props) {
-    var directionsInfoBtn = document.querySelector('#directions-btn')
-    var weatherInfoBtn = document.querySelector('#weather-info-btn')
-    var searchCityBtn = document.querySelector("#search-city-btn");
-    var inputContainerEl = document.querySelector("#input-container");
+
     const [inputSearchName, setInputSearchName] = useState("");
     // var inputSearchName = document.querySelector("#input-state");
     console.log(inputSearchName)
@@ -85,46 +82,59 @@ function NationalParks(props) {
 
                             </input>
                             <button id="search-city-btn" className="button" onClick={handleClick}>Search</button>
-                            <p className="btn">Click links added to each result for more info from the National Parks Website</p>
+
                         </form>
 
                     </div>
                     <Body />
-        <div id="input-container" className="panel-block">
-            <div>
-                Nearby Parks:
-                <ul>
-                {parksResults.map((parks) => {
-                    return (
-                        <>
-                            <li key={parks.id}>{parks.name}</li>
-                            <li key={parks.description}>{parks.description}</li>
-                            <li key={parks.weatherInfo}>☀️Weather{parks.weatherInfo}☀️</li>
+                    <div id="input-container" className="panel-block">
+                        Nearby Parks:
+                        <p className="btn">Click links added to each result for more info from the National Parks Website</p>
+                        <div>
+                            <div className="parksResults-OuterBox">
+                                <ul className="parksResults-ul">
+                                    {parksResults.map((parks) => {
+                                        return (
+                                            <>
+                                                {/* <div className="input-divOuter"> */}
+                                                    <div className="input-divInner">
+                                                        <li className="parksResults-innerLi" key={parks.id}>{parks.fullName}</li>
+   
+                                                        <li className="parksResults-innerLi" key={parks.description}>🪐Description: {parks.description}</li>
 
-                        </>
-                                    )
-                                })}
+                                                        <li className="parksResults-innerLi" key={parks.weatherInfo}>☀️Weather☀️{parks.weatherInfo}</li>
+                                                    </div>
+                                                {/* </div> */}
+
+
+                                            
+
+                                            </>
+                                )
+                                    })}
                             </ul>
                         </div>
-                    </div>
-                    <div>
-
-
-
-
-
-
 
                     </div>
+                </div>
+                <div>
+
+
+
+
+
 
 
                 </div>
+
+
             </div>
+        </div>
 
             {/* 
         <button onClick={() => setParks()}>Search</button> */}
 
-        </div>
+        </div >
     )
 }
 

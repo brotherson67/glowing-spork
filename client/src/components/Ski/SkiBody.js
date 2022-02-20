@@ -8,7 +8,7 @@ function SkiBody() {
       <div className="container">
         <div className="Body-box">
           {/* <Park /> */}
-          {/* <SearchInputPanel /> */}
+          <NationalParks />
           {/* <div className="Body-boxOuter">
 
             <div className="Body-boxInner">
@@ -27,7 +27,7 @@ function SkiBody() {
               <WeatherInfo />
             </div>
           </div> */}
-          <NationalParks />
+          
         </div>
 
 

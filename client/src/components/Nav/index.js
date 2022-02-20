@@ -23,21 +23,20 @@ const Navbar = ({ toggle }) => {
                         {Auth.loggedIn() ? (
                             <>
                                 <Bars onClick={toggle} />
-                                <a href="/" onClick={logout}>
-                                    Logout
-                                </a>
+                                
                                 <NavLink to="/social">
                                     Social Feed
                                 </NavLink>
                                 <NavLink to="/friends">
                                     Find Friends!
                                 </NavLink>
-                                <NavLink to="/strava">
-                                    Strava
-                                </NavLink>
+                        
                                 <NavLink to="/chat">
                                     Chat
                                 </NavLink>
+                                <a href="/" onClick={logout}>
+                                    Logout
+                                </a>
                             </>
                         ) : (
 

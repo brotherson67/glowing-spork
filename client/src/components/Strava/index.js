@@ -110,12 +110,12 @@ function StravaActivities() {
           {activityData.map((data) => {
                 return (
                     <>
-                    <div className="activity-name" id="activity-name">{data.name}</div>
-                    <div className="activity-distance" id="activity-distance">{data.distance}</div>
-                    <div className="averageSpeed" id="averageSpeed">{data.average_speed}</div>
-                    <div className="totalTime" id="totalTime">{data.elapsed_time}</div>
-                    <div className="elevationGain" id="elevationGain">{data.total_elevation_gain}</div>
-                    <MapBox polyline={data.map.summary_polyline}/>
+                    <div className="activity-name" id="activity-name" key={data.name}>{data.name}</div>
+                    <div className="activity-distance" id="activity-distance" key={data.distance}>{data.distance}</div>
+                    <div className="averageSpeed" id="averageSpeed" key={data.average_speed}>{data.average_speed}</div>
+                    <div className="totalTime" id="totalTime" key={data.elapsed_time}>{data.elapsed_time}</div>
+                    <div className="elevationGain" id="elevationGain" key={data.total_elevation_gain}>{data.total_elevation_gain}</div>
+                    <MapBox polyline={data.map.summary_polyline} key={data.map.summary_polyline} />
                     
                     
                     </>

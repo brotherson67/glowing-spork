@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 
+import "./thoughtForm.css";
+
 const ThoughtForm = () => {
     const [thoughtText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -68,7 +70,7 @@ const ThoughtForm = () => {
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
                 ></textarea>
-                <button className="btn col-12 col-md-3 submit-button" type="submit">
+                <button className="submit-button" type="submit">
                     Submit
                 </button>
             </form>

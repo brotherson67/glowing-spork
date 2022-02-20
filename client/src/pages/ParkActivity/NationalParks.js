@@ -98,7 +98,11 @@ function NationalParks(props) {
                                             <>
                                                 {/* <div className="input-divOuter"> */}
                                                     <div className="input-divInner">
-                                                        <li className="parksResults-innerLi" key={parks.id}>{parks.fullName}</li>
+                                                        <li className="parksResults-innerLi" key={parks.id}
+                                                        >{parks.fullName}</li>
+                                                        <li className="parksResults-innerLi" key={parks.directionUrl}
+                                                        > 🗺️Directions🗺️:{parks.directionsInfo}</li>
+   
    
                                                         <li className="parksResults-innerLi" key={parks.description}>🪐Description: {parks.description}</li>
 

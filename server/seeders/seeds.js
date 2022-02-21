@@ -80,19 +80,19 @@ db.once("open", async () => {
       name: "1 dollar donation",
       description:
         "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      price: 1.0,
+      donationAmoun: 1.0,
     },
     {
       name: "5 dollar donation",
       description:
         "Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.",
-      price: 5.0,
+      donationAmount: 5.0,
     },
     {
       name: "10 dollar donation",
       description:
         "Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.",
-      price: 10.0,
+      donationAmount: 10.0,
     },
   ]);
 

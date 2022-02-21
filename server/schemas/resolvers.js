@@ -193,6 +193,32 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+    removeThought: async (parent, args, context) => {
+      if (context.user) {
+        const thought = await Thought.deleteOne({ ...args, username: context.user.username });
+
+        await User.findByIdAndDelete(
+          {_id: context.user._id },
+          { $pull: { thoughts: thought._id} },
+          { new: true }
+        );
+
+        return thought;
+      }
+    },
+    updateThought: async (parent, args, context) => {
+      if (context.user) {
+        const thought = await Thought.updateOne({...args, username:context.user.username });
+
+        await User.findByIdAndUpdate(
+          {_id: context.user._id },
+          { $set: { thoughts: thought._id} },
+          { new: true }
+        );
+
+        return thought;
+      }
+    },
     addReaction: async (parent, { thoughtId, reactionBody }, context) => {
       if (context.user) {
         const updatedThought = await Thought.findOneAndUpdate(

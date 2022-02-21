@@ -91,6 +91,7 @@ function StravaActivities() {
                 .then(data => {
                     setActivityData(data);
                     console.log(data);
+                    // console.log(data.upload_id)
                 })
 
         }
@@ -99,19 +100,23 @@ function StravaActivities() {
     return (
       <div className="app-activities">
         <div className="app-activities">
-          <div className="activity-box" id="activity">
+          <div className="activity-box">
           <h1 className="activity-title">Strava Stats</h1>
-          {activityData.map((data) => {
+          {activityData.map((data, index) => {
+
                 return (
                     <>
-                    <div className="activity-name" id="activity-name">{data.name}</div>
-                    <div className="activity-distance" id="activity-distance">Distance: {data.distance}</div>
-                    <div className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</div>
-                    <div className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</div>
-                    <div className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</div>
-                    <div className="activity-map" id="activity-map">
-                        {/* <MapBox /> {data.map.summary_polyline} */}
-                    </div>
+                    <ul key={index} className="activity-box">
+                        <li className="activity-name" id="activity-name">{data.name}</li>
+                        <li className="activity-distance" id="activity-distance"  >Distance: {data.distance}</li>
+                        <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
+                        <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
+                        <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
+                        <li className="activity-map" id="activity-map">
+                        {/* <MapBox key={data.map} /> {data.map.summary_polyline} */}
+                        </li>
+                    </ul>
+                    
                     
                     </>
                 )

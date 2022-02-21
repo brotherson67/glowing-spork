@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TinderCard from 'react-tinder-card';
 import ReactDOM from "react";
 import { Navigate, useParams } from 'react-router-dom';
-
+import Auth from '../../utils/auth';
 
 
 // import ThoughtForm from '../components/ThoughtForm';
@@ -11,102 +11,110 @@ import FindFriends from '../FriendList';
 import FriendList from '../FriendList';
 // import database from '../../firebase';
 // import './cards.css';
-
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_USER_IMG } from '../../utils/queries';
-
 import { ADD_FRIEND } from '../../utils/mutations';
 import './cards.css';
-import Auth from '../../utils/auth';
-const { Faker } = require('@faker-js/faker');
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_USER, QUERY_ME} from '../../utils/queries';
+
+
+
+
 
 function TinderCards(props, { onTinderCardChange }) {
-    const { username: userParam, image: imageParam } = useParams();
+    const { username: userParam } = useParams();
+
     const [addFriend] = useMutation(ADD_FRIEND);
 
-    const { loading, data} = useQuery(userParam ? QUERY_ME : QUERY_USER,
-        {variables: { username: userParam }},
-        );
-    // const {loading, data, error} = useQuery(QUERY_USER_IMG);
+    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    });
     console.log(loading)
-   
-    const [user, setUser] = useState([data?.me  || {}]);
-    const [users, getUsers] = useState([data?.user])
-    
-    // console.log(JSON.stringify(error, null, 2))
-    // console.log(data?.me);
-    
-    
-//   const user = ;
-    
-    console.log(user)
     console.log(data)
-    // const user = query.username;
-    // console.log(user)
-    // useEffect(() => {
-    //     if(data){
-    //         setUsers(data);
-    //     }
-    // }, [data]);
-//     if (loading) return 'Loading...'               //your component's return should always be after all hook calls//
-// if (error) return `Error! ${error.message}`
-// }
-const handleClick = async () => {
-    try {
-        await addFriend({
-            variables: { id: user._id },
-        });
-    } catch (e) {
-        console.error(e);
+
+    const user = data?.me || data?.user || [];
+    console.log(user)
+    // Navigate to personal profile page if username is yours
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+        return <Navigate to="/friends" />;
     }
-};
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    // if (!user?.username) {
+    //     return (
+    //         <h4>
+    //             You need to be logged in to see this. Use the navigation links above to
+    //             sign up or log in!
+    //         </h4>
+    //     );
+    // }
+    const handleClick = async () => {
+        try {
+            await addFriend({
+                variables: { id: user._id },
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    };
     return (
         <div className="container">
 
-        <div className="box">
-            <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing potential friends
-        </h2>
-        <div>{user.username}</div>
-        <FriendList
-            username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
-          />
-                    <button onClick={handleClick}>
-                        Add Friend
-                    </button>
-                {/* )} */}
-           {/* <div className="box">
+            <div className="box">
+                <h2 className="bg-dark text-secondary p-3 display-inline-block">
+                    Viewing potential friends
+                </h2>
+
+                <div>
+                    {userParam && (
+
+                        <div>{user.username}
+                            <FriendList
+                                username={user.username}
+                                friendCount={user.friendCount}
+                                friends={user.friends}
+                            />
+                            <button onClick={handleClick}>
+                                Add Friend
+                            </button>
+                        </div>
+                    )}
+                    {/* )} */}
+                    {/* <div className="box">
                     <FindFriends />
                 </div> */}
-            <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
-            
-            {user.map((data, index) => {
-                <>
-                 <TinderCard
-                        className="swipe"
-                        key={index.username}
-                        preventSwipe={['up', 'down']}
-                    ></TinderCard>
-                    <div
-                    style={data.image}
-                    className="tinder-card">
-                            <h3>{data.username}</h3> 
-                            <img src={data.image} alt={'avatar'}/>
-                     </div>
-                </>
-            }
-            
-            )}
-            <div className="col-12 col-lg-3 mb-3">
-          
-        </div>
-                   
-                        
-                
+                    {/* <div className="tinderCards__cardContainer" onClick={onTinderCardChange}> */}
+
+                        {user.map((data) => {
+                            <>
+                                <TinderCard
+                                    className="swipe"
+                                    key={user}
+                                    preventSwipe={['up', 'down']}
+                                ></TinderCard>
+                                <div
+                                    style={data.image}
+                                    className="tinder-card">
+                                    <h3>{data.username}</h3>
+                                    <img src={data.image} alt={'avatar'} />
+                                </div>
+                            </>
+                        }
+
+                        )}
+
+                    </div>
+
+                    <div className="col-12 col-lg-3 mb-3">
+
+                    </div>
+
+
+
+                {/* </div> */}
             </div>
-        </div>
         </div>
     );
 }
@@ -116,7 +124,7 @@ export default TinderCards;
 
 // class Act extends React.Component {
 //     state = { activity: [], isLoading: true, error: null };
-  
+
 //     async componentDidMount() {
 //       try {
 //         const response = await fetch('https://www.strava.com/api/v3/athlete/activities?access_token=35b2879fd3a29d6bf20751a84121ff7be1ffea64');
@@ -127,18 +135,18 @@ export default TinderCards;
 //         this.setState({ error: error.message, isLoading: false });
 //       }
 //     }
-  
+
 //     renderActivity = () => {
 //       const { activity, isLoading, error } = this.state;
-  
+
 //       if (error) {
 //         return <div>{error}</div>;
 //       }
-  
+
 //       if (isLoading) {
 //         return <div>Loading...</div>;
 //       }
-  
+
 //       return activity.map(activity => (
 //         <div key={activity.id.value}>
 //           <img src={activity.picture.large} alt="avatar" />
@@ -147,12 +155,12 @@ export default TinderCards;
 //         </div>
 //       ));
 //     };
-  
+
 //     render() {
 //       return <main>{this.renderActivity()}</main>;
 //     }
 //   }
-  
+
 //   ReactDOM.render(<Act />, document.querySelector("#app"))
 
 //   export default Act;
@@ -184,7 +192,7 @@ export default TinderCards;
 //                         <ThoughtForm />
 //                     </div>
 //                 )}
-                
+
 //                 {/* <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
 //                     {loading ? (
 //                         <div>Loading...</div>
@@ -192,9 +200,9 @@ export default TinderCards;
 //                         <Posts thoughts={thoughts} title="Some Feed for Thought(s)..." />
 //                     )}
 //                 </div> */}
-{/* //                 {loggedIn && userData ? ( */}
+{/* //                 {loggedIn && userData ? ( */ }
 //                     <div className="col-12 col-lg-3 mb-3">
-{/* //                         <FriendList */}
+{/* //                         <FriendList */ }
 //                             username={userData.me.username}
 //                             friendCount={userData.me.friendCount}
 //                             friends={userData.me.friends}

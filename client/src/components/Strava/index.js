@@ -116,7 +116,7 @@ function StravaActivities() {
                         {/* <MapBox key={data.map} /> {data.map.summary_polyline} */}
                         </li>
                     </ul>
-                    
+                    {/* <MapBox /> */}
                     
                     </>
                 )

@@ -8,7 +8,6 @@ import Typewriter from 'typewriter-effect';
 
 
 const HeroSection = (props) => {
-    console.log(props.img)
   return (
     <>
       <HeroContainer>

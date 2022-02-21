@@ -23,8 +23,6 @@ export const ADD_USER = gql`
   }
 `;
 
-
-
 export const ADD_THOUGHT = gql`
   mutation addThought($thoughtText: String!) {
     addThought(thoughtText: $thoughtText) {

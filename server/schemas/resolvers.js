@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const { User, Thought, Checkout, Message } = require("../models");
+const { User, Thought, Checkout, Message, Donation } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { PubSub, withFilter } = require("graphql-yoga");
@@ -51,7 +51,7 @@ const resolvers = {
       return User.find({ username: sendUsername });
     },
     donations: async () => {},
-    donate: async (parent, args) => {
+    checkout: async (parent, args) => {
       const checkout = new Checkout({ donations: args.donations });
       const { donations } = await checkout.populate("donations").execPopulate();
 
@@ -154,6 +154,11 @@ const resolvers = {
       }
 
       throw new AuthenticationError("You need to be logged in!");
+    },
+    addDonationType: async (parent, { name, donationAmount }) => {
+      const donation = Donation.create({ name, donationAmount });
+
+      return donation;
     },
     sendMessage: async ({
       sendUsername,

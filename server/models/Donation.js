@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const donationSchema = new Schema({
   name: {
     type: String,
+    required: true,
   },
   donationDate: {
     type: Date,
@@ -10,6 +11,7 @@ const donationSchema = new Schema({
   },
   donationAmount: {
     type: Number,
+    required: true,
     default: 0,
   },
   donationDescription: {

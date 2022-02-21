@@ -30,6 +30,7 @@ const typeDefs = gql`
   }
 
   type Donation {
+    _id: ID
     name: String
     donationDate: String
     donationAmount: Int
@@ -61,7 +62,7 @@ const typeDefs = gql`
     thought(_id: ID!): Thought
     donations: [Donation]
 
-    donate(donations: [ID]!): Checkout
+    checkout(donations: [ID]!): Checkout
   }
 
   type Mutation {
@@ -70,6 +71,11 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
+    addDonationType(
+      name: String!
+      donationAmount: Int!
+      donationDescription: String
+    ): Donation
 
     userTyping(username: String!, receiveUsername: String!): Boolean!
 

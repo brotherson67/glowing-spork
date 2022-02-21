@@ -31,7 +31,7 @@ function TinderCards(props, { onTinderCardChange }) {
     console.log(loading)
     console.log(data)
 
-    const user = data?.me || data?.user || [];
+    const user = data?.me || data?.user || [props];
     console.log(user)
     // Navigate to personal profile page if username is yours
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -41,7 +41,8 @@ function TinderCards(props, { onTinderCardChange }) {
     if (loading) {
         return <div>Loading...</div>;
     }
-
+    
+    console.log(!user?.username)
     // if (!user?.username) {
     //     return (
     //         <h4>
@@ -50,6 +51,8 @@ function TinderCards(props, { onTinderCardChange }) {
     //         </h4>
     //     );
     // }
+   
+   
     const handleClick = async () => {
         try {
             await addFriend({
@@ -59,6 +62,7 @@ function TinderCards(props, { onTinderCardChange }) {
             console.error(e);
         }
     };
+
     return (
         <div className="container">
 
@@ -85,7 +89,7 @@ function TinderCards(props, { onTinderCardChange }) {
                     {/* <div className="box">
                     <FindFriends />
                 </div> */}
-                    {/* <div className="tinderCards__cardContainer" onClick={onTinderCardChange}> */}
+                    <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
 
                         {user.map((data) => {
                             <>
@@ -113,7 +117,7 @@ function TinderCards(props, { onTinderCardChange }) {
 
 
 
-                {/* </div> */}
+                </div>
             </div>
         </div>
     );

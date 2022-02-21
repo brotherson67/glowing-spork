@@ -76,17 +76,14 @@ function NationalParks(props) {
                                 className="input"
                                 type="text"
                                 placeholder="Search using state acronym"
-                                onChange={(e) => setInputSearchName(e.target.value)}
-
-                            >
-
-                            </input>
+                                onChange={(e) => setInputSearchName(e.target.value)}></input>
                             <button id="search-city-btn" className="button" onClick={handleClick}>Search</button>
 
                         </form>
 
                     </div>
                     <Body />
+
                     <div id="input-container" className="panel-block">
                         Nearby Parks:
                         <p className="btn">Click links added to each result for more info from the National Parks Website</p>
@@ -97,43 +94,43 @@ function NationalParks(props) {
                                         return (
                                             <>
                                                 {/* <div className="input-divOuter"> */}
+                                                <div className="input-divOuter">
                                                     <div className="input-divInner">
                                                         <li className="parksResults-innerLi" key={parks.id}
                                                         >{parks.fullName}</li>
-                                                        <li className="parksResults-innerLi" key={parks.directionUrl}
+                                                        <li className="parksResults-innerLi" key={parks.directionInfo}
                                                         > 🗺️Directions🗺️:{parks.directionsInfo}</li>
-   
-   
+
+
                                                         <li className="parksResults-innerLi" key={parks.description}>🪐Description: {parks.description}</li>
 
                                                         <li className="parksResults-innerLi" key={parks.weatherInfo}>☀️Weather☀️{parks.weatherInfo}</li>
                                                     </div>
-                                                {/* </div> */}
+                                                </div>
 
 
-                                            
 
-                                            </>
-                                )
+
+                                            </>)
                                     })}
-                            </ul>
+                                </ul>
+                            </div>
+
                         </div>
+                    </div>
+                    <div>
+
+
+
+
+
+
 
                     </div>
-                </div>
-                <div>
-
-
-
-
-
 
 
                 </div>
-
-
             </div>
-        </div>
 
             {/* 
         <button onClick={() => setParks()}>Search</button> */}

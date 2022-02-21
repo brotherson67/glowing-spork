@@ -1,21 +1,18 @@
 /*  start of the activity box class */
 .control {
-    
-    border-radius: 5px;
-    width: 100%;
-    padding: 5px;
-    /* background-color:rgba(85, 124, 196, 0.9); */
-    
-    
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  /* background-color:rgba(85, 124, 196, 0.9); */
 }
- /* Start of the style for the buttons within the activity box except the search button which is currently designated as active with bulma */ 
+/* Start of the style for the buttons within the activity box except the search button which is currently designated as active with bulma */
 /* #activity-box .btn {
     border-radius: 5px;
     border: 1px solid rgba(60, 64, 61, 1);
     padding: 5px;
     background-color:rgba(85, 124, 196, 0.9);
     /* class btn to change the background color of the buttons in the activities box  */
-    
+
 /* }  */
 /* #activity-box .btn:hover {
     border-radius: 5px;
@@ -23,72 +20,70 @@
     padding: 5px;
     background-color:rgba(255, 255, 255, 0.9);
     /* class btn to change the background color of the buttons in the activities box when hovered over  */
-    
-/* } */ 
-.parksResults-OuterBox{
-    /* background-color: aliceblue; */
-    display: grid;
-    
+
+/* } */
+.parksResults-OuterBox {
+  /* background-color: aliceblue; */
+  display: grid;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
-.input-controlDiv{
-    background-color: aliceblue;
+.input-controlDiv {
+  background-color: aliceblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 20px;
 }
 
-.parksResults-ul{
-    
-    padding: 20px;
-    
+.parksResults-ul {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
-.input-divOuter{
-    /* background-color: aliceblue; */
-    /* display: flex; */
-    /* flex-direction: row; */
-    align-items: center;
-padding: 20px
+.input-divOuter {
+  background-color: white;
+  /* display: flex; */
+  /* flex-direction: row; */
+
+  align-items: center;
+  padding: 20px;
 }
-.input-divInner{
-    background-color: aliceblue;
-    /* display: flex; */
-    /* flex-direction: row; */
-    align-items: center;
-padding: 20px
+.input-divInner {
+  background-color: aliceblue;
+  /* display: flex; */
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  align-items: center;
+  padding: 20px;
 }
 /* .parksResults-innerLi {
     
 }  */
-.SearchCity-Button{
-    flex: 1;
-    align-items: center;
-    
-    
+.SearchCity-Button {
+  flex: 1;
+  align-items: center;
 }
-.SearchCity-Button:hover{
-    background-color:rgba(85, 124, 196, 0.9);
+.SearchCity-Button:hover {
+  background-color: rgba(85, 124, 196, 0.9);
 }
 
 /* Testing box class */
 .box {
-    /* background-image: url('https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2016/06/best-day-hikes-gear-patrol-full-lead-1440.jpg'); */
-    position: sticky;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: space-around;
-    
+  /* background-image: url('https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2016/06/best-day-hikes-gear-patrol-full-lead-1440.jpg'); */
+  position: sticky;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-around;
 }
 
 .box .white-space {
-    background-color: rgba(163,188, 182, 0.9);
-    /* display: flex;
+  background-color: rgba(163, 188, 182, 0.9);
+  /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly; */
 }
-
-

@@ -150,7 +150,7 @@ function StravaActivities() {
           <h1 className="activity-title">Strava Stats</h1>
           {activityData.map((data, index) => {
                 return (
-                    <>
+                    <div className=''>
                     <div className="activity-name" id="activity-name">{data.name}</div>
                     <div className="activity-distance" id="activity-distance">Distance: {data.distance}</div>
                     <div className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</div>
@@ -159,7 +159,7 @@ function StravaActivities() {
                     <div className="activity-map" id="activity-map">
                     </div>
                     <MapBox polyline={data.map.summary_polyline}/>
-                    </>
+                    </div>
                 )
           })}
            

@@ -1,6 +1,7 @@
 import React from 'react'
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 
+import './strava.css';
 //encodePath() and decodePath in the google.maps.geometry.encoding
 
 const containerStyle = {
@@ -52,6 +53,7 @@ function MapBox(props) {
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10}
+        margin={'auto'}
       >
         { /* Child components, such as markers, info windows, etc. */ }
         <>

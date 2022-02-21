@@ -5,10 +5,10 @@ const donationSchema = new Schema({
     type: String,
     required: true,
   },
-  donationDate: {
-    type: Date,
-    default: Date.now,
-  },
+  // donationDate: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
   donationAmount: {
     type: Number,
     required: true,

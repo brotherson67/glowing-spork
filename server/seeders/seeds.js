@@ -80,7 +80,7 @@ db.once("open", async () => {
       name: "1 dollar donation",
       description:
         "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      donationAmoun: 1.0,
+      donationAmount: 1.0,
     },
     {
       name: "5 dollar donation",

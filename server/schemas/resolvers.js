@@ -51,7 +51,8 @@ const resolvers = {
       return User.find({ username: sendUsername });
     },
     donations: async () => {},
-    checkout: async (parent, args) => {
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
       const checkout = new Checkout({ donations: args.donations });
       const { donations } = await checkout.populate("donations").execPopulate();
 
@@ -78,9 +79,8 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url:
-          "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url: "https://example.com/cancel",
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`,
       });
 
       return { session: session.id };

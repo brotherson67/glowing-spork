@@ -14,7 +14,7 @@ import FriendList from '../FriendList';
 import { ADD_FRIEND } from '../../utils/mutations';
 import './cards.css';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME} from '../../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
 
@@ -41,7 +41,7 @@ function TinderCards(props, { onTinderCardChange }) {
     if (loading) {
         return <div>Loading...</div>;
     }
-    
+
     console.log(!user?.username)
     // if (!user?.username) {
     //     return (
@@ -51,8 +51,8 @@ function TinderCards(props, { onTinderCardChange }) {
     //         </h4>
     //     );
     // }
-   
-   
+
+
     const handleClick = async () => {
         try {
             await addFriend({
@@ -72,7 +72,38 @@ function TinderCards(props, { onTinderCardChange }) {
                 </h2>
 
                 <div>
-                    {/* {userParam && ( */}
+
+                    {/* )} */}
+                    {/* <div className="box">
+                    <FindFriends />
+                </div> */}
+                    <div className="tinderCards__cardContainer" >
+
+                        {user.map((data) => {
+                            return (
+                                <>
+                                    
+                                    <div 
+                                    onClick={onTinderCardChange}
+                                        style={data.image}
+                                        className="tinder-card">
+                                        <h3>{data.username}</h3>
+                                        <img src={data.image} alt={'avatar'} />
+                                        <TinderCard
+                                        className="swipe"
+                                        key={user}
+                                        preventSwipe={['up', 'down']}
+                                    ></TinderCard>
+                                    </div>
+                                </>
+                            )
+                        }
+
+                        )}
+                        <div>
+
+                        </div>
+                        {/* {userParam && ( */}
 
                         <div>{user.username}
                             <FriendList
@@ -84,32 +115,7 @@ function TinderCards(props, { onTinderCardChange }) {
                                 Add Friend
                             </button>
                         </div>
-                    {/* )} */}
-                    {/* )} */}
-                    {/* <div className="box">
-                    <FindFriends />
-                </div> */}
-                    <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
-
-                        {user.map((data) => {
-                            return(
-                            <>
-                                <TinderCard
-                                    className="swipe"
-                                    key={user}
-                                    preventSwipe={['up', 'down']}
-                                ></TinderCard>
-                                <div
-                                    style={data.image}
-                                    className="tinder-card">
-                                    <h3>{data.username}</h3>
-                                    <img src={data.image} alt={'avatar'} />
-                                </div>
-                            </>
-                        )}
-
-                        )}
-
+                        {/* )} */}
                     </div>
 
                     <div className="col-12 col-lg-3 mb-3">

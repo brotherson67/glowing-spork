@@ -68,11 +68,11 @@ function TinderCards(props, { onTinderCardChange }) {
 
             <div className="box">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing potential friends
+                    Viewing....
                 </h2>
 
                 <div>
-                    {userParam && (
+                    {/* {userParam && ( */}
 
                         <div>{user.username}
                             <FriendList
@@ -84,7 +84,7 @@ function TinderCards(props, { onTinderCardChange }) {
                                 Add Friend
                             </button>
                         </div>
-                    )}
+                    {/* )} */}
                     {/* )} */}
                     {/* <div className="box">
                     <FindFriends />
@@ -92,6 +92,7 @@ function TinderCards(props, { onTinderCardChange }) {
                     <div className="tinderCards__cardContainer" onClick={onTinderCardChange}>
 
                         {user.map((data) => {
+                            return(
                             <>
                                 <TinderCard
                                     className="swipe"
@@ -105,7 +106,7 @@ function TinderCards(props, { onTinderCardChange }) {
                                     <img src={data.image} alt={'avatar'} />
                                 </div>
                             </>
-                        }
+                        )}
 
                         )}
 

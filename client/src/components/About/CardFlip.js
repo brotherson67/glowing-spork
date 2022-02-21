@@ -22,19 +22,7 @@ class Card extends React.Component {
     return (
         <>
         <div className="card-flip">
-      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <div className="front">
-          <div>
-            <img id="its-me" src={BenPhoto} alt="me"style={{width: "500px"}} onClick={this.handleClick}/>
-          </div>
-        </div>
-        <div className="back">
-          <div style={{ border: "1px solid #cccc", width: "500px", height: "250px"}}>
-           <p className="abt-txt" onClick={this.handleClick}>I'm Ben, 
-           </p>
-          </div>
-        </div>
-      </ReactCardFlip>
+      
          <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
          <div className="front">
            <div>
@@ -51,6 +39,19 @@ class Card extends React.Component {
            </div>
          </div>
        </ReactCardFlip>
+       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
+        <div className="front">
+          <div>
+            <img id="its-me" src={BenPhoto} alt="me"style={{width: "500px"}} onClick={this.handleClick}/>
+          </div>
+        </div>
+        <div className="back">
+          <div style={{ border: "1px solid #cccc", width: "500px", height: "250px"}}>
+           <p className="abt-txt" onClick={this.handleClick}>I'm Ben, 
+           </p>
+          </div>
+        </div>
+      </ReactCardFlip>
          <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
          <div className="front">
            <div>

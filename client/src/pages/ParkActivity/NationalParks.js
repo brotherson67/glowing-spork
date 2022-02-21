@@ -67,13 +67,13 @@ function NationalParks(props) {
     return (
         <div>
             <div className="app-activities">
-                <div className="app-activities">
+                <div className="app-activitiesInner">
                     <div className="panel-block">
-                        <form className="control">
+                        <form className="control ">
                             <input
                                 id="input-state"
                                 value={inputSearchName}
-                                className="input"
+                                className="input panel-block"
                                 type="text"
                                 placeholder="Search using state acronym"
                                 onChange={(e) => setInputSearchName(e.target.value)}></input>
@@ -86,7 +86,7 @@ function NationalParks(props) {
 
                     <div id="input-container" className="panel-block">
                         Nearby Parks:
-                        <p className="btn">Click links added to each result for more info from the National Parks Website</p>
+                        <p className="btn panel-block">Click links added to each result for more info from the National Parks Website</p>
                         <div>
                             <div className="parksResults-OuterBox">
                                 <ul className="parksResults-ul">

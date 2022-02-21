@@ -1,19 +1,34 @@
 /*  start of the activity box class */
-.control {
-  border-radius: 5px;
-  width: 100%;
-  padding: 5px;
-  /* background-color:rgba(85, 124, 196, 0.9); */
-}
-/* Start of the style for the buttons within the activity box except the search button which is currently designated as active with bulma */
-/* #activity-box .btn {
+
+.app-activities {
+  
     border-radius: 5px;
-    border: 1px solid rgba(60, 64, 61, 1);
-    padding: 5px;
-    background-color:rgba(85, 124, 196, 0.9);
+    
+    padding: 15px;
+    background-color:aliceblue;
     /* class btn to change the background color of the buttons in the activities box  */
 
-/* }  */
+} 
+.app-activitiesInner {
+  border-radius: 5px;
+  display: flex;
+  padding: 15px;
+  background-color:aliceblue;
+  /* class btn to change the background color of the buttons in the activities box  */
+
+}
+.panel-block {
+  padding: 15px;
+  flex-direction: row;
+}
+ .control {
+  
+  border-radius: 5px;
+  width: 100%;
+  padding: 20px;
+  /* background-color:rgba(85, 124, 196, 0.9); */
+}
+
 /* #activity-box .btn:hover {
     border-radius: 5px;
     border: 1px solid black;

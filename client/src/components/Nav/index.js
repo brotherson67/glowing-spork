@@ -5,6 +5,7 @@ import { Dropdown } from 'react-bootstrap';
 import "./nav.css";
 
 const Navbar = ({ toggle }) => {
+    const loggedIn = Auth.loggedIn();
     const logout = event => {
         event.preventDefault();
         Auth.logout();

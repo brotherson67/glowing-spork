@@ -28,6 +28,7 @@
     "@apollo/client": "^3.5.8",
     "@react-google-maps/api": "^2.7.0",
     "bootstrap-icons": "^1.8.1",
+    "compression": "^1.7.4",
     "decode-google-map-polyline": "^1.0.1",
     "faker": "^6.6.6",
     "graphql-yoga": "^1.18.3",

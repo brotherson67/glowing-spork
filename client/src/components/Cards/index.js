@@ -3,7 +3,7 @@ import TinderCard from 'react-tinder-card';
 import ReactDOM from "react";
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../../utils/auth';
-import { CardMedia } from '@mui/material';
+import { CardMedia, Avatar } from '@mui/material';
 
 // import ThoughtForm from '../components/ThoughtForm';
 // import PostList from '../components/Posts';
@@ -50,7 +50,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
     const { user: username } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
-    
+
     const swiped = (direction, nameToDelete) => {
         console.log('removing: ' + nameToDelete)
         setLastDirection(direction)
@@ -109,36 +109,59 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                         {/* return ( */}
                         <>
 
-{characters.map((character) => 
-                            <TinderCard
-                                className="swipe cardContainer"
-                                key={character.name}
-                                preventSwipe={['up', 'down']}
-                            >
-                                <div
-                                    onClick={onTinderCardChange}
-                                    // style={users.image}
-                                    className="tinder-card">
+                            {characters.map((character) =>
+                                <TinderCard
+                                    className="swipe cardContainer"
+                                    key={character.name}
+                                    preventSwipe={['up', 'down']}
+                                >
+                                    <div
+                                        onClick={onTinderCardChange}
+                                        // style={users.image}
+                                        className="tinder-card">
 
-                                    <h3>{character.name}</h3>
-                                    <CardMedia src={character.url} alt={'avatar'} />
-                                    <div className="cardContainer-divOuter">
-                                        <div className="cardContainer-divInner">
-                                            <ul className="cardContainer-ul">
-                                                <button onClick={handleClick}>
-                                                    <li className="cardContainer-li">💔</li>
-                                                </button>
-                                                <button>
-                                                    <li className="cardContainer-li">❤️</li>
-                                                </button>
+                                        <h3>{character.name}</h3>
+                                        <CardMedia src={character.url} alt={'avatar'} />
+                                        <Avatar src={character.url} />
+                                        <div className="cardContainer-divOuter">
+                                            <div className="cardContainer-divInner">
+                                                
+                                                <ul className="cardContainer-ul">
+                                                    
+                                                    <button onClick={handleClick}>
+                                                        <li className="cardContainer-li">💔</li>
+                                                    </button>
+                                                    <button>
+                                                        <li className="cardContainer-li">❤️</li>
+                                                    </button>
+                                                    <button
+                                                        className="tinderCard-boxButton" >
+                                                        <a href="/chat" >
+                                                            💌 Reach Out 💌
+                                                        </a>
 
+                                                    </button>
+                                                    <button className="tinderCard-boxButton" >
+                                                        <a href="profile/:username">
+                                                            View Profile
+                                                        </a>
 
-                                            </ul>
+                                                    </button>
+                                                    <button className="tinderCard-boxButton" onClick={handleClick}>
+                                                        Become Friends
+                                                    </button>
+                                                    <button className="tinderCard-boxButton" >
+                                                        <a href="/">
+                                                            Go Home
+                                                        </a>
+
+                                                    </button>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </TinderCard>
-)}
+                                </TinderCard>
+                            )}
                         </>
                         {/* ) */}
                         {/* } */}
@@ -149,7 +172,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                             {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
                         </div>
                         {/* {userParam && ( */}
-                        <div className="tinderCard-box">
+                        {/* <div className="tinderCard-box">
                             <div className="tinderCard-boxInner">
                                 <div className="innerDiv">
                                     <button
@@ -189,8 +212,8 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                 {/* <button className="tinderCard-boxButton" onClick={handleClick}>
                                     Add Friend
                                 </button> */}
-                            </div>
-                        </div>
+                            {/* </div>
+                        </div>  */}
                         {/* )} */}
                     </div>
 

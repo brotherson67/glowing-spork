@@ -61,18 +61,21 @@
     display: flex;
     padding: 15px;
     background-color:aliceblue;
+    /* justify-content: center; */
 }
 
 .cardContainer-divOuter{
-    display: flex;
-    align-content: center;
+    position: absolute;
+    /* justify-content: center; */
+    /* display: flex; */
 }
 .cardContainer-divInner{
-    position: absolute;
-}
-/* .cardContainer-ul{
+    justify-content: center;
+    display: flex;
+    align-content: center;
     
-} */
+}
+
 
 .cardContainer-li{
     font-size: 30px;

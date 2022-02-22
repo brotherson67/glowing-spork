@@ -1,52 +1,28 @@
-.tinder-card {
+/* .tinderCards_cardContainer{
+ display: flex;
+} */
+.cardContainer {
     display: flex;
-    /* position: fixed; */
-    width: 600px;
-    padding: 20px;
-    max-width: 65vh;
-    height: 50vh;
-    border-radius: 20px;
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3);
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* margin-top: 5vh; */
 }
-
-.card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5vh;
-}
-.tinder-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20vh;
-}
-
 .swipe {
     /* position: absolute; */
 }
-
-.card > h3 {
+/* .card > h3 {
     /* position: absolute; */
-    bottom: 10px;
+    /* bottom: 10px;
     color: black;
-}
+}  */
 
-.cardContainer{
+
+
+/* .cardContainer{
     display: flex;
     justify-content: center;
-}
-.tinder-card-header{
-    color: #29335c;
-    margin-bottom: 80vh;
-    display: block;
-}
+} */
 
-.tinderCard-box {
-    padding: 25px;
-}
 
 .tinderCard-boxInner{
     display: flex;
@@ -57,26 +33,60 @@
 .innerDiv{
     padding: 5px;
 }
-.tinderCard-boxButton{
+.tinder-card {
     display: flex;
-    padding: 15px;
-    background-color:aliceblue;
-    /* justify-content: center; */
+    /* position: fixed; */
+    width: 600px;
+    margin-top: 5vh;
+    padding: 20px;
+    max-width: 65vh;
+    height: 50vh;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3);
 }
 
+
 .cardContainer-divOuter{
-    position: absolute;
-    /* justify-content: center; */
     /* display: flex; */
 }
 .cardContainer-divInner{
-    justify-content: center;
-    display: flex;
-    align-content: center;
+    /* flex-direction: row; */
+    background-color: antiquewhite;
+    /* display: flex; */
+    /* align-items: center; */
+    
     
 }
-
-
+.cardContainer-ul{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    /* position: absolute; */
+    /* background-color: lightcoral; */
+    align-items: flex-end;
+    align-content: flex-end;
+    /* background-position: center; */
+}
+.cardContainer-div{
+    /* flex-direction: row; */
+    background-color: lightgrey;
+    padding: 10px;
+    
+}
+.tinderCard-boxButton{
+    /* justify-content: center; */
+    padding: 15px;
+    background-color:aliceblue;
+    /* align-items: flex-end; */
+    /* align-content: flex-end; */
+    /* display: flex; */
+    /* align-items: center; */
+}
+/* .profileImage {
+    background
+} */
 .cardContainer-li{
     font-size: 30px;
 }

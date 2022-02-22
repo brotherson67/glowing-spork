@@ -20,23 +20,28 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 const db = [
     {
         name: 'Zendaya',
-        url: 'https://images.fandango.com/ImageRenderer/820/0/redesign/static/img/default_poster.png/0/images/masterrepository/other/1622M04_JO079_H.JPG'
+        url: 'https://images.fandango.com/ImageRenderer/820/0/redesign/static/img/default_poster.png/0/images/masterrepository/other/1622M04_JO079_H.JPG',
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         name: "Gal",
-        url: 'https://images.thestar.com/yhXh501qPISOfmqeIfUHklLmQyM=/1280x1024/smart/filters:cb(1612477907678)/https://www.thestar.com/content/dam/thestar/entertainment/2020/04/07/celebrities-face-backlash-as-they-reveal-new-sides-during-coronavirus-pandemic/gal_gadot.jpg'
+        url: 'https://images.thestar.com/yhXh501qPISOfmqeIfUHklLmQyM=/1280x1024/smart/filters:cb(1612477907678)/https://www.thestar.com/content/dam/thestar/entertainment/2020/04/07/celebrities-face-backlash-as-they-reveal-new-sides-during-coronavirus-pandemic/gal_gadot.jpg',
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         name: 'Justin',
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGe2jdaDB4BUMwfzbcMQ8yHzTUYnOWUbyk3Q&usqp=CAU'
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGe2jdaDB4BUMwfzbcMQ8yHzTUYnOWUbyk3Q&usqp=CAU',
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         name: 'Lizzo',
-        url: 'https://static.wikia.nocookie.net/eurovisionamericassongcontest/images/c/c5/Lizzo.jpg/revision/latest?cb=20190502000645'
+        url: 'https://www.ondapocos.com.br/wp-content/uploads/2019/10/15693384925d8a347c1da30_1569338492_1x1_md.jpg',
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         name: 'Naomi',
-        url: 'https://eu-images.contentstack.com/v3/assets/blt8bbf16c2d7a209e5/blt15a5490e5e1cba96/620a97989149560a6e17c68c/2H4GYFN.jpg'
+        url: 'https://eu-images.contentstack.com/v3/assets/blt8bbf16c2d7a209e5/blt15a5490e5e1cba96/620a97989149560a6e17c68c/2H4GYFN.jpg',
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
 ]
 
@@ -119,43 +124,60 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                         onClick={onTinderCardChange}
                                         // style={users.image}
                                         className="tinder-card">
-
-                                        <h3>{character.name}</h3>
+                                            
                                         <CardMedia src={character.url} alt={'avatar'} />
-                                        <Avatar src={character.url} />
+                                        <Avatar src={character.url} className="profileImage" sx={{ width: 175, height: 175 }} />
+                                        <h3>{character.name}</h3>
+                                        <div>{character.description}</div>
                                         <div className="cardContainer-divOuter">
                                             <div className="cardContainer-divInner">
-                                                
+
                                                 <ul className="cardContainer-ul">
-                                                    
-                                                    <button onClick={handleClick}>
+                                                <div className="cardContainer-div">
+                                                    <button onClick={handleClick} className="tinderCard-boxButton">
                                                         <li className="cardContainer-li">💔</li>
                                                     </button>
-                                                    <button>
+                                                </div>
+                                                    <div className="cardContainer-div">
+                                                        <button className="tinderCard-boxButton">
                                                         <li className="cardContainer-li">❤️</li>
                                                     </button>
-                                                    <button
+                                                    </div>
+                                                    
+                                                    <div className="cardContainer-div">
+                                                        <button
                                                         className="tinderCard-boxButton" >
                                                         <a href="/chat" >
                                                             💌 Reach Out 💌
                                                         </a>
 
                                                     </button>
-                                                    <button className="tinderCard-boxButton" >
+                                                    </div>
+                                                    
+                                                    <div className="cardContainer-div">
+                                                        <button className="tinderCard-boxButton" >
                                                         <a href="profile/:username">
                                                             View Profile
                                                         </a>
 
                                                     </button>
-                                                    <button className="tinderCard-boxButton" onClick={handleClick}>
+                                                    </div>
+                                                    
+                                                    <div className="cardContainer-div">
+                                                        <button className="tinderCard-boxButton" onClick={handleClick}>
                                                         Become Friends
                                                     </button>
-                                                    <button className="tinderCard-boxButton" >
+                                                    </div>
+                                                    
+                                                    <div className="cardContainer-div">
+                                                        <button className="tinderCard-boxButton" >
                                                         <a href="/">
                                                             Go Home
                                                         </a>
 
                                                     </button>
+                                                    </div>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -212,7 +234,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                 {/* <button className="tinderCard-boxButton" onClick={handleClick}>
                                     Add Friend
                                 </button> */}
-                            {/* </div>
+                        {/* </div>
                         </div>  */}
                         {/* )} */}
                     </div>

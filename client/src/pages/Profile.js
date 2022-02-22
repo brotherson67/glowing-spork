@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Posts from '../components/Posts';
 import FriendList from '../components/FriendList';
 import ThoughtForm from '../components/ThoughtForm';
-
+import {REMOVE_FRIEND} from '../utils/mutations'
 import { ADD_FRIEND } from '../utils/mutations';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -13,6 +13,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 const Profile = () => {
     const [addFriend] = useMutation(ADD_FRIEND);
+    const [removeFriend] = useMutation(REMOVE_FRIEND);
     // useParams Hook retrieves the username from the URL, which is then passed to the useQuery Hook
     const { username: userParam } = useParams();
 
@@ -46,6 +47,16 @@ const Profile = () => {
             console.error(e);
         }
     };
+
+    const removeClick = async () => {
+        try {
+            await removeFriend({
+                variables: { id: user._id }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    };
     return (
 
         <div>
@@ -55,15 +66,20 @@ const Profile = () => {
                 </h2>
 
                 {userParam && (
+                    <>
                     <button className="btn ml-auto" onClick={handleClick}>
                         Add Friend
                     </button>
+                    <button className='btn ml-auto' onClick={removeClick}>
+                        Remove Friend
+                    </button>
+                    </>
                 )}
             </div>
 
             <div className="flex-row justify-space-between mb-3">
                 <div className="col-12 mb-3 col-lg-8">
-                    <Posts thoughts={user.thoughts} title={`${user.username}'s thoughts...`} />
+                    <Posts thoughts={user.thoughts} title={`${user.username}'s activity...`} />
                 </div>
 
                 <div className="col-12 col-lg-3 mb-3">

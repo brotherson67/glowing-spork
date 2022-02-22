@@ -68,17 +68,21 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      if (context.user) {
+      console.log('me query hit');
+      if (!context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('thoughts')
           .populate('friends');
 
+
+
         return userData;
+
       }
 
       throw new AuthenticationError('Not logged in');
-    },
+   },
     users: async () => {
       return User.find()
         .select('-__v -password')
@@ -109,6 +113,7 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+      console.log('login query hit');
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
@@ -121,6 +126,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      console.log(token);
       return { token, user };
     },
     addThought: async (parent, args, context) => {
@@ -137,6 +143,32 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+    removeThought: async (parent, args, context) => {
+      if (context.user) {
+        const thought = await Thought.deleteOne({ ...args, username: context.user.username });
+
+        await User.findByIdAndDelete(
+          {_id: context.user._id },
+          { $pull: { thoughts: thought._id} },
+          { new: true }
+        );
+
+        return thought;
+      }
+    },
+    updateThought: async (parent, args, context) => {
+      if (context.user) {
+        const thought = await Thought.updateOne({...args, username:context.user.username });
+
+        await User.findByIdAndUpdate(
+          {_id: context.user._id },
+          { $set: { thoughts: thought._id} },
+          { new: true }
+        );
+
+        return thought;
+      }
     },
     addReaction: async (parent, { thoughtId, reactionBody }, context) => {
       if (context.user) {
@@ -163,6 +195,19 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+    removeFriend: async(parent, {friendId}, context) => {
+      if(context.user) {
+      const newUser = await User.findOneAndDelete(
+        {_id: context.user._id},
+        { $pull: {friends: friendId } },
+        {new: true }
+      ).populate('friends');
+
+        return newUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+
     }
   }
 };

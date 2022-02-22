@@ -34,6 +34,10 @@
     color: black;
 }
 
+.cardContainer{
+    display: flex;
+    justify-content: center;
+}
 .tinder-card-header{
     color: #29335c;
     margin-bottom: 80vh;
@@ -57,4 +61,19 @@
     display: flex;
     padding: 15px;
     background-color:aliceblue;
+}
+
+.cardContainer-divOuter{
+    display: flex;
+    align-content: center;
+}
+.cardContainer-divInner{
+    position: absolute;
+}
+/* .cardContainer-ul{
+    
+} */
+
+.cardContainer-li{
+    font-size: 30px;
 }

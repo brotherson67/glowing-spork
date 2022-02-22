@@ -9,6 +9,7 @@ import Auth from '../../utils/auth';
 // import PostList from '../components/Posts';
 import FindFriends from '../FriendList';
 import FriendList from '../FriendList';
+import Profile from '../../pages/Profile'
 // import database from '../../firebase';
 // import './cards.css';
 import { ADD_FRIEND } from '../../utils/mutations';
@@ -21,19 +22,19 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
 const TinderCards = ({ onTinderCardChange, users }, ...props) => {
-    const { user: image } = useParams();
+    const { user: username } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
-    console.log(useParams)
-    const { loading, data, error } = useQuery(QUERY_USER, {
-        variables: { user: image },
+
+    const { loading, data, error } = useQuery(useParams ? QUERY_USER : QUERY_ME, {
+        variables: { user: username },
     });
     console.log(loading)
     console.log(data)
 
-    const user = data?.user || {};
+    const user = data?.me || data?.user || {};
     // const userCard = data?.user || {};
-    // console.log(user)
+    console.log(user)
     // console.log(userCard)
     // const loggedIn = Auth.loggedIn();
     // Navigate to personal profile page if username is yours
@@ -59,15 +60,16 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
     // }
 
 
-    // const handleClick = async () => {
-    //     try {
-    //         await addFriend({
-    //             variables: { id: user._id },
-    //         });
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // };
+    const handleClick = async () => {
+        try {
+            await addFriend({
+                variables: { id: user._id },
+            });
+
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
         <div className="container">
@@ -95,7 +97,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
 
 
                             <TinderCard
-                                className="swipe"
+                                className="swipe cardContainer"
                                 key={user}
                                 preventSwipe={['up', 'down']}
                             >
@@ -106,6 +108,20 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
 
                                     <h3>{user.username}</h3>
                                     <img src={user.image} alt={'avatar'} />
+                                    <div className="cardContainer-divOuter">
+                                        <div className="cardContainer-divInner">
+                                            <ul className="cardContainer-ul">
+                                                <button onClick={handleClick}>
+                                                    <li className="cardContainer-li">💔</li>
+                                                </button>
+                                                <button>
+                                                    <li className="cardContainer-li">❤️</li>
+                                                </button>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </TinderCard>
 
@@ -121,26 +137,36 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                         <div className="tinderCard-box">
                             <div className="tinderCard-boxInner">
                                 <div className="innerDiv">
-                                    <button className="tinderCard-boxButton" >
-                                        Add Friend
+                                    <button
+                                        className="tinderCard-boxButton" >
+                                        <a href="/chat" >
+                                            💌 Reach Out 💌
+                                        </a>
+
                                     </button>
                                 </div>
 
                                 <div className="innerDiv">
                                     <button className="tinderCard-boxButton" >
-                                        View Profile
+                                        <a href="profile/:username">
+                                            View Profile
+                                        </a>
+
                                     </button>
                                 </div>
                                 <div className="innerDiv">
-                                    <button className="tinderCard-boxButton" >
-                                        Next Friend
+                                    <button className="tinderCard-boxButton" onClick={handleClick}>
+                                        Become Friends
                                     </button>
                                 </div>
 
 
                                 <div className="innerDiv">
                                     <button className="tinderCard-boxButton" >
-                                        Previous Friend
+                                        <a href="/">
+                                            Go Home
+                                        </a>
+
                                     </button>
                                 </div>
 

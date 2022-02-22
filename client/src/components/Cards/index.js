@@ -21,17 +21,17 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
 const TinderCards = ({ onTinderCardChange, users }, ...props) => {
-    const { image: image } = useParams();
+    const { user: image } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
     console.log(useParams)
     const { loading, data, error } = useQuery(QUERY_USER, {
-        variables: { image: image},
+        variables: { user: image},
     });
     console.log(loading)
     console.log(data)
 
-    // const user = data?.user || {};
+    const user = data?.user || {};
     // const userCard = data?.user || {};
     // console.log(user)
     // console.log(userCard)
@@ -74,7 +74,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
             <div className="container">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
                     Viewing.... 
-                    {/* {users.username}  */}
+                    {user.username} 
                 </h2>
             </div>
 
@@ -97,13 +97,15 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                         onClick={onTinderCardChange}
                                         // style={users.image}
                                         className="tinder-card">
-                                        {/* <h3>{users.username}</h3> */}
-                                        {/* <img src={users.image} alt={'avatar'} /> */}
+                                       
                                         <TinderCard
                                             className="swipe"
-                                            key={users}
+                                            key={user}
                                             preventSwipe={['up', 'down']}
-                                        ></TinderCard>
+                                        > 
+                                        <h3>{user.username}</h3>
+                                        <img src={user.image} alt={'avatar'} />
+                                        </TinderCard>
                                     </div>
                                 </>
                             {/* ) */}

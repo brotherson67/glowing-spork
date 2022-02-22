@@ -52,7 +52,7 @@ function StravaActivities() {
     }
 
     function handleClick() {
-        window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=https://glowing-sporky-routes.herokuapp.com//strava&response_type=code&scope=activity:read_all`
+        window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/strava&response_type=code&scope=activity:read_all`
     }
     const authLink = "https://www.strava.com/oauth/token?";
 
@@ -108,16 +108,15 @@ function StravaActivities() {
           {activityData.map((data, index) => {
                 return (
                     <>
-                    <Card>
-                        
+                    <Card>  
                     <div className="flex-container">
                     <Card.Body>
                     <div className='strava-activities'>
                     <li className="activity-name" id="activity-name">{data.name}</li>
-                    <li className="activity-distance" id="activity-distance">Distance: {data.distance}</li>
-                    <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
-                    <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
-                    <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
+                    <li className="activity-distance" id="activity-distance">Distance: {Math.round(data.distance * .00062137)} miles </li>
+                    <li className="averageSpeed" id="averageSpeed">Average Speed: {Math.round(data.average_speed * 2.2369)} mph</li>
+                    <li className="totalTime" id="totalTime">Elapsed time: {Math.round(data.elapsed_time / 60)} minutes</li>
+                    <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain} feet</li>
                     <li className="activity-map" id="activity-map"></li>
                     </div>
                     </Card.Body>

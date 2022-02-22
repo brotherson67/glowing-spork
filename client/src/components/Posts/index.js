@@ -12,7 +12,7 @@ const PostList = ({ thoughts, title }) => {
   return (
     <div className="post-listBox">
 
-    <ThoughtForm />
+    {/* <ThoughtForm /> */}
     <div className="post-listBox">
       <h3 className="color-the-text">{title}</h3>
       {thoughts &&

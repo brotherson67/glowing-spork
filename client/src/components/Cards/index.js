@@ -17,27 +17,27 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
-
-
-
-function TinderCards(props, { onTinderCardChange }) {
+function TinderCards({ onTinderCardChange }, ...props) {
     const { username: userParam } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
-
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam }
+    console.log(useParams)
+    const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam },
     });
     console.log(loading)
     console.log(data)
 
     const user = data?.me || data?.user || [props];
     console.log(user)
+    const loggedIn = Auth.loggedIn();
     // Navigate to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    if (loggedIn && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/friends" />;
     }
-
+    console.log(loggedIn)
+    console.log(error)
+    console.log(JSON.stringify({ error }, null, 2));
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -68,7 +68,7 @@ function TinderCards(props, { onTinderCardChange }) {
 
             <div className="box">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing....
+                    Viewing.... {`${user.username}`}
                 </h2>
 
                 <div>
@@ -79,21 +79,21 @@ function TinderCards(props, { onTinderCardChange }) {
                 </div> */}
                     <div className="tinderCards__cardContainer" >
 
-                        {user.map((data) => {
+                        {user.map((card) => {
                             return (
                                 <>
-                                    
-                                    <div 
-                                    onClick={onTinderCardChange}
-                                        style={data.image}
+
+                                    <div
+                                        onClick={onTinderCardChange}
+                                        style={card.image}
                                         className="tinder-card">
-                                        <h3>{data.username}</h3>
-                                        <img src={data.image} alt={'avatar'} />
+                                        <h3>{card.username}</h3>
+                                        <img src={card.image} alt={'avatar'} />
                                         <TinderCard
-                                        className="swipe"
-                                        key={user}
-                                        preventSwipe={['up', 'down']}
-                                    ></TinderCard>
+                                            className="swipe"
+                                            key={user}
+                                            preventSwipe={['up', 'down']}
+                                        ></TinderCard>
                                     </div>
                                 </>
                             )
@@ -104,17 +104,19 @@ function TinderCards(props, { onTinderCardChange }) {
 
                         </div>
                         {/* {userParam && ( */}
-
-                        <div>{user.username}
-                            <FriendList
-                                username={user.username}
-                                friendCount={user.friendCount}
-                                friends={user.friends}
-                            />
-                            <button onClick={handleClick}>
-                                Add Friend
-                            </button>
+                        <div className="tinderCard-box">
+                            <div>
+                                <FriendList
+                                    username={user.username}
+                                    friendCount={user.friendCount}
+                                    friends={user.friends}
+                                />
+                                <button className="tinderCard-boxButton" onClick={handleClick}>
+                                    Add Friend
+                                </button>
+                            </div>
                         </div>
+
                         {/* )} */}
                     </div>
 

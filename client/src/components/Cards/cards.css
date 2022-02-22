@@ -39,3 +39,13 @@
     margin-bottom: 80vh;
     display: block;
 }
+
+.tinderCard-box {
+    padding: 25px;
+}
+
+.tinderCard-boxButton{
+    display: flex;
+    padding: 15px;
+    background-color:aliceblue;
+}

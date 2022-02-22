@@ -35,19 +35,17 @@ const Navbar = ({ toggle }) => {
                                 <NavLink to="/chat">
                                     Chat
                                 </NavLink>
-                                <a href="/" onClick={logout}>
+                                <a id="logout" href="/" onClick={logout}>
                                     Logout
                                 </a>
                             </>
                         ) : (
-
-
                             <>
                                 <NavLink to="/login">Login</NavLink>
                             </>
                         )}
-                        <Dropdown>
-                            <Dropdown.Toggle >Activities</Dropdown.Toggle>
+                        <Dropdown id="dropdown">
+                            <Dropdown.Toggle className='drop-btn'>Activities</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>
                                     <NavLink to="/ski">

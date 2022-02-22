@@ -19,7 +19,7 @@ const FindeFriends = ({ friendCount, username, friends }) => {
       ))}
     </div>
   );
-      };
-  
+}
+
 
 export default FindFriends;

@@ -43,6 +43,7 @@ export const QUERY_USER = gql`
       username
       email
       friendCount
+      image
       friends {
         _id
         username
@@ -64,6 +65,7 @@ export const QUERY_ME = gql`
       username
       email
       friendCount
+      image
       thoughts {
         _id
         thoughtText
@@ -90,6 +92,7 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
+      image
       friendCount
       friends {
         _id

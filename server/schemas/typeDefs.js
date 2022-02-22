@@ -6,9 +6,10 @@ const typeDefs = gql`
     username: String
     email: String
     friendCount: Int
+    image: String
     thoughts: [Thought]
     friends: [User]
-    image: String
+    
   }
 
   type Thought {
@@ -27,11 +28,7 @@ const typeDefs = gql`
     username: String
   }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
-
+ 
   type Query {
     me: User
     users: [User]
@@ -46,7 +43,18 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
+<<<<<<< HEAD
+  } 
+  type Auth {
+    token: ID!
+    user: User
+=======
+    removeFriend(friendId: ID!): User
+    removeThought(thoughtText: String!): Thought
+    updateThought(thoughtText: String!): Thought
+>>>>>>> 4f686b4f85bc06c301b3dd6f3cf4920f863c6346
   }
+
 `;
 
 module.exports = typeDefs;

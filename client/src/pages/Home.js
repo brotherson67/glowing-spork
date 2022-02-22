@@ -31,6 +31,7 @@ function Home() {
     //set state to go from false to true
     setIsOpen(!isOpen)
   }
+  
   return (
     <div>
       <main>

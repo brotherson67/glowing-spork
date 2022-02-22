@@ -106,7 +106,6 @@ function StravaActivities() {
           <div className="activity-box">
           <h1 className="activity-title">Strava Stats</h1>
           {activityData.map((data, index) => {
-
                 return (
                     <>
                     <Card>

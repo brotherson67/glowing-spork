@@ -50,7 +50,9 @@ const resolvers = {
     users: async ({ sendUsername }) => {
       return User.find({ username: sendUsername });
     },
-    donations: async () => {},
+    donations: async () => {
+      return Donation.find();
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const checkout = new Checkout({ donations: args.donations });

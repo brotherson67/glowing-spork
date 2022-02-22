@@ -3,7 +3,7 @@ import TinderCard from 'react-tinder-card';
 import ReactDOM from "react";
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../../utils/auth';
-
+import { CardMedia } from '@mui/material';
 
 // import ThoughtForm from '../components/ThoughtForm';
 // import PostList from '../components/Posts';
@@ -50,6 +50,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
     const { user: username } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
+    
     const swiped = (direction, nameToDelete) => {
         console.log('removing: ' + nameToDelete)
         setLastDirection(direction)
@@ -57,7 +58,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
 
     const outOfFrame = (name) => {
         console.log(name + ' left the screen!')
-      }
+    }
 
     const { loading, data, error } = useQuery(useParams ? QUERY_USER : QUERY_ME, {
         variables: { user: username },
@@ -66,31 +67,11 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
     console.log(data)
 
     const user = data?.me || data?.user || {};
-    // const userCard = data?.user || {};
-    console.log(user)
-    // console.log(userCard)
-    // const loggedIn = Auth.loggedIn();
-    // Navigate to personal profile page if username is yours
-    // if (loggedIn && Auth.getProfile().data.username === userParam) {
-    //     return <Navigate to="/friends" />;
-    // }
-    // console.log(Auth)
-    // console.log(loggedIn)
-    // console.log(error)
-    // console.log(JSON.stringify({ error }, null, 2));
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
 
-    // console.log(!user?.username)
-    // if (!user?.username) {
-    //     return (
-    //         <h4>
-    //             You need to be logged in to see this. Use the navigation links above to
-    //             sign up or log in!
-    //         </h4>
-    //     );
-    // }
+    console.log(user)
+
+    // Navigate to personal profile page if username is yours
+
 
 
     const handleClick = async () => {
@@ -124,14 +105,14 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                 </div> */}
                     <div className="tinderCards__cardContainer" >
 
-                        {/* {user.ap((data) => { */}
+                        {/* {user.map((data) => { */}
                         {/* return ( */}
                         <>
 
-
+{characters.map((character) => 
                             <TinderCard
                                 className="swipe cardContainer"
-                                key={user}
+                                key={character.name}
                                 preventSwipe={['up', 'down']}
                             >
                                 <div
@@ -139,8 +120,8 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                     // style={users.image}
                                     className="tinder-card">
 
-                                    <h3>{user.username}</h3>
-                                    <img src={user.image} alt={'avatar'} />
+                                    <h3>{character.name}</h3>
+                                    <CardMedia src={character.url} alt={'avatar'} />
                                     <div className="cardContainer-divOuter">
                                         <div className="cardContainer-divInner">
                                             <ul className="cardContainer-ul">
@@ -157,14 +138,15 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                                     </div>
                                 </div>
                             </TinderCard>
-
+)}
                         </>
                         {/* ) */}
                         {/* } */}
 
                         {/* )} */}
-                        <div>
 
+                        <div>
+                            {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
                         </div>
                         {/* {userParam && ( */}
                         <div className="tinderCard-box">
@@ -225,48 +207,4 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
 }
 export default TinderCards;
 
-// strava stuff
-
-// class Act extends React.Component {
-//     state = { activity: [], isLoading: true, error: null };
-
-//     async componentDidMount() {
-//       try {
-//         const response = await fetch('https://www.strava.com/api/v3/athlete/activities?access_token=35b2879fd3a29d6bf20751a84121ff7be1ffea64');
-//         const data = await response.json();
-//         console.log(response.json());
-//         this.setState({ activity: data.results, isLoading: false });
-//       } catch (error) {
-//         this.setState({ error: error.message, isLoading: false });
-//       }
-//     }
-
-//     renderActivity = () => {
-//       const { activity, isLoading, error } = this.state;
-
-//       if (error) {
-//         return <div>{error}</div>;
-//       }
-
-//       if (isLoading) {
-//         return <div>Loading...</div>;
-//       }
-
-//       return activity.map(activity => (
-//         <div key={activity.id.value}>
-//           <img src={activity.picture.large} alt="avatar" />
-//           <div>Hi, My name is</div>
-//           <h3>{activity.name.first}</h3>
-//         </div>
-//       ));
-//     };
-
-//     render() {
-//       return <main>{this.renderActivity()}</main>;
-//     }
-//   }
-
-//   ReactDOM.render(<Act />, document.querySelector("#app"))
-
-//   export default Act;
 

@@ -1,8 +1,9 @@
+import './strava.css';
 import React from 'react'
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
-// const decodePolyline = require('decode-google-map-polyline');
+const decodePolyline = require('decode-google-map-polyline');
 
-import './strava.css';
+
 //encodePath() and decodePath in the google.maps.geometry.encoding
 
 const containerStyle = {
@@ -25,7 +26,7 @@ function MapBox(maps) {
       };
 
       const decodePolyline = require('decode-google-map-polyline');
-      var polyline = maps.polyline
+      var polyline = maps.polyline;
 
       var polylineDecode = decodePolyline(polyline);
 

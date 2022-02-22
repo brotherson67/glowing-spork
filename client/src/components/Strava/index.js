@@ -7,6 +7,10 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
+import { Card } from 'react-bootstrap';
+
+
+
 function StravaActivities() {
 
     // const navigate = useNavigate();
@@ -92,31 +96,6 @@ function StravaActivities() {
                     setActivityData(data);
                     console.log(data);
 
-                    // dataStrava = data;
-                    // var htmlContent = "";
-                    // for (let i = 0; i < 5; i++) {
-                    //     console.log(data[i].map.summary_polyline);
-                    //     var cardDiv = document.getElementById('mainActivityCard');
-
-                    //     var card = document.createElement('div');
-                    //     card.innerHTML = 'Activity Name: ' + data[i].name;;
-                    //     var card2 = document.createElement('div');
-                    //     card2.innerHTML = 'Distance: ' + data[i].distance;
-                    //     var card3 = document.createElement('div');
-                    //     card3.innerHTML = 'Average Speed: ' + data[i].average_speed;
-                    //     var card4 = document.createElement('div');
-                    //     card4.innerHTML = 'Total Time: ' + data[i].elapsed_time;
-                    //     var card5 = document.createElement('div');
-                    //     card5.innerHTML = 'Total Elevation Gain: ' + data[i].total_elevation_gain;
-                        
-                    //     cardDiv.appendChild(card);
-                    //     cardDiv.appendChild(card2);
-                    //     cardDiv.appendChild(card3);
-                    //     cardDiv.appendChild(card4);
-                    //     cardDiv.appendChild(card5);
-
-                    // }
-                    // return data;
                 })
 
         }
@@ -150,16 +129,26 @@ function StravaActivities() {
           <h1 className="activity-title">Strava Stats</h1>
           {activityData.map((data, index) => {
                 return (
-                    <div className=''>
-                    <div className="activity-name" id="activity-name">{data.name}</div>
-                    <div className="activity-distance" id="activity-distance">Distance: {data.distance}</div>
-                    <div className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</div>
-                    <div className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</div>
-                    <div className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</div>
-                    <div className="activity-map" id="activity-map">
+                    <>
+                    <Card>
+                        
+                    <div className="flex-container">
+                    <Card.Body>
+                    <div className='strava-activities'>
+                    <li className="activity-name" id="activity-name">{data.name}</li>
+                    <li className="activity-distance" id="activity-distance">Distance: {data.distance}</li>
+                    <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
+                    <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
+                    <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
+                    <li className="activity-map" id="activity-map"></li>
                     </div>
+                    </Card.Body>
+                    <div className="map-div">
                     <MapBox polyline={data.map.summary_polyline}/>
                     </div>
+                    </div>
+                    </Card>
+                    </>
                 )
           })}
            

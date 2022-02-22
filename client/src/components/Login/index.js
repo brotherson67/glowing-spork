@@ -10,9 +10,9 @@ const Login = (props) => {
   
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
-  // console.log(JSON.stringify({error}, null, 2));
+  console.log(JSON.stringify({error}, null, 2));
 
-  // update state based on form input changes
+ // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -21,8 +21,8 @@ const Login = (props) => {
       [name]: value,
     });
   };
-
-  // submit form
+  
+ // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,6 +43,10 @@ const Login = (props) => {
       password: '',
     });
   };
+
+ 
+
+ 
 
   return (
       

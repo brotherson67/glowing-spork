@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./posts.css";
+import ThoughtForm from "../ThoughtForm";
+import "../ThoughtForm/thoughtForm.css"
 
 const PostList = ({ thoughts, title }) => {
   if (!thoughts.length) {
@@ -8,7 +10,10 @@ const PostList = ({ thoughts, title }) => {
   }
 
   return (
-    <div>
+    <div className="post-listBox">
+
+    <ThoughtForm />
+    <div className="post-listBox">
       <h3 className="color-the-text">{title}</h3>
       {thoughts &&
         thoughts.map(thought => (
@@ -21,13 +26,13 @@ const PostList = ({ thoughts, title }) => {
               >
                 {thought.username}
               </Link>{''}
-              recent routes {thought.createdAt}
+                's recent routes {thought.createdAt}
             </p>
 
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>
                 <p>{thought.thoughtText}</p>
-                <p className="mb-0">
+                <p className="mb-0" id="fist-bump-card">
                   Fist bumps: {thought.reactionCount} || Click to{' '}
                   {thought.reactionCount ? 'join' : 'comment on'} this activity!
                 </p>
@@ -35,6 +40,7 @@ const PostList = ({ thoughts, title }) => {
             </div>
           </div>
         ))}
+    </div>
     </div>
   );
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 import { HeroContainer, HeroBg, VideoBg, HeroText, HeroContent } from './HeroEl';
 import Video from '../../videos/video1.mp4';
+import Typewriter from 'typewriter-effect';
+// import AboutUs from '../About';
 
 
 
 
 const HeroSection = (props) => {
-    console.log(props.img)
   return (
     <>
       <HeroContainer>
@@ -17,7 +18,17 @@ const HeroSection = (props) => {
             } 
           </HeroBg>
           <HeroContent>
-              <HeroText>Build roots with friends on your favorite kind of routes.</HeroText>
+              <HeroText>
+              <Typewriter
+              onInit = { (typewriter) => {
+                  typewriter
+                  .typeString("Build roots with friends on your favorite kind of routes.")
+                  .pauseFor(500)
+                  .start();
+              }}
+              />
+                </HeroText>
+                {/* <AboutUs /> */}
           </HeroContent>
       </HeroContainer>
       

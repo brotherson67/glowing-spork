@@ -1,0 +1,27 @@
+.thoughtForm-outerDiv{
+    padding: 20px;
+    background-color:aliceblue;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.form-box{
+    display: flex;
+}
+
+
+.form-input{
+    align-content: center;
+}
+.submit-button{
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    color: black;
+    padding: 15px;
+    font-size: 1em
+}
+.submit-button:hover{
+    background-color: rgba(161, 161, 161, 0.226);
+}

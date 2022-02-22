@@ -6,7 +6,6 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        username
       }
     }
   }
@@ -39,6 +38,37 @@ export const ADD_THOUGHT = gql`
   }
 `;
 
+export const REMOVE_THOUGHT = gql`
+mutation removeThought($thoughtText: String!) {
+  removeThought(thoughtText: $thoughtText) {
+    _id
+    thoughtText
+    createdAt
+    username
+    reactionCount
+    reactions {
+      _id
+    }
+  }
+}
+`;
+
+export const UPDATE_THOUGHT = gql`
+mutation updateThought($thoughtText: String!) {
+  updateThought(thoughtText: $thoughtText) {
+    _id
+    thoughtText
+    createdAt
+    username
+    reactionCount
+    reactions {
+      _id
+    }
+  }
+}
+`;
+
+
 export const ADD_REACTION = gql`
   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
@@ -67,6 +97,7 @@ export const ADD_FRIEND = gql`
     }
   }
 `;
+
 
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($id: ID!) {

@@ -6,3 +6,12 @@
     font-size: 30px;
 }
 
+.drop-btn{
+    margin-top: 3px;
+    padding: 5%;
+    background-color: #fff;
+    color: #29335c;
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+}

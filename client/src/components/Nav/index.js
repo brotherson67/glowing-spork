@@ -40,14 +40,12 @@ const Navbar = ({ toggle }) => {
                                 </a>
                             </>
                         ) : (
-
-
                             <>
                                 <NavLink to="/login">Login</NavLink>
                             </>
                         )}
                         <Dropdown>
-                            <Dropdown.Toggle >Activities</Dropdown.Toggle>
+                            <Dropdown.Toggle className='drop-btn'>Activities</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>
                                     <NavLink to="/ski">

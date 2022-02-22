@@ -17,14 +17,47 @@ import './cards.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
+const db = [
+    {
+        name: 'Zendaya',
+        url: 'https://images.fandango.com/ImageRenderer/820/0/redesign/static/img/default_poster.png/0/images/masterrepository/other/1622M04_JO079_H.JPG'
+    },
+    {
+        name: "Gal",
+        url: 'https://images.thestar.com/yhXh501qPISOfmqeIfUHklLmQyM=/1280x1024/smart/filters:cb(1612477907678)/https://www.thestar.com/content/dam/thestar/entertainment/2020/04/07/celebrities-face-backlash-as-they-reveal-new-sides-during-coronavirus-pandemic/gal_gadot.jpg'
+    },
+    {
+        name: 'Justin',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGe2jdaDB4BUMwfzbcMQ8yHzTUYnOWUbyk3Q&usqp=CAU'
+    },
+    {
+        name: 'Lizzo',
+        url: 'https://static.wikia.nocookie.net/eurovisionamericassongcontest/images/c/c5/Lizzo.jpg/revision/latest?cb=20190502000645'
+    },
+    {
+        name: 'Naomi',
+        url: 'https://eu-images.contentstack.com/v3/assets/blt8bbf16c2d7a209e5/blt15a5490e5e1cba96/620a97989149560a6e17c68c/2H4GYFN.jpg'
+    }
+]
 
 
 
 
 const TinderCards = ({ onTinderCardChange, users }, ...props) => {
+
+    const characters = db
+    const [lastDirection, setLastDirection] = useState()
     const { user: username } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
+    const swiped = (direction, nameToDelete) => {
+        console.log('removing: ' + nameToDelete)
+        setLastDirection(direction)
+    }
+
+    const outOfFrame = (name) => {
+        console.log(name + ' left the screen!')
+      }
 
     const { loading, data, error } = useQuery(useParams ? QUERY_USER : QUERY_ME, {
         variables: { user: username },

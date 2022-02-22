@@ -20,32 +20,35 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
 
-function TinderCards({ onTinderCardChange }, ...props) {
-    const { username: userParam } = useParams();
+const TinderCards = ({ onTinderCardChange, users }, ...props) => {
+    const { image: image } = useParams();
 
     const [addFriend] = useMutation(ADD_FRIEND);
     console.log(useParams)
-    const { loading, data, error } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
+    const { loading, data, error } = useQuery(QUERY_USER, {
+        variables: { image: image},
     });
     console.log(loading)
     console.log(data)
 
-    const user = data?.me || data?.user || [props];
-    console.log(user)
-    const loggedIn = Auth.loggedIn();
+    // const user = data?.user || {};
+    // const userCard = data?.user || {};
+    // console.log(user)
+    // console.log(userCard)
+    // const loggedIn = Auth.loggedIn();
     // Navigate to personal profile page if username is yours
-    if (loggedIn && Auth.getProfile().data.username === userParam) {
-        return <Navigate to="/friends" />;
-    }
-    console.log(loggedIn)
-    console.log(error)
-    console.log(JSON.stringify({ error }, null, 2));
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    // if (loggedIn && Auth.getProfile().data.username === userParam) {
+    //     return <Navigate to="/friends" />;
+    // }
+    // console.log(Auth)
+    // console.log(loggedIn)
+    // console.log(error)
+    // console.log(JSON.stringify({ error }, null, 2));
+    // if (loading) {
+    //     return <div>Loading...</div>;
+    // }
 
-    console.log(!user?.username)
+    // console.log(!user?.username)
     // if (!user?.username) {
     //     return (
     //         <h4>
@@ -56,23 +59,27 @@ function TinderCards({ onTinderCardChange }, ...props) {
     // }
 
 
-    const handleClick = async () => {
-        try {
-            await addFriend({
-                variables: { id: user._id },
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    };
+    // const handleClick = async () => {
+    //     try {
+    //         await addFriend({
+    //             variables: { id: user._id },
+    //         });
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // };
 
     return (
         <div className="container">
+            <div className="container">
+                <h2 className="bg-dark text-secondary p-3 display-inline-block">
+                    Viewing.... 
+                    {/* {users.username}  */}
+                </h2>
+            </div>
 
             <div className="box">
-                <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing.... {`${user.username}`}
-                </h2>
+                
 
                 <div>
 
@@ -82,42 +89,39 @@ function TinderCards({ onTinderCardChange }, ...props) {
                 </div> */}
                     <div className="tinderCards__cardContainer" >
 
-                        {user.map((card) => {
-                            return (
+                        {/* {user.map((data) => { */}
+                            {/* return ( */}
                                 <>
 
                                     <div
                                         onClick={onTinderCardChange}
-                                        style={card.image}
+                                        // style={users.image}
                                         className="tinder-card">
-                                        <h3>{card.username}</h3>
-                                        <img src={card.image} alt={'avatar'} />
+                                        {/* <h3>{users.username}</h3> */}
+                                        {/* <img src={users.image} alt={'avatar'} /> */}
                                         <TinderCard
                                             className="swipe"
-                                            key={user}
+                                            key={users}
                                             preventSwipe={['up', 'down']}
                                         ></TinderCard>
                                     </div>
                                 </>
-                            )
-                        }
+                            {/* ) */}
+                        {/* } */}
 
-                        )}
+                        {/* )} */}
                         <div>
 
                         </div>
                         {/* {userParam && ( */}
                         <div className="tinderCard-box">
-                            <div>
-                                <FriendList
-                                    username={user.username}
-                                    friendCount={user.friendCount}
-                                    friends={user.friends}
-                                />
-                                <button className="tinderCard-boxButton" onClick={handleClick}>
+
+                                <button className="tinderCard-boxButton" >
                                     Add Friend
                                 </button>
-                            </div>
+                                {/* <button className="tinderCard-boxButton" onClick={handleClick}>
+                                    Add Friend
+                                </button> */}
                         </div>
 
                         {/* )} */}

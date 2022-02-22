@@ -26,7 +26,7 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
     const [addFriend] = useMutation(ADD_FRIEND);
     console.log(useParams)
     const { loading, data, error } = useQuery(QUERY_USER, {
-        variables: { user: image},
+        variables: { user: image },
     });
     console.log(loading)
     console.log(data)
@@ -73,13 +73,13 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
         <div className="container">
             <div className="container">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing.... 
-                    {user.username} 
+                    Viewing....
+                    {user.username}
                 </h2>
             </div>
 
             <div className="box">
-                
+
 
                 <div>
 
@@ -89,26 +89,28 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                 </div> */}
                     <div className="tinderCards__cardContainer" >
 
-                        {/* {user.map((data) => { */}
-                            {/* return ( */}
-                                <>
+                        {/* {user.ap((data) => { */}
+                        {/* return ( */}
+                        <>
 
-                                    <div
-                                        onClick={onTinderCardChange}
-                                        // style={users.image}
-                                        className="tinder-card">
-                                       
-                                        <TinderCard
-                                            className="swipe"
-                                            key={user}
-                                            preventSwipe={['up', 'down']}
-                                        > 
-                                        <h3>{user.username}</h3>
-                                        <img src={user.image} alt={'avatar'} />
-                                        </TinderCard>
-                                    </div>
-                                </>
-                            {/* ) */}
+
+                            <TinderCard
+                                className="swipe"
+                                key={user}
+                                preventSwipe={['up', 'down']}
+                            >
+                                <div
+                                    onClick={onTinderCardChange}
+                                    // style={users.image}
+                                    className="tinder-card">
+
+                                    <h3>{user.username}</h3>
+                                    <img src={user.image} alt={'avatar'} />
+                                </div>
+                            </TinderCard>
+
+                        </>
+                        {/* ) */}
                         {/* } */}
 
                         {/* )} */}
@@ -117,15 +119,37 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                         </div>
                         {/* {userParam && ( */}
                         <div className="tinderCard-box">
+                            <div className="tinderCard-boxInner">
+                                <div className="innerDiv">
+                                    <button className="tinderCard-boxButton" >
+                                        Add Friend
+                                    </button>
+                                </div>
 
-                                <button className="tinderCard-boxButton" >
-                                    Add Friend
-                                </button>
+                                <div className="innerDiv">
+                                    <button className="tinderCard-boxButton" >
+                                        View Profile
+                                    </button>
+                                </div>
+                                <div className="innerDiv">
+                                    <button className="tinderCard-boxButton" >
+                                        Next Friend
+                                    </button>
+                                </div>
+
+
+                                <div className="innerDiv">
+                                    <button className="tinderCard-boxButton" >
+                                        Previous Friend
+                                    </button>
+                                </div>
+
+
                                 {/* <button className="tinderCard-boxButton" onClick={handleClick}>
                                     Add Friend
                                 </button> */}
+                            </div>
                         </div>
-
                         {/* )} */}
                     </div>
 

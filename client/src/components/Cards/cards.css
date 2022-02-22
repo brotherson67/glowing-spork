@@ -44,6 +44,15 @@
     padding: 25px;
 }
 
+.tinderCard-boxInner{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.innerDiv{
+    padding: 5px;
+}
 .tinderCard-boxButton{
     display: flex;
     padding: 15px;

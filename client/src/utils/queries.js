@@ -119,10 +119,12 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_DONATIONS = gql`
-  query donations {
-    _id
-    name
-    donationAmount
-    donationDescription
+  {
+    donations {
+      _id
+      name
+      donationDate
+      donationAmount
+    }
   }
 `;

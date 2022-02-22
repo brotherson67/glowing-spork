@@ -15,7 +15,7 @@ const center = {
   lng: -111.837646,
 };
 
-function MapBox() {
+function MapBox(props) {
   const onLoad = (polyline) => {
     console.log("polyline: ", polyline);
   };

@@ -1,8 +1,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
-import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
+// import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
+// import { index } from '../../../../server/models/Reaction';
 import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
@@ -88,70 +89,39 @@ function StravaActivities() {
                     return res.json();
                 })
                 .then(data => {
+                    setActivityData(data);
                     console.log(data);
-
-                    // dataStrava = data;
-                    // var htmlContent = "";
-                    for (let i = 0; i < 5; i++) {
-                        var cardDiv = document.getElementById('mainActivityCard');
-
-                        var card = document.createElement('div');
-                        card.innerHTML = 'Activity Name: ' + data[i].name;;
-                        var card2 = document.createElement('div');
-                        card2.innerHTML = 'Distance: ' + data[i].distance;
-                        var card3 = document.createElement('div');
-                        card3.innerHTML = 'Average Speed: ' + data[i].average_speed;
-                        var card4 = document.createElement('div');
-                        card4.innerHTML = 'Total Time: ' + data[i].elapsed_time;
-                        var card5 = document.createElement('div');
-                        card5.innerHTML = 'Total Elevation Gain: ' + data[i].total_elevation_gain;
-                        
-                        cardDiv.appendChild(card);
-                        cardDiv.appendChild(card2);
-                        cardDiv.appendChild(card3);
-                        cardDiv.appendChild(card4);
-                        cardDiv.appendChild(card5);
-                    }
-                    return data;
+                    // console.log(data.upload_id)
                 })
 
         }
-        //refresh token
-        //https://www.strava.com/oauth/token?client_id=77814&client_secret=ba4cf64706994d406df016b09df6d62ee55edaef&refresh_token=e3c3bce7513bb09b9c19bfd2450855830fb0d313&grant_type=refresh_token
-
-        // const authLink = "https://www.strava.com/oauth/token";
     }
-    // return (
-    //     <div className="app-activities">
-    //         <div className="app-activities">
-    //             <button id="strava-btn" onClick={handleClick}>Strava Login</button>
-    //             <h1>Strava Activities</h1>
-    //             <MapBox />
-    //             <div id="mainActivityCard">
-    //                 <div className="activity" id="activity-name"></div>
-    //                 <div id="strava-activity" className="strava-activity"></div>
-    //                 <div id="activity-distance" className="activity-distance"></div>
-    //                 <div id="averageSpeed" className="averageSpeed"></div>
-    //                 <div id="totalTime" className="totalTime"></div>
-    //                 <div id="elevationGain" className="elevationGain"></div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // );
 
     return (
       <div className="app-activities">
         <div className="app-activities">
-          <div className="activity-box" id="activity">
+          <div className="activity-box">
           <h1 className="activity-title">Strava Stats</h1>
-            <div className="activity-name" id="activity-name"></div>
-            <div className="activity-distance" id="activity-distance"></div>
-            <div className="averageSpeed" id="averageSpeed"></div>
-            <div className="totalTime" id="totalTime"></div>
-            <div className="elevationGain" id="elevationGain"></div>
-            <div className="activity-map" id="activity-map">
-            </div>
-            <MapBox />
+          {activityData.map((data, index) => {
+
+                return (
+                    <>
+                    <ul key={index} className="activity-box">
+                        <li className="activity-name" id="activity-name">{data.name}</li>
+                        <li className="activity-distance" id="activity-distance"  >Distance: {data.distance}</li>
+                        <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
+                        <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
+                        <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
+                        <li className="activity-map" id="activity-map">
+                        {/* <MapBox key={data.map} /> {data.map.summary_polyline} */}
+                        </li>
+                    </ul>
+                    
+                    
+                    </>
+                )
+          })}
+           
         <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
         </div>
@@ -160,3 +130,6 @@ function StravaActivities() {
 }
 
 export default StravaActivities;
+
+
+

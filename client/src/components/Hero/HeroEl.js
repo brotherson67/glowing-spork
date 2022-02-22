@@ -43,6 +43,7 @@ export const HeroText = styled.h1`
 color: #000000;
 font-size: 48px;
 text-align: center;
+color: #fff;
 
 @media screen and (max-width: 760px) {
     font-size: 40px;

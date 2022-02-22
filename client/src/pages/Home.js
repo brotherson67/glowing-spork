@@ -22,6 +22,7 @@ import NoMatch from './NoMatch';
 import ReactionList from "../components/FistBumps";
 import Strava from '../components/Strava';
 import MapBox from '../pages/Map';
+import AboutUs from '../components/About';
 
 
 function Home() {
@@ -48,10 +49,12 @@ function Home() {
             <Route path="/friends" element={<Cards />} />
             <Route path="/profile" element={<Profile />} />
             <Route exact path="/profile/:username" element={<Profile />} />
-            <Route path=":username" element={<Profile />} />
+            {/* <Route path=":username" element={<Profile />} /> */}
             <Route path="thought/:id" element={<OnePost />} />
+            {/* <Route path="thought/:id" element={<Posts />} /> */}
             {/* <Route path="thought/:id" element={<ReactionList />} /> */}
             <Route path="/strava" element={<Strava />} />
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route component={NoMatch} />
           </Routes>
       </main>

@@ -108,9 +108,9 @@ function StravaActivities() {
           {activityData.map((data, index) => {
                 return (
                     <>
-                    <Card>  
+                     
                     <div className="flex-container">
-                    <Card.Body>
+                    
                     <div className='strava-activities'>
                     <li className="activity-name" id="activity-name">{data.name}</li>
                     <li className="activity-distance" id="activity-distance">Distance: {Math.round(data.distance * .00062137)} miles </li>
@@ -119,12 +119,12 @@ function StravaActivities() {
                     <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain} feet</li>
                     <li className="activity-map" id="activity-map"></li>
                     </div>
-                    </Card.Body>
+                   
                     <div className="map-div">
                     <MapBox polyline={data.map.summary_polyline}/>
                     </div>
                     </div>
-                    </Card>
+                   
                     </>
                 )
           })}

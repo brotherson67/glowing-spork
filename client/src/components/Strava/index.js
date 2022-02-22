@@ -7,6 +7,10 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
+import { Card } from 'react-bootstrap';
+
+
+
 function StravaActivities() {
 
     // const navigate = useNavigate();
@@ -91,7 +95,6 @@ function StravaActivities() {
                 .then(data => {
                     setActivityData(data);
                     console.log(data);
-                    // console.log(data.upload_id)
                 })
 
         }
@@ -106,22 +109,27 @@ function StravaActivities() {
 
                 return (
                     <>
-                    <ul key={index} className="activity-box">
-                        <li className="activity-name" id="activity-name">{data.name}</li>
-                        <li className="activity-distance" id="activity-distance"  >Distance: {data.distance}</li>
-                        <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
-                        <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
-                        <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
-                        <li className="activity-map" id="activity-map">
-                        {/* <MapBox key={data.map} /> {data.map.summary_polyline} */}
-                        </li>
-                    </ul>
-                    
-                    
+                    <Card>
+                        
+                    <div className="flex-container">
+                    <Card.Body>
+                    <div className='strava-activities'>
+                    <li className="activity-name" id="activity-name">{data.name}</li>
+                    <li className="activity-distance" id="activity-distance">Distance: {data.distance}</li>
+                    <li className="averageSpeed" id="averageSpeed">Average Speed: {data.average_speed}</li>
+                    <li className="totalTime" id="totalTime">Elapsed time: {data.elapsed_time}</li>
+                    <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain}</li>
+                    <li className="activity-map" id="activity-map"></li>
+                    </div>
+                    </Card.Body>
+                    <div className="map-div">
+                    <MapBox polyline={data.map.summary_polyline}/>
+                    </div>
+                    </div>
+                    </Card>
                     </>
                 )
           })}
-           
         <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
         </div>
         </div>

@@ -36,7 +36,7 @@ const resolvers = {
       return Donation.find();
     },
     checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
+      // const url = new URL(context.headers.referer).origin;
       const checkout = new Checkout({ donations: args.donations });
       const { donations } = await checkout.populate("donations").execPopulate();
 

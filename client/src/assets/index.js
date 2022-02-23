@@ -15,13 +15,13 @@ export default function DonationModal() {
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     stripePromise.then((res) => {
-  //       res.redirectToCheckout({ sessionId: data.checkout.session });
-  //     });
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
   // function submitCheckout(donationIdsArray) {
   //   getCheckout({
@@ -30,15 +30,16 @@ export default function DonationModal() {
   // }
 
   function TEST() {
-    setDonationIdsArray(donationIdsArray.push["6212f2ad0c9dfb6c34e58356"]);
-    console.log(donationIdsArray);
-    // console.log(getCheckout);
-    getCheckout({ donations: ["6212f2ad0c9dfb6c34e58356"] });
-    console.log(data);
+    setDonationIdsArray.push("6212f2ad0c9dfb6c34e58356");
+    console.Console(donationIdsArray);
+    console.log(getCheckout);
+    getCheckout({
+      variables: { donations: donationIdsArray },
+    });
   }
 
   function addOneDollar() {
-    setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
+    setDonationIdsArray.push("6212f2ad0c9dfb6c34e58356");
     setTotalAmount(totalAmount + 1);
   }
 
@@ -52,7 +53,7 @@ export default function DonationModal() {
         <h1>Thanks for Donating!!</h1>
 
         <div>
-          <button className="amount" onClick={() => TEST()}>
+          <button className="amount" onClick={TEST()}>
             <h3>$1.00</h3>
           </button>
           <button

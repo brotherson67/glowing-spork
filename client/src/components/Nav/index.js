@@ -35,7 +35,7 @@ const Navbar = ({ toggle }) => {
                                 <NavLink to="/chat">
                                     Chat
                                 </NavLink>
-                                <a href="/" onClick={logout}>
+                                <a id="logout" href="/" onClick={logout}>
                                     Logout
                                 </a>
                             </>
@@ -44,7 +44,7 @@ const Navbar = ({ toggle }) => {
                                 <NavLink to="/login">Login</NavLink>
                             </>
                         )}
-                        <Dropdown>
+                        <Dropdown id="dropdown">
                             <Dropdown.Toggle className='drop-btn'>Activities</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>

@@ -11,8 +11,6 @@ const containerStyle = {
   height: '350px',
   marginRight: '200px',
   padding: '30px',
-
-
 };
 
 const center = {

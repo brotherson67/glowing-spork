@@ -10,7 +10,6 @@ import './strava.css';
 import { Card } from 'react-bootstrap';
 
 
-
 function StravaActivities() {
 
     // const navigate = useNavigate();
@@ -52,7 +51,7 @@ function StravaActivities() {
     }
 
     function handleClick() {
-        window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://localhost:3000/strava&response_type=code&scope=activity:read_all`
+        window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=http://glowing-sporky-routes.herokuapp.com/strava&response_type=code&scope=activity:read_all`
     }
     const authLink = "https://www.strava.com/oauth/token?";
 
@@ -83,7 +82,6 @@ function StravaActivities() {
         function getActivities(res) {
 
             console.log(res);
-            //   // commented out path to get user profile info from an array
             //   // https://www.strava.com/api/v3/athlete?access_token=7bc114015e81808697585c211d65f269c319a3cc
             const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
 

@@ -13,7 +13,6 @@ export default function DonationModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
-  const [getDonations, { donationData }] = useQuery(QUERY_DONATIONS);
 
   useEffect(() => {
     if (checkoutData) {
@@ -29,7 +28,13 @@ export default function DonationModal() {
     });
   }
 
+  function TEST() {
+    const [getDonations, { donationData }] = useQuery(QUERY_DONATIONS);
+    console.log(getDonations);
+  }
+
   function addOneDollar() {
+    setDonationIdsArray.push("6212f2ad0c9dfb6c34e58356");
     setTotalAmount(totalAmount + 1);
   }
   return (
@@ -42,7 +47,9 @@ export default function DonationModal() {
         <h2>Thanks for Donating!!</h2>
         <h3>${totalAmount}</h3>
         <div>
-          <button className="amount">$1.00</button>
+          <button className="amount" onClick={() => console.log("test")}>
+            $1.00
+          </button>
           <button
             onClick={() => setTotalAmount(totalAmount + 5)}
             className="amount"

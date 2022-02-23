@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { useQuery } from "@apollo/client";
+import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_CHECKOUT, QUERY_DONATIONS } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -9,12 +9,25 @@ import "./Donations.css";
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 export default function DonationModal() {
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
   const [getCheckout, { data }] = useQuery(QUERY_DONATIONS);
 
-  function submitCheckout() {}
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+
+  function submitCheckout() {
+    getCheckout({
+      variables: { donations: donationIdsArray },
+    });
+  }
   return (
     <div>
       <button onClick={() => setModalIsOpen(true)}>donate</button>

@@ -48,11 +48,9 @@ const ContentFeed = () => {
                 />
               )}
             </div>
-
           </section>
         </div>
       </section>
-      {/* <StravaActivities /> */}
     </div>
   );
 };

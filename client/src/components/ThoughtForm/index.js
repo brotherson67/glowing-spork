@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { QUERY_THOUGHTS, QUERY_ME, QUERY_ME_BASIC } from '../../utils/queries';
 
 import "./thoughtForm.css";
 
@@ -10,10 +10,13 @@ const ThoughtForm = () => {
     const [thoughtText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-        update(cache, { data: { addThought } }) {
+        update(cache, { data }) {
+            const { addThought } = data;
+            console.log(data);
             try {
                 // could potentially not exist yet, so wrap in a try...catch
                 const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+                console.log({ thoughts});
                 cache.writeQuery({
                     query: QUERY_THOUGHTS,
                     data: { thoughts: [addThought, ...thoughts] }
@@ -23,15 +26,26 @@ const ThoughtForm = () => {
             }
 
             // update me object's cache, appending new thought to the end of the array
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-                query: QUERY_ME,
-                data: { me: { ...me, thoughts: [...me.thoughts, addThought] } }
-            });
+            const response = cache.readQuery({ query: QUERY_ME });
+            console.log(response);
+            if (response) {
+                cache.writeQuery({
+                    query: QUERY_ME,
+                    data: { me: { ...response.me, thoughts: [...response.me.thoughts, addThought] } }
+                });
+            } else {
+                const user = cache.readQuery({ query: QUERY_ME_BASIC });
+                console.log({ userQuery: user });
+                cache.writeQuery({
+                    query: QUERY_ME,
+                    data: { me: { ...user.me, thoughts: [addThought] } }
+                });
+            }
         }
     });
 
     const handleChange = event => {
+        
         if (event.target.value.length <= 280) {
             setText(event.target.value);
             setCharacterCount(event.target.value.length);
@@ -39,8 +53,8 @@ const ThoughtForm = () => {
     };
     const handleFormSubmit = async event => {
         event.preventDefault();
-
         try {
+
             // add thought to database
             await addThought({
                 variables: { thoughtText }

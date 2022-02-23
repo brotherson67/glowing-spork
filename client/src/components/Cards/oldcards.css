@@ -2,99 +2,88 @@
  display: flex;
 } */
 .cardContainer {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* margin-top: 5vh; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  /* margin-top: 5vh; */
 }
 .swipe {
-    /* position: absolute; */
+  /* position: absolute; */
 }
 /* .card > h3 {
     /* position: absolute; */
-    /* bottom: 10px;
+/* bottom: 10px;
     color: black;
 }  */
-
-
 
 /* .cardContainer{
     display: flex;
     justify-content: center;
 } */
 
-
-.tinderCard-boxInner{
-    /* display: flex; */
-    /* flex-direction: row; */
-    padding: 5px;
+.tinderCard-boxInner {
+  /* display: flex; */
+  /* flex-direction: row; */
+  padding: 5px;
 }
 
-.innerDiv{
-    padding: 5px;
+.innerDiv {
+  padding: 5px;
 }
 .tinder-card {
-    display: flex;
-    /* position: fixed; */
-    width: 600px;
-    margin-top: 5vh;
-    padding: 20px;
-    max-width: 65vh;
-    height: 50vh;
-    border-radius: 10px;
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3);
+  display: flex;
+  /* position: fixed; */
+  width: 600px;
+  margin-top: 5vh;
+  padding: 20px;
+  max-width: 65vh;
+  height: 50vh;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 18px 53px 0px rgba(0, 0, 0, 0.3);
 }
 
-
-.cardContainer-divOuter{
-    display: flex;
-    align-items: center;
+.cardContainer-divOuter {
+  display: flex;
+  align-items: center;
 }
-.cardContainer-divInner{
-    /* flex-direction: row; */
-    /* display: flex; */
-    
-    
-    
-    
-    
-    
+.cardContainer-divInner {
+  /* flex-direction: row; */
+  /* display: flex; */
 }
-.cardContainer-ul{
-    display: flex;
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* position: absolute; */
-    /* background-color: lightcoral; */
-    align-items:flex-end;
-    align-content: flex-end;
-    /* background-position: center; */
+.cardContainer-ul {
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  /* position: absolute; */
+  /* background-color: lightcoral; */
+  align-items: flex-end;
+  align-content: flex-end;
+  /* background-position: center; */
 }
-.cardContainer-div{
-    /* flex-direction: row; */
-    background-color: lightgrey;
-    align-items: flex-end;
-    padding: 10px;
-    
+.cardContainer-div {
+  /* flex-direction: row; */
+  background-color: lightgrey;
+  align-items: flex-end;
+  padding: 10px;
 }
-.tinderCard-boxButton{
-    /* justify-content: center; */
-    padding: 15px;
-    background-color:aliceblue;
-    /* align-items: flex-end; */
-    /* align-content: flex-end; */
-    /* display: flex; */
-    /* align-items: center; */
+.tinderCard-boxButton {
+  /* justify-content: center; */
+  padding: 15px;
+  background-color: aliceblue;
+  /* align-items: flex-end; */
+  /* align-content: flex-end; */
+  /* display: flex; */
+  /* align-items: center; */
 }
 /* .profileImage {
     background
 } */
-.cardContainer-li{
-    font-size: 30px;
-    display: flex;
-    /* align-items: flex-start; */
+.cardContainer-li {
+  font-size: 30px;
+  display: flex;
+  /* align-items: flex-start; */
 
-    justify-content: center;
-} */
+  justify-content: center;
+}

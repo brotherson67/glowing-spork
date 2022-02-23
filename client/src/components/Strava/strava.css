@@ -29,15 +29,15 @@
 .activity-map {
     display: block;
     justify-content: space-evenly;
-    margin-right: 30px;
+    margin-right: 5px;
     padding: 10px;
 }
 
 .map-div {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
     flex-wrap: wrap;
-    width: 200px;
+    width: 300px;
 }
 
 #activity-name,

@@ -152,11 +152,6 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
   },
-  addDonationType: async (parent, { name, donationAmount }) => {
-    const donation = Donation.create({ name, donationAmount });
-
-    return donation;
-  },
 };
 
 module.exports = resolvers;

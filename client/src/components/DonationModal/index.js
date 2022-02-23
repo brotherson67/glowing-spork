@@ -14,21 +14,6 @@ export default function DonationModal() {
   const [donationIdsArray, setDonationIdsArray] = useState([]);
   const [getCheckout, { data }] = useQuery(QUERY_DONATIONS);
 
-  // const addDollar = () => {
-  //   setTotalAmount(totalAmount + 1);
-  //   setDonationIdsArray.push(data[0]._id);
-  // };
-
-  // const addFiveDollar = () => {
-  //   setTotalAmount(totalAmount + 5);
-  //   setDonationIdsArray.push(data[1]._id);
-  // };
-
-  // const addTenDollar = () => {
-  //   setTotalAmount(totalAmount + 10);
-  //   setDonationIdsArray.push(data[2]._id);
-  // };
-
   function submitCheckout() {}
   return (
     <div>

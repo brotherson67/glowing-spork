@@ -5,7 +5,6 @@ import PostList from "../components/Posts";
 // import StravaActivities from "./stravaTestCode";
 import ThoughtForm from '../components/ThoughtForm';
 import FriendList from '../components/FriendList';
-
 import Auth from '../utils/auth';
 
 const ContentFeed = () => {

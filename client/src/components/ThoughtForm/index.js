@@ -31,15 +31,15 @@ const ThoughtForm = () => {
             if (response) {
                 cache.writeQuery({
                     query: QUERY_ME,
-                    data: { me: { ...response.me, thoughts: [...response.me.thoughts, addThought] } }
+                    data: { me: { ...response.me, thoughts: [...response.me.thoughts, addThought], reactions: [...response.me.thoughts.reactions], friends: [...console.me.friends] } }
                 });
-            } else {
-                const user = cache.readQuery({ query: QUERY_ME_BASIC });
-                console.log({ userQuery: user });
-                cache.writeQuery({
-                    query: QUERY_ME,
-                    data: { me: { ...user.me, thoughts: [addThought] } }
-                });
+            // } else {
+            //     const user = cache.readQuery({ query: QUERY_ME_BASIC });
+            //     console.log({ userQuery: user });
+            //     cache.writeQuery({
+            //         query: QUERY_ME,
+            //         data: { me: { ...user.me, thoughts: [addThought] } }
+            //     });
             }
         }
     });

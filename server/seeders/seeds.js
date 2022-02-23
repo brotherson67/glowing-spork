@@ -1,13 +1,12 @@
-const faker = require('faker');
+const faker = require("faker");
 
-const db = require('../config/connection');
-const { Thought, User } = require('../models');
+const db = require("../config/connection");
+const { Thought, User, Donation } = require("../models");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Thought.deleteMany({});
   await User.deleteMany({});
 
-  // create user data
   const userData = [];
 
   for (let i = 0; i < 50; i += 1) {
@@ -20,7 +19,6 @@ db.once('open', async () => {
 
   const createdUsers = await User.collection.insertMany(userData);
 
-  // create friends
   for (let i = 0; i < 100; i += 1) {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { _id: userId } = createdUsers.ops[randomUserIndex];
@@ -28,14 +26,15 @@ db.once('open', async () => {
     let friendId = userId;
 
     while (friendId === userId) {
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+      const randomUserIndex = Math.floor(
+        Math.random() * createdUsers.ops.length
+      );
       friendId = createdUsers.ops[randomUserIndex];
     }
 
     await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   }
 
-  // create thoughts
   let createdThoughts = [];
   for (let i = 0; i < 100; i += 1) {
     const thoughtText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
@@ -53,14 +52,15 @@ db.once('open', async () => {
     createdThoughts.push(createdThought);
   }
 
-  // create reactions
   for (let i = 0; i < 100; i += 1) {
     const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomThoughtIndex = Math.floor(Math.random() * createdThoughts.length);
+    const randomThoughtIndex = Math.floor(
+      Math.random() * createdThoughts.length
+    );
     const { _id: thoughtId } = createdThoughts[randomThoughtIndex];
 
     await Thought.updateOne(
@@ -70,86 +70,27 @@ db.once('open', async () => {
     );
   }
 
-  console.log('all done!');
+  // const donations = await Donation.insertMany([
+  //   {
+  //     name: "1 dollar donation",
+  //     description:
+  //       "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+  //     donationAmount: 1.0,
+  //   },
+  //   {
+  //     name: "5 dollar donation",
+  //     description:
+  //       "Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.",
+  //     donationAmount: 5.0,
+  //   },
+  //   {
+  //     name: "10 dollar donation",
+  //     description:
+  //       "Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.",
+  //     donationAmount: 10.0,
+  //   },
+  // ]);
+
+  console.log("all done!");
   process.exit(0);
 });
-
-
-
-// const faker = require("faker");
-
-// const db = require("../config/connection");
-// const { Thoughts, User } = require("../models");
-
-// db.once("open", async () => {
-//   // await Post.deleteMany({});
-//   await User.deleteMany({});
-
-//   // create user data
-//   const userData = [];
-
-//   for (let i = 0; i < 50; i += 1) {
-//     const username = faker.internet.userName();
-//     const email = faker.internet.email(username);
-//     const password = faker.internet.password();
-
-//     userData.push({ username, email, password });
-//   }
-
-//   const createdUsers = await User.collection.insertMany(userData);
-
-//   // create friends
-//   for (let i = 0; i < 100; i += 1) {
-//     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-//     const { _id: userId } = createdUsers.ops[randomUserIndex];
-
-//     let friendId = userId;
-
-//     while (friendId === userId) {
-//       const randomUserIndex = Math.floor(
-//         Math.random() * createdUsers.ops.length
-//       );
-//       friendId = createdUsers.ops[randomUserIndex];
-//     }
-
-//     await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
-//   }
-
-//   // create Posts
-//   let createdPosts = [];
-//   for (let i = 0; i < 100; i += 1) {
-//     const postText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-
-//     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-//     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
-
-//     const createdPost = await Post.create({ postText, username });
-
-//     const updatedUser = await User.updateOne(
-//       { _id: userId },
-//       { $push: { posts: createdPost._id } }
-//     );
-
-//     createdPosts.push(createdPost);
-//   }
-
-//   // create reactions
-//   for (let i = 0; i < 100; i += 1) {
-//     const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-
-//     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-//     const { username } = createdUsers.ops[randomUserIndex];
-
-//     const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
-//     const { _id: postId } = createdPosts[randomPostIndex];
-
-//     await Post.updateOne(
-//       { _id: postId },
-//       { $push: { reactions: { reactionBody, username } } },
-//       { runValidators: true }
-//     );
-//   }
-
-//   console.log("all done!");
-//   process.exit(0);
-// });

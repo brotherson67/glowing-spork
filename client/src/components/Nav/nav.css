@@ -1,5 +1,5 @@
 .navbar-div{
-    padding: 20px;
+    padding: 5px;
 }
 
 .navbar-div h2{
@@ -20,4 +20,8 @@
 
 #dropdown {
     margin-top: 5px;
+}
+.navbarNav{
+    padding: 20px;
+    border-bottom: 5px white;
 }

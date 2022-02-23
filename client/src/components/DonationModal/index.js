@@ -13,58 +13,56 @@ export default function DonationModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
-  // const [getDonations, { donationData }] = useQuery(QUERY_DONATIONS);
+  const [getDonations, { donationData }] = useQuery(QUERY_DONATIONS);
 
-  // useEffect(() => {
-  //   if (checkoutData) {
-  //     stripePromise.then((res) => {
-  //       res.redirectToCheckout({ sessionId: checkoutData.checkout.session });
-  //     });
-  //   }
-  // }, [checkoutData]);
+  useEffect(() => {
+    if (checkoutData) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: checkoutData.checkout.session });
+      });
+    }
+  }, [checkoutData]);
 
-  // function submitCheckout(donationIdsArray) {
-  //   getCheckout({
-  //     variables: { donations: donationIdsArray },
-  //   });
-  // }
+  function submitCheckout(donationIdsArray) {
+    getCheckout({
+      variables: { donations: donationIdsArray },
+    });
+  }
 
-  // function addOneDollar() {
-  //   setTotalAmount(totalAmount + 1);
-  // }
+  function addOneDollar() {
+    setTotalAmount(totalAmount + 1);
+  }
   return (
-    <>
-      <div>
-        <button onClick={() => setModalIsOpen(true)}>donate</button>
-        <Modal isOpen={modalIsOpen} id="donationModal">
-          <button className="exitX" onClick={() => setModalIsOpen(false)}>
-            x
+    <div>
+      <button onClick={() => setModalIsOpen(true)}>donate</button>
+      <Modal isOpen={modalIsOpen} id="donationModal">
+        <button className="exitX" onClick={() => setModalIsOpen(false)}>
+          x
+        </button>
+        <h2>Thanks for Donating!!</h2>
+        <h3>${totalAmount}</h3>
+        <div>
+          <button className="amount">$1.00</button>
+          <button
+            onClick={() => setTotalAmount(totalAmount + 5)}
+            className="amount"
+          >
+            $5.00
           </button>
-          <h2>Thanks for Donating!!</h2>
-          <h3>${totalAmount}</h3>
-          <div>
-            <button className="amount">$1.00</button>
-            <button
-              onClick={() => setTotalAmount(totalAmount + 5)}
-              className="amount"
-            >
-              $5.00
-            </button>
-            <button
-              onClick={() => setTotalAmount(totalAmount + 10)}
-              className="amount"
-            >
-              $10.00
-            </button>
-          </div>
-          <div id="donationControls">
-            <button id="confirmAmount">Donate</button>
-            <button id="cancelDonation" onClick={() => setModalIsOpen(false)}>
-              Cancel
-            </button>
-          </div>
-        </Modal>
-      </div>
-    </>
+          <button
+            onClick={() => setTotalAmount(totalAmount + 10)}
+            className="amount"
+          >
+            $10.00
+          </button>
+        </div>
+        <div id="donationControls">
+          <button id="confirmAmount">Donate</button>
+          <button id="cancelDonation" onClick={() => setModalIsOpen(false)}>
+            Cancel
+          </button>
+        </div>
+      </Modal>
+    </div>
   );
 }

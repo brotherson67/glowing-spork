@@ -11,7 +11,6 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 export default function DonationModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
-<<<<<<< HEAD
   const [donationIdsArray, setDonationIdsArray] = useState([]);
   const [getCheckout, { data }] = useQuery(QUERY_DONATIONS);
 
@@ -31,12 +30,6 @@ export default function DonationModal() {
   // };
 
   function submitCheckout() {}
-=======
-  function submitCheckout() {
-    const donationIds = [];
-  }
-
->>>>>>> parent of 23114cc7 (added function to add ids to array)
   return (
     <div>
       <button onClick={() => setModalIsOpen(true)}>donate</button>
@@ -47,11 +40,6 @@ export default function DonationModal() {
         <h2>Thanks for Donating!!</h2>
         <h3>${totalAmount}</h3>
         <div>
-<<<<<<< HEAD
-          <button className="amount">$1.00</button>
-          <button lassName="amount">$5.00</button>
-          <button className="amount">$10.00</button>
-=======
           <button
             onClick={() => setTotalAmount(totalAmount + 1)}
             className="amount"
@@ -70,7 +58,6 @@ export default function DonationModal() {
           >
             $10.00
           </button>
->>>>>>> parent of 23114cc7 (added function to add ids to array)
         </div>
         <div id="donationControls">
           <button id="confirmAmount" onClick={submitCheckout}>

@@ -8,14 +8,14 @@ function Chats({ name, message, profilePic, timestamp }) {
   const [sent, setSent] = useState([]);
   const [received, setReceived] = useState([]);
   useEffect(() => {
-    const unsubscribe = database
+    const unribe = database
       .collection("chats")
       .onSnapshot((snapshot) =>
         setSent(snapshot.docs.map((doc) => doc.data()))
       );
 
     return () => {
-      unsubscribe();
+      unribe();
     };
   }, []);
   return (

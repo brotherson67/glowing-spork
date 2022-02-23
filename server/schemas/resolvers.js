@@ -31,7 +31,8 @@ const resolvers = {
         .populate("friends")
         .populate("thoughts");
     },
-          return Donation.find();
+    donations: async () => {
+      return Donation.find();
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;

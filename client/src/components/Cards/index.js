@@ -13,7 +13,7 @@ import Profile from '../../pages/Profile'
 // import database from '../../firebase';
 // import './cards.css';
 import { ADD_FRIEND } from '../../utils/mutations';
-// import './cards.css';
+import './cards.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import database from '../../utils/firebase';
@@ -173,7 +173,117 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                 </div> */}
                     <div className="tinderCards__cardContainer" >
 
-                        {/* {user.map((data) => { */}
+                        
+
+                        {/*-------- COMMENTED CODE BELOW GETS THE USER DATA FROM GOOGLE FIREBASE ------ */}
+                        {/* __________________DON'T DELETE THIS SECTION_____________________ */}
+                        <>
+
+                            {people.map((character, index) =>
+                                <TinderCard
+                                    ref={childRefs[index]}
+                                    className="swipe cardContainer"
+                                    key={character.name}
+                                    preventSwipe={['up', 'down']}
+                                    onSwipe={(dir) => swiped(dir, character.name, index)}
+                                    onCardLeftScreen={() => outOfFrame(character.name, index)}
+                                >
+                                    <div
+                                        onClick={onTinderCardChange}
+
+                                        className="tinder-card">
+
+
+                                        <Avatar src={character.url} className="profileImage" sx={{ width: 175, height: 175 }} />
+                                        <h3 className="cardHeader">{character.name}</h3>
+                                        <div className="cardDescription">{character.description}</div>
+                                        <ul className="cardContainer-ul">
+
+                                            <button onClick={handleClick} className="tinderCard-boxButton" onClick={() => swipe('left')}>
+                                                <li className="cardContainer-li">💔</li>
+                                            </button>
+
+                                            <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
+
+                                            <button className="tinderCard-boxButton" onClick={() => swipe('right')}>
+                                                <li className="cardContainer-li">❤️</li>
+                                            </button>
+
+
+
+                                            <button
+                                                className="tinderCard-boxButton" >
+                                                <a href="/chat" >
+                                                    Reach Out
+                                                </a>
+
+                                            </button>
+
+
+
+                                            <button className="tinderCard-boxButton" >
+                                                <a href="profile/:username">
+                                                    View Profile
+                                                </a>
+
+                                            </button>
+
+
+
+                                            <button className="tinderCard-boxButton" onClick={handleClick}>
+                                                Become Friends
+                                            </button>
+
+
+
+                                            <button className="tinderCard-boxButton" >
+                                                <a href="/">
+                                                    Go Home
+                                                </a>
+
+                                            </button>
+
+                                            {lastDirection ? (
+                                                <h4 key={lastDirection} className='infoText'>
+                                                    You swiped {lastDirection}
+                                                </h4>
+                                            ) : (
+                                                <h4 className='infoText'>
+                                                    Swipe a card or press a button to get Restore Card button visible!
+                                                </h4>
+                                            )}
+
+                                        </ul>
+
+
+                                    </div>
+
+                                </TinderCard>
+                            )}
+                        </>
+
+                        <div>
+                            {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+                        </div>
+                        {/* {userParam && ( */}
+
+                    </div>
+
+                    <div className="col-12 col-lg-3 mb-3">
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    );
+}
+export default TinderCards;
+
+
+{/* {user.map((data) => { */}
                         {/* return ( */}
                         {/* <>
 
@@ -250,112 +360,3 @@ const TinderCards = ({ onTinderCardChange, users }, ...props) => {
                         {/* } */}
 
                         {/* )} */}
-
-                        {/*-------- COMMENTED CODE BELOW GETS THE USER DATA FROM GOOGLE FIREBASE ------ */}
-                        {/* __________________DON'T DELETE THIS SECTION_____________________ */}
-                        <>
-
-                            {people.map((character, index) =>
-                                <TinderCard
-                                    ref={childRefs[index]}
-                                    className="swipe cardContainer"
-                                    key={character.name}
-                                    preventSwipe={['up', 'down']}
-                                    onSwipe={(dir) => swiped(dir, character.name, index)}
-                                    onCardLeftScreen={() => outOfFrame(character.name, index)}
-                                >
-                                    <div
-                                        onClick={onTinderCardChange}
-
-                                        className="tinder-card">
-
-
-                                        <Avatar src={character.url} className="profileImage" sx={{ width: 175, height: 175 }} />
-                                        <h3>{character.name}</h3>
-                                        <div>{character.description}</div>
-                                        <ul className="cardContainer-ul">
-
-                                            <button onClick={handleClick} className="tinderCard-boxButton" onClick={() => swipe('left')}>
-                                                <li className="cardContainer-li">💔</li>
-                                            </button>
-
-                                            <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
-
-                                            <button className="tinderCard-boxButton" onClick={() => swipe('right')}>
-                                                <li className="cardContainer-li">❤️</li>
-                                            </button>
-
-
-
-                                            <button
-                                                className="tinderCard-boxButton" >
-                                                <a href="/chat" >
-                                                    Reach Out
-                                                </a>
-
-                                            </button>
-
-
-
-                                            <button className="tinderCard-boxButton" >
-                                                <a href="profile/:username">
-                                                    View Profile
-                                                </a>
-
-                                            </button>
-
-
-
-                                            <button className="tinderCard-boxButton" onClick={handleClick}>
-                                                Become Friends
-                                            </button>
-
-
-
-                                            <button className="tinderCard-boxButton" >
-                                                <a href="/">
-                                                    Go Home
-                                                </a>
-
-                                            </button>
-
-                                            {lastDirection ? (
-                                                <h2 key={lastDirection} className='infoText'>
-                                                    You swiped {lastDirection}
-                                                </h2>
-                                            ) : (
-                                                <h2 className='infoText'>
-                                                    Swipe a card or press a button to get Restore Card button visible!
-                                                </h2>
-                                            )}
-
-                                        </ul>
-
-
-                                    </div>
-
-                                </TinderCard>
-                            )}
-                        </>
-
-                        <div>
-                            {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
-                        </div>
-                        {/* {userParam && ( */}
-
-                    </div>
-
-                    <div className="col-12 col-lg-3 mb-3">
-
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-    );
-}
-export default TinderCards;
-
-

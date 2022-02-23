@@ -20,17 +20,15 @@ const ContentFeed = () => {
   return (
     <div>
       <section>
-        {/* <Hero img={coverImage}/> */}
         <div>
           <section>
-            {/* <Hero img={coverImage}/> */}
             {loggedIn && (
-          <div className="col-12 mb-3">
+          <div id ="thought-form" className="col mb-3">
             <ThoughtForm />
           </div>
         )}
         {loggedIn && userData ? (
-          <div className="col-12 col-lg-3 mb-3">
+          <div id="firend-list" className="col-12 col-lg-3 mb-3">
             <FriendList
               username={userData.me.username}
               friendCount={userData.me.friendCount}

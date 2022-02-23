@@ -68,3 +68,11 @@ li {
   
 }
 
+#thought-form{
+display: flex;
+}
+
+#friend-list {
+  flex: 1;
+}
+

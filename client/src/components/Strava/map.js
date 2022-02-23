@@ -1,6 +1,7 @@
 import './strava.css';
 import React from 'react'
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
+import { auto } from '@popperjs/core';
 const decodePolyline = require('decode-google-map-polyline');
 
 
@@ -9,9 +10,13 @@ const decodePolyline = require('decode-google-map-polyline');
 const containerStyle = {
   width: '350px',
   height: '350px',
-  marginRight: '200px',
+  // marginRight: '200px',
+  margin: auto,
   padding: '30px',
 
+  // display: 'block',
+  // height: '100%',
+  // width: '100%'
 
 };
 

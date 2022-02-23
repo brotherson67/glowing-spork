@@ -70,8 +70,8 @@ const ThoughtForm = () => {
 
     return (
         <div className="thoughtForm-outerDiv">
+            <h2 className='post-form-h2'>Post about what you've been doing! </h2>
             <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/280
                 {error && <span className="ml-2">Something went wrong...</span>}
             </p>
             <form
@@ -79,13 +79,14 @@ const ThoughtForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 <textarea
-                    placeholder="Here's a new thought..."
+                    placeholder=""
                     value={thoughtText}
-                    className="form-input col-12 col-md-9"
+                    className="form-input col-md-9"
+                    id="thought-form-id"
                     onChange={handleChange}
                 ></textarea>
-                <button className="submit-button" type="submit">
-                    Submit
+                <button className='submit-thought-form' type="submit">
+                    Post
                 </button>
             </form>
         </div>

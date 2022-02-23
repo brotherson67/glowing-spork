@@ -101,8 +101,8 @@ function StravaActivities() {
     }
 
     return (
-      <div className="app-activities">
-        <div className="app-activities">
+      <div className="application-activities">
+        <div className="application-activities">
           <div className="activity-box">
           <h1 className="activity-title">Your Strava Stats</h1>
           {activityData.map((data, index) => {
@@ -118,17 +118,24 @@ function StravaActivities() {
                     <li className="totalTime" id="totalTime">Elapsed time: {Math.round(data.elapsed_time / 60)} minutes</li>
                     <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain} feet</li>
                     <li className="activity-map" id="activity-map"></li>
+                    <div className='map-div'>
+                    <MapBox polyline={data.map.summary_polyline}/>
+                    </div>
+
                     </div>
                    
                     <div className="map-div">
-                    <MapBox polyline={data.map.summary_polyline}/>
+                    {/* <MapBox polyline={data.map.summary_polyline}/> */}
                     </div>
                     </div>
                    
                     </>
                 )
           })}
-        <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
+        <div className='strava-login-page'>
+            <img src={require('../../images/pexels-julia-volk-8921113.jpg')}></img>
+        <button class="button-stravaLogin" onClick={handleClick}>Login with strava</button>
+        </div>
         </div>
         </div>
       </div>

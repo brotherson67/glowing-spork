@@ -12,7 +12,7 @@ const Navbar = ({ toggle }) => {
     };
     return (
         <>
-            <Nav>
+            <Nav className="navbar-Nav">
                 <NavLink to="/">
                     <div className="navbar-div">
                         <h2>R-o-u-t-e-s</h2>

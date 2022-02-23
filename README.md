@@ -34,13 +34,11 @@
 
 
  ## Contributing 
- Bridget Schaefer 
- Benjamin Chaplin
- Mitch Brotherson
+ * Bridget Schaefer [Click to view Bridget's GitHub Profile!](https://github.com/bridgetvon) :skier:
+ * Benjamin Chaplin [Click to view Bens GitHub Profile!](https://github.com/Plaindemon) 
+ * Mitch Brotherson [Click to view Mitch's GitHub Profile!](https://github.com/brotherson67) 
     
- [Click to view my GitHub Profile!](https://github.com/bridgetvon) :skier:
- [Click to view my GitHub Profile!](https://github.com/Plaindemon) 
- [Click to view my GitHub Profile!](https://github.com/brotherson67) 
+  
 
 
 

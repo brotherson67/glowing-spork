@@ -66,20 +66,21 @@ function NationalParks(props) {
 
     return (
         <div>
+            <form className="control ">
+                <input
+                    id="input-state"
+                    value={inputSearchName}
+                    className="input panel-block"
+                    type="text"
+                    placeholder="Search using state acronym"
+                    onChange={(e) => setInputSearchName(e.target.value)}></input>
+                <button id="search-city-btn" className="button" onClick={handleClick}>Search</button>
+
+            </form>
             <div className="app-activities">
                 <div className="app-activitiesInner">
                     <div className="panel-block">
-                        <form className="control ">
-                            <input
-                                id="input-state"
-                                value={inputSearchName}
-                                className="input panel-block"
-                                type="text"
-                                placeholder="Search using state acronym"
-                                onChange={(e) => setInputSearchName(e.target.value)}></input>
-                            <button id="search-city-btn" className="button" onClick={handleClick}>Search</button>
 
-                        </form>
 
                     </div>
                     <Body />

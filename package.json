@@ -2,6 +2,7 @@
   "name": "glowing-spork",
   "version": "1.0.0",
   "description": "",
+  "proxy": "http://127.0.0.1:3001/",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

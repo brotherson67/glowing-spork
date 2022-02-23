@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { gql } from "@apollo/client";
-=======
-import { gql, useQuery } from '@apollo/client';
->>>>>>> e2a5ab1f85307003ebbb4cbae42feb8c55c47bc7
+import { gql, useQuery } from "@apollo/client";
 
 export const QUERY_THOUGHTS = gql`
   query thoughts($username: String) {

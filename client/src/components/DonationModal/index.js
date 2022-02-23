@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useQuery } from "@apollo/client";
-import { QUERY_CHECKOUT } from "../../utils/queries";
+import { QUERY_CHECKOUT, QUERY_DONATIONS } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 
 import "./Donations.css";

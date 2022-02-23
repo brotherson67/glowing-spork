@@ -1,14 +1,11 @@
-
-import React, { useEffect, useState } from 'react';
-import { render } from 'react-dom';
+import React, { useEffect, useState } from "react";
+import { render } from "react-dom";
 // import { FaCodeBranch, FaCodepen } from 'react-icons/fa';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MapBox from "./map";
 // import '../../../src/App.css';
-import './strava.css';
-import { Card } from 'react-bootstrap';
-
-
+import "./strava.css";
+import { Card } from "react-bootstrap";
 
 function StravaActivities() {
   // const navigate = useNavigate();
@@ -70,6 +67,22 @@ function StravaActivities() {
     })
       .then((res) => res.json())
       .then((res) => getActivities(res));
+  }
+
+  // add other function call to get user id
+  function getActivities(res) {
+    console.log(res);
+    //   // commented out path to get user profile info from an array
+    //   // https://www.strava.com/api/v3/athlete?access_token=7bc114015e81808697585c211d65f269c319a3cc
+    const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`;
+
+    fetch(activitiesLink)
+      // .then((res) => console.log(res.json()))
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => res.json())
+      .then((res) => getActivities(res));
 
     // add other function call to get user id
     function getActivities(res) {
@@ -83,147 +96,60 @@ function StravaActivities() {
         .then((res) => {
           return res.json();
         })
-<<<<<<< HEAD
         .then((data) => {
+          setActivityData(data);
           console.log(data);
-
-          // dataStrava = data;
-          // var htmlContent = "";
-          for (let i = 0; i < 5; i++) {
-            var cardDiv = document.getElementById("mainActivityCard");
-
-            var card = document.createElement("div");
-            card.innerHTML = "Activity Name: " + data[i].name;
-            var card2 = document.createElement("div");
-            card2.innerHTML = "Distance: " + data[i].distance;
-            var card3 = document.createElement("div");
-            card3.innerHTML = "Average Speed: " + data[i].average_speed;
-            var card4 = document.createElement("div");
-            card4.innerHTML = "Total Time: " + data[i].elapsed_time;
-            var card5 = document.createElement("div");
-            card5.innerHTML =
-              "Total Elevation Gain: " + data[i].total_elevation_gain;
-
-            cardDiv.appendChild(card);
-            cardDiv.appendChild(card2);
-            cardDiv.appendChild(card3);
-            cardDiv.appendChild(card4);
-            cardDiv.appendChild(card5);
-          }
-          return data;
         });
     }
-    //refresh token
-    //https://www.strava.com/oauth/token?client_id=77814&client_secret=ba4cf64706994d406df016b09df6d62ee55edaef&refresh_token=e3c3bce7513bb09b9c19bfd2450855830fb0d313&grant_type=refresh_token
-
-    // const authLink = "https://www.strava.com/oauth/token";
   }
-  // return (
-  //     <div className="app-activities">
-  //         <div className="app-activities">
-  //             <button id="strava-btn" onClick={handleClick}>Strava Login</button>
-  //             <h1>Strava Activities</h1>
-  //             <MapBox />
-  //             <div id="mainActivityCard">
-  //                 <div className="activity" id="activity-name"></div>
-  //                 <div id="strava-activity" className="strava-activity"></div>
-  //                 <div id="activity-distance" className="activity-distance"></div>
-  //                 <div id="averageSpeed" className="averageSpeed"></div>
-  //                 <div id="totalTime" className="totalTime"></div>
-  //                 <div id="elevationGain" className="elevationGain"></div>
-  //             </div>
-  //         </div>
-  //     </div>
-  // );
 
   return (
     <div className="app-activities">
       <div className="app-activities">
-        <div className="activity-box" id="activity">
+        <div className="activity-box">
           <h1 className="activity-title">Strava Stats</h1>
           {activityData.map((data, index) => {
             return (
               <>
-                <div className="activity-name" id="activity-name">
-                  {data.name}
-                </div>
-                <div className="activity-distance" id="activity-distance">
-                  Distance: {data.distance}
-                </div>
-                <div className="averageSpeed" id="averageSpeed">
-                  Average Speed: {data.average_speed}
-                </div>
-                <div className="totalTime" id="totalTime">
-                  Elapsed time: {data.elapsed_time}
-                </div>
-                <div className="elevationGain" id="elevationGain">
-                  Elevation gain: {data.total_elevation_gain}
-                </div>
-                <div className="activity-map" id="activity-map"></div>
-                <MapBox polyline={data.map.summary_polyline} />
+                <Card>
+                  <div className="flex-container">
+                    <Card.Body>
+                      <div className="strava-activities">
+                        <li className="activity-name" id="activity-name">
+                          {data.name}
+                        </li>
+                        <li
+                          className="activity-distance"
+                          id="activity-distance"
+                        >
+                          Distance: {Math.round(data.distance * 0.00062137)}{" "}
+                          miles{" "}
+                        </li>
+                        <li className="averageSpeed" id="averageSpeed">
+                          Average Speed:{" "}
+                          {Math.round(data.average_speed * 2.2369)} mph
+                        </li>
+                        <li className="totalTime" id="totalTime">
+                          Elapsed time: {Math.round(data.elapsed_time / 60)}{" "}
+                          minutes
+                        </li>
+                        <li className="elevationGain" id="elevationGain">
+                          Elevation gain: {data.total_elevation_gain} feet
+                        </li>
+                        <li className="activity-map" id="activity-map"></li>
+                      </div>
+                    </Card.Body>
+                    <div className="map-div">
+                      <MapBox polyline={data.map.summary_polyline} />
+                    </div>
+                  </div>
+                </Card>
               </>
             );
           })}
-
           <button class="button-stravaLogin" onClick={handleClick}>
             Strava Login
           </button>
-=======
-            .then((res) => res.json())
-            .then(res => getActivities(res));
-
-        // add other function call to get user id
-        function getActivities(res) {
-
-            console.log(res);
-            //   // commented out path to get user profile info from an array
-            //   // https://www.strava.com/api/v3/athlete?access_token=7bc114015e81808697585c211d65f269c319a3cc
-            const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
-
-            fetch(activitiesLink)
-                // .then((res) => console.log(res.json()))
-                .then((res) => {
-                    return res.json();
-                })
-                .then(data => {
-                    setActivityData(data);
-                    console.log(data);
-                })
-
-        }
-    }
-
-    return (
-      <div className="app-activities">
-        <div className="app-activities">
-          <div className="activity-box">
-          <h1 className="activity-title">Strava Stats</h1>
-          {activityData.map((data, index) => {
-                return (
-                    <>
-                    <Card>  
-                    <div className="flex-container">
-                    <Card.Body>
-                    <div className='strava-activities'>
-                    <li className="activity-name" id="activity-name">{data.name}</li>
-                    <li className="activity-distance" id="activity-distance">Distance: {Math.round(data.distance * .00062137)} miles </li>
-                    <li className="averageSpeed" id="averageSpeed">Average Speed: {Math.round(data.average_speed * 2.2369)} mph</li>
-                    <li className="totalTime" id="totalTime">Elapsed time: {Math.round(data.elapsed_time / 60)} minutes</li>
-                    <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain} feet</li>
-                    <li className="activity-map" id="activity-map"></li>
-                    </div>
-                    </Card.Body>
-                    <div className="map-div">
-                    <MapBox polyline={data.map.summary_polyline}/>
-                    </div>
-                    </div>
-                    </Card>
-                    </>
-                )
-          })}
-        <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
-        </div>
->>>>>>> e2a5ab1f85307003ebbb4cbae42feb8c55c47bc7
         </div>
       </div>
     </div>
@@ -231,9 +157,3 @@ function StravaActivities() {
 }
 
 export default StravaActivities;
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> e2a5ab1f85307003ebbb4cbae42feb8c55c47bc7

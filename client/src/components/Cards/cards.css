@@ -1,1 +1,31 @@
 
+.tinderCards__cardContainer{
+    /* position: absolute; */
+    padding: 25px;
+}
+
+.cardContainer{
+    /* position: absolute; */
+    padding: 25px
+}
+
+.tinder-card{
+background-color:aliceblue;
+padding: 30px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.profileImage{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.cardHeader{
+    padding: 20px;
+    
+    
+}
+
+.cardDescription{
+    padding: 5px;
+}

@@ -9,6 +9,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
+        console.log(context.user);
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
           .populate("thoughts")
@@ -101,10 +102,12 @@ const resolvers = {
       return { token, user };
     },
     addThought: async (parent, args, context) => {
-      if (context.user) {
+      const user = context.user;
+
+      if (user) {
         const thought = await Thought.create({
           ...args,
-          username: context.user.username,
+          username: user.username,
         });
 
         await User.findByIdAndUpdate(

@@ -6,7 +6,6 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        username
       }
     }
   }
@@ -39,6 +38,37 @@ export const ADD_THOUGHT = gql`
   }
 `;
 
+export const REMOVE_THOUGHT = gql`
+mutation removeThought($thoughtText: String!) {
+  removeThought(thoughtText: $thoughtText) {
+    _id
+    thoughtText
+    createdAt
+    username
+    reactionCount
+    reactions {
+      _id
+    }
+  }
+}
+`;
+
+export const UPDATE_THOUGHT = gql`
+mutation updateThought($thoughtText: String!) {
+  updateThought(thoughtText: $thoughtText) {
+    _id
+    thoughtText
+    createdAt
+    username
+    reactionCount
+    reactions {
+      _id
+    }
+  }
+}
+`;
+
+
 export const ADD_REACTION = gql`
   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
@@ -68,6 +98,7 @@ export const ADD_FRIEND = gql`
   }
 `;
 
+
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($id: ID!) {
     removeFriend(id: $id) {
@@ -80,47 +111,3 @@ export const REMOVE_FRIEND = gql`
     }
   }
 `;
-
-
-// export const SEND_MESSAGE = gql`
-//   mutation sendMessage(
-//     $sendUsername: String!
-//     $receiveUsername: String!
-//     $message: String!
-//     $timestamp: Float!
-//   ) {
-//     sendMessage(
-//       sendUsername: $sendUsername
-//       receiveUsername: $receiveUsername
-//       message: $message
-//       timestamp: $timestamp
-//     ) {
-//       ...messageFields
-//     }
-//   }
-//   fragment messageFields on Message {
-//     sendUsername
-//     receiveUsername
-//     message
-//     timestamp
-//   }
-
-// `
-
-
-
-// export const REAL_TIME = gql`
-//   subscription($receiverUsername: String!) {
-//     newMessage(receiverUsername: $receiverUsername) {
-//       message
-//       senderMail
-//       receiverUsername
-//       id
-//       timestamp
-//       users {
-//         name
-//         username
-//       }
-//     }
-//   }
-// `

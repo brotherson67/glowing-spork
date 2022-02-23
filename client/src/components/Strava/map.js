@@ -1,13 +1,15 @@
+import "./strava.css";
 import React from "react";
 import { GoogleMap, LoadScript, Polyline } from "@react-google-maps/api";
+const decodePolyline = require("decode-google-map-polyline");
 
 //encodePath() and decodePath in the google.maps.geometry.encoding
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
-  marginRight: "300px",
-  padding: "40px",
+  width: "350px",
+  height: "350px",
+  marginRight: "200px",
+  padding: "30px",
 };
 
 const center = {
@@ -15,14 +17,13 @@ const center = {
   lng: -111.837646,
 };
 
-function MapBox(props) {
+function MapBox(maps) {
   const onLoad = (polyline) => {
     console.log("polyline: ", polyline);
   };
 
   const decodePolyline = require("decode-google-map-polyline");
-  // var polyline = 'cukwFbmziTPTh@?VAHWFgBOk@AsATwEe@g@gQOwHLkEKESyV\\uRI}@PoP_@}MVaDA{@QgBVoK[TKo@MmBb@_BO}N@Ho@QcAGmCHyC_AcG_@yE?uCIGJg@MgBJ?Bi@BwCUsAAuBVk@HkASk@Zk@OwFY]E_@Xq@?eAG]YaARSBi@Kg@TwJKoFj@KIiBn@yB]yAMsDG]_@KwDtAi@r@SQoCf@kBQHKCuJYgBNMBaGKgCNaAXw@K{ClGPtAY@Qf@Sl@XnG_@Z_GdDwF?u@fAwDFiA^qALqCAm@S_@DqEd@}BBeDnCkPKm@nES@c@_@u@Bs@tAkInAaE?uAnAgEK_B@eA\\qD\\aAnAyAB[|@}AXeCz@sD`CkGA_@r@iBp@wG\\oACe@r@sBHgApBaFb@{DZs@XqCVgANEGEZqAG}@dAaCx@{Aa@o@OaA@mAXk@RqB^{HU{Jw@mJmAm@_@aCQwFOaACqAL?\\{A?oAIAJy@tAsAXw@D{Bd@sAFw@Q{Cf]ynAZDMBlAF^[_@b@_Cd@eBSo@a@{@xABl@NnA|@dBh@bCiHxJqAjDwEjPc@~BBb@ZJxAy@Br@}B|IsAvAArBc@~BaBhCL`Eo@|BAzAOv@iBfCO`D_@fAfAjMrArAb@`DZ`D\\nKuAhN?fAR~@Xp@nDtB_@YIF}BgBoB|COv@A~Ac@hBUhCe@x@yAjHaCzH^kAAt@^\\VFz@g@v@h@GV\\~@lBLNbDGpAKG@hFZ|@@bA[tBCp@D~Ca@v@Du@KPf@IOMAZN~DA`JEzDRz@DxDH@BYMDFnAOn@RxCWv@GvFUp@TvCCnBPhDMjQMx@Lt@GjBL~KPn@O@?dANpAWHCX@tG[zB^`@FxCA^GKm@bBXEIHj@n@OONzFUdAR`CGUDPUDj@tBJ|AYfFMXHz]LtDMlAHtB]jDNLR~CKbJ_@bETGKTLHVhDJ|CS`BGjDPvHQxCYz@Np@Gf@Fe@Kd@LM?Nr@eBrCs@^g@RTXSvBJvChATCw@Y|@\\Ni@p@CX`@_@Yb@AtA|@XCQq@l@DRSl@\\GSPBvA`B^@Bi@dC\\RCC]RBj@xAjAWBWXH@]^b@p@Sp@b@n@e@xANVV?c@bAPd@MESv@MvBf@~Em@z@VhBTlB]l@HjBv@GInBEGg@NI`BUn@P[U`@IbFE';
-  var polyline = props.polyline;
+  var polyline = maps.polyline;
 
   var polylineDecode = decodePolyline(polyline);
 
@@ -48,6 +49,7 @@ function MapBox(props) {
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
+            margin={"auto"}
           >
             {/* Child components, such as markers, info windows, etc. */}
             <>

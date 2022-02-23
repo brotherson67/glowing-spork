@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./posts.css";
+import ThoughtForm from "../ThoughtForm";
+import "../ThoughtForm/thoughtForm.css"
 
 const PostList = ({ thoughts, title }) => {
   if (!thoughts.length) {
@@ -8,7 +10,10 @@ const PostList = ({ thoughts, title }) => {
   }
 
   return (
-    <div>
+    <div className="post-listBox">
+
+    {/* <ThoughtForm /> */}
+    <div className="post-listBox">
       <h3 className="color-the-text">{title}</h3>
       {thoughts &&
         thoughts.map(thought => (
@@ -35,6 +40,7 @@ const PostList = ({ thoughts, title }) => {
             </div>
           </div>
         ))}
+    </div>
     </div>
   );
 };

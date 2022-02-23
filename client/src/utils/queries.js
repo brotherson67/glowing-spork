@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { gql } from "@apollo/client";
+=======
+import { gql, useQuery } from '@apollo/client';
+>>>>>>> e2a5ab1f85307003ebbb4cbae42feb8c55c47bc7
 
 export const QUERY_THOUGHTS = gql`
   query thoughts($username: String) {
@@ -42,8 +46,8 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      image
       friendCount
+      image
       friends {
         _id
         username
@@ -64,8 +68,8 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      image
       friendCount
+      image
       thoughts {
         _id
         thoughtText
@@ -92,6 +96,7 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
+      image
       friendCount
       friends {
         _id

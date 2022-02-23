@@ -5,6 +5,7 @@ import { Dropdown } from 'react-bootstrap';
 import "./nav.css";
 
 const Navbar = ({ toggle }) => {
+    const loggedIn = Auth.loggedIn();
     const logout = event => {
         event.preventDefault();
         Auth.logout();
@@ -23,31 +24,28 @@ const Navbar = ({ toggle }) => {
                         {Auth.loggedIn() ? (
                             <>
                                 <Bars onClick={toggle} />
-                                <a href="/" onClick={logout}>
-                                    Logout
-                                </a>
+                                
                                 <NavLink to="/social">
                                     Social Feed
                                 </NavLink>
                                 <NavLink to="/friends">
                                     Find Friends!
                                 </NavLink>
-                                <NavLink to="/strava">
-                                    Strava
-                                </NavLink>
+                        
                                 <NavLink to="/chat">
                                     Chat
                                 </NavLink>
+                                <a id="logout" href="/" onClick={logout}>
+                                    Logout
+                                </a>
                             </>
                         ) : (
-
-
                             <>
                                 <NavLink to="/login">Login</NavLink>
                             </>
                         )}
-                        <Dropdown>
-                            <Dropdown.Toggle >Activities</Dropdown.Toggle>
+                        <Dropdown id="dropdown">
+                            <Dropdown.Toggle className='drop-btn'>Activities</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>
                                     <NavLink to="/ski">
@@ -62,6 +60,11 @@ const Navbar = ({ toggle }) => {
                                 <Dropdown.Item>
                                     <NavLink to="/trail-run">
                                         Trail Run
+                                    </NavLink>
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                    <NavLink to="/strava">
+                                        Strava Data
                                     </NavLink>
                                 </Dropdown.Item>
                             </Dropdown.Menu>

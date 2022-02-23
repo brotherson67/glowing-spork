@@ -15,8 +15,8 @@ function CarouselEl() {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>“Skiing is the best way in the world to waste time.” --</h3>
+                    <p>Glen Plake</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -27,8 +27,8 @@ function CarouselEl() {
                 />
 
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>“Of all the paths you take in life, make sure a few of them are dirt.” --</h3>
+                    <p>John Muir</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -39,8 +39,8 @@ function CarouselEl() {
                 />
 
                 <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <h3>“It never gets easier, you just go faster” --</h3>
+                    <p>Greg LeMond</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

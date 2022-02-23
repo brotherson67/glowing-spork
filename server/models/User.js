@@ -20,6 +20,9 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    image: {
+      type: String,
+    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -30,12 +33,6 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: 'User'
-      }
-    ],
-    activities: [
-      {
-        type: Schema.Types.ObjectId,  
-        ref: 'Activity'
       }
     ]
   },

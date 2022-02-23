@@ -1,3 +1,8 @@
+* {
+  font-family: 'Barlow', sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
 .contact-header {
   justify-content: center;
 }
@@ -57,6 +62,3 @@ li {
   border: 1px solid #253c78;
 }
 
-.friend-h3{
-
-}

@@ -12,22 +12,22 @@ export default function DonationModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
-  const { loading, error, data } = useQuery(QUERY_DONATIONS);
+  const [getCheckout, { data }] = useQuery(QUERY_DONATIONS);
 
-  const addDollar = () => {
-    setTotalAmount(totalAmount + 1);
-    setDonationIdsArray.push(data[0]);
-  };
+  // const addDollar = () => {
+  //   setTotalAmount(totalAmount + 1);
+  //   setDonationIdsArray.push(data[0]._id);
+  // };
 
-  const addFiveDollar = () => {
-    setTotalAmount(totalAmount + 5);
-    setDonationIdsArray.push(data[1]);
-  };
+  // const addFiveDollar = () => {
+  //   setTotalAmount(totalAmount + 5);
+  //   setDonationIdsArray.push(data[1]._id);
+  // };
 
-  const addTenDollar = () => {
-    setTotalAmount(totalAmount + 10);
-    setDonationIdsArray.push(data[2]);
-  };
+  // const addTenDollar = () => {
+  //   setTotalAmount(totalAmount + 10);
+  //   setDonationIdsArray.push(data[2]._id);
+  // };
 
   function submitCheckout() {}
   return (
@@ -40,15 +40,9 @@ export default function DonationModal() {
         <h2>Thanks for Donating!!</h2>
         <h3>${totalAmount}</h3>
         <div>
-          <button onClick={addDollar()} className="amount">
-            $1.00
-          </button>
-          <button onClick={addFiveDollar()} className="amount">
-            $5.00
-          </button>
-          <button onClick={addTenDollar()} className="amount">
-            $10.00
-          </button>
+          <button className="amount">$1.00</button>
+          <button lassName="amount">$5.00</button>
+          <button className="amount">$10.00</button>
         </div>
         <div id="donationControls">
           <button id="confirmAmount" onClick={submitCheckout}>

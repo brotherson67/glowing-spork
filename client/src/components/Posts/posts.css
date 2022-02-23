@@ -1,3 +1,8 @@
+.post-listBox{
+    padding: 20px;
+}
+
+
 .color-the-text {
     color: grey;
     padding: 20px;
@@ -10,6 +15,13 @@
 }
 
 .card-header{
+    background-color: aliceblue;
+    box-shadow: 0px 2px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.text-dark{
+    padding: 20px;
     color: #253c78;
     font-weight: bolder;
 }
@@ -19,9 +31,9 @@
     font-weight: bolder;
 }
 
-#fist-bump-card{
+/* #fist-bump-card{
 
-}
+} */
 
 a {
     color: #253c78;

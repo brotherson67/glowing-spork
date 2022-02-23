@@ -18,8 +18,7 @@ function FooterBody() {
         <Row>
           <Column>
             <Heading>About Us</Heading>
-            <FooterLink href="/about">About Us</FooterLink>
-            <DonationModal />
+            <FooterLink href="/aboutus">About Us</FooterLink>
           </Column>
           <Column>
             <Heading>

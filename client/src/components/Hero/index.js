@@ -2,12 +2,12 @@ import React from 'react';
 import { HeroContainer, HeroBg, VideoBg, HeroText, HeroContent } from './HeroEl';
 import Video from '../../videos/video1.mp4';
 import Typewriter from 'typewriter-effect';
+// import AboutUs from '../About';
 
 
 
 
 const HeroSection = (props) => {
-    console.log(props.img)
   return (
     <>
       <HeroContainer>
@@ -28,6 +28,7 @@ const HeroSection = (props) => {
               }}
               />
                 </HeroText>
+                {/* <AboutUs /> */}
           </HeroContent>
       </HeroContainer>
       

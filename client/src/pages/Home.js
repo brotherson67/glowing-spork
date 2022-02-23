@@ -9,8 +9,8 @@ import Run from '../components/Run';
 import Footer from '../components/footer';
 import SocialFeed from '../components/SocialFeed';
 import ChatScreen from "../components/Chat/ChatScreen";
-import Chats from '../components/Chat/ChatBody';
-// import Chat from '../components/Chat';
+import Chats from '../components/Chat/Chats';
+import Chat from '../components/Chat';
 import Hero from '../components/Hero';
 import Cards from '../components/Cards';
 import Profile from './Profile';
@@ -22,6 +22,8 @@ import NoMatch from './NoMatch';
 import ReactionList from "../components/FistBumps";
 import Strava from '../components/Strava';
 import MapBox from '../pages/Map';
+import AboutUs from '../components/About';
+import Posts from '../components/Posts'
 
 
 function Home() {
@@ -30,6 +32,7 @@ function Home() {
     //set state to go from false to true
     setIsOpen(!isOpen)
   }
+  
   return (
     <div>
       <main>
@@ -42,16 +45,19 @@ function Home() {
             <Route path="/mountain-bike" element={<Bike />} />
             <Route path="/trail-run" element={<Run />} />
             <Route path="/social" element={<SocialFeed />} />
-            <Route path="/chat" element={<Chats />} />
-            <Route path="/chatscreen" element={<ChatScreen />} />
+            <Route path="/chats" element={<Chats />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat/:person" element={<ChatScreen />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/friends" element={<Cards />} />
             <Route path="/profile" element={<Profile />} />
             <Route exact path="/profile/:username" element={<Profile />} />
-            <Route path=":username" element={<Profile />} />
+            {/* <Route path=":username" element={<Profile />} /> */}
             <Route path="thought/:id" element={<OnePost />} />
+            <Route path="thought/:id" element={<Posts />} />
             {/* <Route path="thought/:id" element={<ReactionList />} /> */}
             <Route path="/strava" element={<Strava />} />
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route component={NoMatch} />
           </Routes>
       </main>

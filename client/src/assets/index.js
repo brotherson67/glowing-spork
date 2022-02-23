@@ -7,7 +7,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import "./Donations.css";
 import { isConstValueNode } from "graphql";
 
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+const stripePromise = loadStripe(
+  "pk_test_51KWTWeECvfLj7U3sTBof5piniDzDiC7Zsf7pi3sxpo4CYLByJMdbPhvhhJXZSRntcWH0QsVCp5YnE1jmQNrMN7kc00Bq7Q7ycC"
+);
 
 export default function DonationModal() {
   const [getCheckout, { loading, data }] = useLazyQuery(QUERY_CHECKOUT);

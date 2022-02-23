@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useQuery, useLazyQuery } from "@apollo/client";
-import { QUERY_CHECKOUT, QUERY_DONATIONS } from "../../utils/queries";
+import { QUERY_CHECKOUT } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 
 import "./Donations.css";
-import { isConstValueNode } from "graphql";
 
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+const stripePromise = loadStripe(
+  "sk_test_51KWTWeECvfLj7U3sUDWHhAEbb1Nhp7U3cGsISXgF2v7hRbAQPbfTP76U1GxMHkVRlTHZRMuvTV5eFAwENWEWTIKk00DEyp6YCE"
+);
 
 export default function DonationModal() {
-  const [getCheckout, { loading, data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [checkout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [donationIdsArray, setDonationIdsArray] = useState([]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     stripePromise.then((res) => {
-  //       res.redirectToCheckout({ sessionId: data.checkout.session });
-  //     });
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
   // function submitCheckout(donationIdsArray) {
   //   getCheckout({
@@ -30,20 +31,23 @@ export default function DonationModal() {
   // }
 
   function TEST() {
-    setDonationIdsArray(donationIdsArray.push["6212f2ad0c9dfb6c34e58356"]);
+    setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
     console.log(donationIdsArray);
     // console.log(getCheckout);
-    getCheckout({ donations: ["6212f2ad0c9dfb6c34e58356"] });
+    checkout({
+      variables: { donations: donationIdsArray },
+    });
     console.log(data);
   }
 
-  function addOneDollar() {
-    setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
-    setTotalAmount(totalAmount + 1);
-  }
+  // function addOneDollar() {
+  //   setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
+  //   setTotalAmount(totalAmount + 1);
+  // }
 
   return (
     <div>
+      <script src="https://js.stripe.com/v3" async></script>
       <button onClick={() => setModalIsOpen(true)}>donate</button>
       <Modal isOpen={modalIsOpen} id="donationModal">
         <button className="exitX" onClick={() => setModalIsOpen(false)}>
@@ -52,7 +56,12 @@ export default function DonationModal() {
         <h1>Thanks for Donating!!</h1>
 
         <div>
-          <button className="amount" onClick={() => TEST()}>
+          <button
+            className="amount"
+            onClick={() => {
+              TEST();
+            }}
+          >
             <h3>$1.00</h3>
           </button>
           <button

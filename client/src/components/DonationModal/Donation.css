@@ -1,0 +1,33 @@
+#donationModal {
+  margin: auto;
+  text-align: center;
+  height: 50vh;
+  width: 50vw;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.amount {
+  background-color: aliceblue;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#donationControls {
+  margin-top: 5vh;
+}
+
+#confirmAmount {
+  background-color: #006994;
+  margin-right: 10px;
+}
+
+#cancelDonation {
+  background-color: grey;
+  margin-left: 10px;
+}
+
+.exitX {
+  border-radius: 100%;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 0.2);
+}

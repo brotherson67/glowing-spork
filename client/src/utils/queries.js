@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from "@apollo/client";
 
 export const QUERY_THOUGHTS = gql`
   query thoughts($username: String) {
@@ -99,5 +99,22 @@ export const QUERY_ME_BASIC = gql`
         username
       }
     }
+  }
+`;
+
+export const QUERY_CHECKOUT = gql`
+  query checkout($donations: [ID]!) {
+    checkout(donations: $donations) {
+      session
+    }
+  }
+`;
+
+export const QUERY_DONATIONS = gql`
+  query donations {
+    _id
+    name
+    donationAmount
+    donationDescription
   }
 `;

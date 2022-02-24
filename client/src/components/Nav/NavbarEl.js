@@ -39,12 +39,12 @@ color: #27405D;
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 890px){
     display: block;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-200%, 75%);
+    transform: translate(-40%, 75%);
     font-size: 1.8rem;
     cursor: pointer;
 }

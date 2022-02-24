@@ -3,11 +3,11 @@ import Modal from "react-modal";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_CHECKOUT, QUERY_DONATIONS } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
+import { Stripe } from "stripe";
 
 import "./Donations.css";
-import { isConstValueNode } from "graphql";
 
-const stripePromise = loadStripe(
+const stripePromise = new Stripe(
   "pk_test_51KWTWeECvfLj7U3sTBof5piniDzDiC7Zsf7pi3sxpo4CYLByJMdbPhvhhJXZSRntcWH0QsVCp5YnE1jmQNrMN7kc00Bq7Q7ycC"
 );
 

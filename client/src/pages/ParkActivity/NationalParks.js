@@ -17,7 +17,7 @@ function NationalParks(props) {
         redirect: 'follow'
     };
 
-    const apiKeyNps = "4fxi1Pok4kgde26ywgQnyEaaxknpMlmKw3svW5lP";
+    const apiKeyNps = process.env.REACT_APP_NATIONAL_PARKS_KEY;
     var [parksResults, setParks] = useState([]);
     // var [weatherInfo, setWeatherInfo] = useState([]);
     // var [directionsInfo, setDirectionsInfo] = useState([]);

@@ -27,16 +27,21 @@ export default function DonationModal() {
   function TEST() {
     setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
     console.log(donationIdsArray);
-    // console.log(getCheckout);
     checkout({
       variables: { donations: donationIdsArray },
     });
+    if (data) {
+      console.log(data);
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
     console.log(data);
   }
 
   return (
     <div>
-      <script src="https://js.stripe.com/v3" async></script>
+      <script src="https://js.stripe.com/v3" async></script>{" "}
       <button onClick={() => setModalIsOpen(true)}>donate</button>
       <Modal isOpen={modalIsOpen} id="donationModal">
         <button className="exitX" onClick={() => setModalIsOpen(false)}>
@@ -54,6 +59,7 @@ export default function DonationModal() {
             <h3>$1.00</h3>
           </button>
           <button
+            type="submit"
             onClick={() => setTotalAmount(totalAmount + 5)}
             className="amount"
           >

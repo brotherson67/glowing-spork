@@ -17,7 +17,7 @@ function FooterBody() {
                 <Row>
                     <Column>
                         <Heading>About Us</Heading>
-                        <FooterLink href="/aboutus">About Us</FooterLink>
+                        <FooterLink to="/aboutus">About Us</FooterLink>
                     </Column>
                     <Column>
                         <Heading>Social & github   <Instagram id="icon" /> <GitHub id="icon"/> </Heading>
@@ -31,7 +31,7 @@ function FooterBody() {
                     </Column>
                     <Column>
                         <Heading>Contact Us <Email /> </Heading>
-                        <FooterLink href="/contact">Send us a message</FooterLink>
+                        <FooterLink to="/contact">Send us a message</FooterLink>
                     </Column>
                 </Row>
             </Container>

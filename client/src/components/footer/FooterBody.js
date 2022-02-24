@@ -19,7 +19,6 @@ function FooterBody() {
           <Column>
             <Heading>About Us</Heading>
             <FooterLink href="/aboutus">About Us</FooterLink>
-            {/* <DonationModal>Donate</DonationModal> */}
           </Column>
           <Column>
             <Heading>

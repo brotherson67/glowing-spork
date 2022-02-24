@@ -24,12 +24,6 @@ export default function DonationModal() {
     }
   }, [data]);
 
-  // function submitCheckout(donationIdsArray) {
-  //   getCheckout({
-  //     variables: { donations: donationIdsArray },
-  //   });
-  // }
-
   function TEST() {
     setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
     console.log(donationIdsArray);
@@ -39,11 +33,6 @@ export default function DonationModal() {
     });
     console.log(data);
   }
-
-  // function addOneDollar() {
-  //   setDonationIdsArray("6212f2ad0c9dfb6c34e58356");
-  //   setTotalAmount(totalAmount + 1);
-  // }
 
   return (
     <div>

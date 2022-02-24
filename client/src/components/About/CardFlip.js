@@ -1,8 +1,9 @@
 
 import ReactCardFlip from "react-card-flip";
 import React, { useState } from "react";
-import Photo from '../../images/hex-img.svg';
-import BenPhoto from '../../images/ben.jpg'
+import Photo from '../../images/peoplehike.jpg';
+import dog from '../../assets/images/pexels-rachel-claire-4992604.jpg';
+import './About.css';
 
 class Card extends React.Component {
   constructor() {
@@ -22,7 +23,6 @@ class Card extends React.Component {
     return (
         <>
         <div className="card-flip">
-      
          <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
          <div className="front">
            <div>
@@ -30,41 +30,17 @@ class Card extends React.Component {
            </div>
          </div>
          <div className="back">
-           <div style={{ border: "1px solid #cccc", width: "500px", height: "250px"}}>
-            <p className="abt-txt" onClick={this.handleClick}>I'm Bridget, I completed a full stack boot camp at the University 
-            of Utah in February. I have a previous degree in geology but I have discovered that web development 
-            is truly my passion! I am available to work as soon as possible. My favorite technologies/languages include React, Mongo, javaScript and GraphQl. I cannot wait
-            to continue learning and broaden my skill-set. 
+           <div className="about-div">
+            <p className="about-txt" onClick={this.handleClick}>
+               <p>Route: a way or course taken in getting from a starting point to a destination.</p>
+               <p>Root: the part of a thing attaching it to a greater or more fundamental whole; the end or base.</p>
             </p>
-           </div>
-         </div>
-       </ReactCardFlip>
-       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <div className="front">
-          <div>
-            <img id="its-me" src={BenPhoto} alt="me"style={{width: "500px"}} onClick={this.handleClick}/>
-          </div>
-        </div>
-        <div className="back">
-          <div style={{ border: "1px solid #cccc", width: "500px", height: "250px"}}>
-           <p className="abt-txt" onClick={this.handleClick}>I'm Ben, 
-           </p>
-          </div>
-        </div>
-      </ReactCardFlip>
-         <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-         <div className="front">
-           <div>
-             <img id="its-me" src={Photo} alt="me" onClick={this.handleClick}/>
-           </div>
-         </div>
-         <div className="back">
-           <div style={{ border: "1px solid #cccc", width: "500px", height: "250px"}}>
-            <p className="abt-txt" onClick={this.handleClick}>I'm Bridget, I completed a full stack boot camp at the University 
-            of Utah in February. I have a previous degree in geology but I have discovered that web development 
-            is truly my passion! I am available to work as soon as possible. My favorite technologies/languages include React, Mongo, javaScript and GraphQl. I cannot wait
-            to continue learning and broaden my skill-set. 
-            </p>
+            <img src={dog} style={{width: '125vh'}} alt="puppy"></img>
+            <div>
+                <h2 className="about-txt">
+                    As outdoor enthusiasts we wanted to build an app that would help connect people online and bring it to the outdoors.
+                </h2>
+            </div>
            </div>
          </div>
        </ReactCardFlip>

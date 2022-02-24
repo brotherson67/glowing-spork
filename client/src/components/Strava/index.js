@@ -8,6 +8,7 @@ import MapBox from './map';
 // import '../../../src/App.css';
 import './strava.css';
 import { Card } from 'react-bootstrap';
+import Hero from '../Hero';
 
 
 
@@ -102,33 +103,35 @@ function StravaActivities() {
 
     return (
       <div className="app-activities">
-        <div className="app-activities">
+        <div className="app1-activities">
           <div className="activity-box">
           <h1 className="activity-title">Your Strava Stats</h1>
           {activityData.map((data, index) => {
                 return (
                     <>
-                    <Card>  
+                    {/* <Card>   */}
                     <div className="flex-container">
-                    <Card.Body>
+                    {/* <Card.Body> */}
                     <div className='strava-activities'>
-                    <li className="activity-name" id="activity-name">{data.name}</li>
+                    <li className="activity-name" id="activity-name">Activity Name: {data.name}</li>
                     <li className="activity-distance" id="activity-distance">Distance: {Math.round(data.distance * .00062137)} miles </li>
                     <li className="averageSpeed" id="averageSpeed">Average Speed: {Math.round(data.average_speed * 2.2369)} mph</li>
                     <li className="totalTime" id="totalTime">Elapsed time: {Math.round(data.elapsed_time / 60)} minutes</li>
                     <li className="elevationGain" id="elevationGain">Elevation gain: {data.total_elevation_gain} feet</li>
                     <li className="activity-map" id="activity-map"></li>
                     </div>
-                    </Card.Body>
+                    {/* </Card.Body> */}
                     <div className="map-div">
                     <MapBox polyline={data.map.summary_polyline}/>
                     </div>
                     </div>
-                    </Card>
+                    {/* </Card> */}
                     </>
                 )
           })}
-        <button class="button-stravaLogin" onClick={handleClick}>Strava Login</button>
+          <div className='btn-strava'>
+        <button class="button-stravaLogin" onClick={handleClick}>Login with strava</button>
+        </div>
         </div>
         </div>
       </div>

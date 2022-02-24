@@ -6,17 +6,18 @@
 
 .flex-container {
    display: flex;
-
-    @media (max-width: 869px){
-        background-color: red;
-    }
 }
 
 .strava-activities{
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3);
-    border: 1px solid #29335c; 
+    /* padding: 20px;
+    margin: 10px; */
+    /* box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3); */
+    /* border: 1px solid #29335c; 
+    background-color: lightgray;
+    padding: 50px;
+    width: 100vh;
+    height: 30vh; */
+    flex-wrap: wrap;
 }
 
 .activity-name,
@@ -45,10 +46,47 @@
 #elevationGain,
 #activity-map {
     font-weight: bolder;
+
 }
 
 .activity-title{
     justify-content: center;
 }
 
+.button-stravaLogin {
+    border: 1px solid darkgray;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 1%;
+    margin-bottom: 20%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    color: #fff;
+}
 
+.btn-strava{
+    background-image: url('../../images/pexels-julia-volk-8921113med.jpg');
+    height: 100vh;
+    margin-bottom: 100px;
+}
+
+.app-activities {
+    background-size: cover;
+    height: 400vh;
+    background-repeat: inherit;
+    
+}
+
+@media screen and (max-width: 730px) {
+    .flex-container {
+    display: block;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .mapbox-container {
+    margin-right: 100%;
+    padding: 1%;
+    float: left;
+    }
+
+}

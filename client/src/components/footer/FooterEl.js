@@ -6,7 +6,6 @@ height: 40px;
 display: flex;
 justify-content: space-between;
 z-index: 10;
-position: absolute;
 width: 100%;
 `
 

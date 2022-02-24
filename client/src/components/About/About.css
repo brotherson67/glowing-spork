@@ -1,0 +1,32 @@
+#its-me {
+    width: 135vh;
+    height: auto;
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .abt-text {
+     padding: 10%;
+  }
+
+  .about-txt {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 200%;
+    padding: 5%;
+    font-size: 100%;
+    font-weight: bolder;
+    background-color: aliceblue;
+
+  }
+
+  .about-div{
+      height: 100vh;
+      padding: 20px;
+  }
+
+  .back {
+      height: 150vh;
+  }

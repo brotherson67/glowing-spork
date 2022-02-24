@@ -21,9 +21,6 @@ const Sidebar = ({toggle}) => {
                   <SidebarLink to="/strava" onClick= {toggle}>
                     Strava
                   </SidebarLink>
-                  <SidebarLink to="/profile" onClick= {toggle}>
-                    Profile
-                  </SidebarLink>
               </SidebarMenu>
           </SidebarWrapper>
       </SidebarContainer>
